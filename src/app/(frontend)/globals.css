@@ -1,0 +1,23 @@
+@tailwind components;
+@tailwind utilities;
+
+html{
+ margin: 0;
+  padding: 0; 
+}
+
+body{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
