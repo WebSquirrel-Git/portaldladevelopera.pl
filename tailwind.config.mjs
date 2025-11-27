@@ -25,6 +25,24 @@ const config = {
     'border-warning',
     'bg-warning/30',
   ],
+  theme:{
+    colors:{
+      'primaryOrange':'#F0642E',
+      'secondaryOrange':'#F29120',
+      'white':'#FFFFFF',
+      'lightGrey':'#D0D0D0',
+      'grey':'#93979E',
+      'darkGrey':'#333333',
+      'black':'#060606',
+    },
+     extend: {
+    backgroundImage: {
+      'gradientGreyWhite':'linear-gradient(to right, #989898, #FEFEFE)',
+       'gradientOrange': 'linear-gradient(to right, #F0642E, #EE201C, #F29120)',
+    },
+    
+  },
+  },
   
 }
 

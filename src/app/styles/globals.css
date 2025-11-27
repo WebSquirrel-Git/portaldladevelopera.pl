@@ -1,9 +1,11 @@
 @tailwind components;
 @tailwind utilities;
-
+@import './colors.css';
+@import './typography.css';
 html{
  margin: 0;
   padding: 0; 
+  /* -webkit-text-fill-color: inherit !important; */
 }
 
 body{
@@ -19,5 +21,8 @@ body{
 *::after {
   box-sizing: border-box;
   scroll-behavior: smooth;
+}
+.gradient-text {
+  -webkit-text-fill-color: transparent !important;
 }
 
