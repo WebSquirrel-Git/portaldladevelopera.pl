@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
+// import { usePathname } from 'next/navigation'
+import React, { useState } from 'react'
 import type { Header } from '@/payload-types'
 import Logo from '@/assets/logo/logo.svg'
 import Image from 'next/image'
@@ -14,8 +14,7 @@ interface HeaderProps {
 
 export const HeaderClient: React.FC<HeaderProps> = ({ data }) => {
   /* Storing the value in a useState to avoid hydration errors */
-  const [theme, setTheme] = useState<string | null>(null)
-  const pathname = usePathname() || ''
+  // const pathname = usePathname() || ''
   const [showMenu, setShowMenu] = useState(false)
   const onShowMenu = () => {
     setShowMenu(true)
@@ -26,7 +25,7 @@ export const HeaderClient: React.FC<HeaderProps> = ({ data }) => {
 
 
   return (
-    <header className="w-full flex flex-row box-border justify-between items-center h-fit absolute top-0 left-0 z-20 py-[14px] 2xl:py-[20px] px-4 2xl:px-[200px] xl:px-[100px] bg-black">
+    <header className="w-full flex flex-row box-border justify-between items-center h-fit z-20 py-[14px] 2xl:py-[20px] px-4 2xl:px-[200px] xl:px-[100px] bg-black">
       
         <Link className='flex flex-col xl:flex-row gap-1 xl:gap-5 xl:items-center items-start' href="/">
           <Image src={Logo} alt="Piotr Wilk Meble" className="h-10 w-auto" />

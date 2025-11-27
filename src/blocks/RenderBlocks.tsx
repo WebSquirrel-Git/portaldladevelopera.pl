@@ -4,10 +4,18 @@ import type { Page } from '@/payload-types'
 
 import { ArchiveBlock } from '@/blocks/ArchiveBlock/Component'
 import { MediaBlock } from './MediaBlock/Component'
+import { PanelOverwiewBlock } from './PanelOverwiewBlock/Component'
+import { PanelAdvantagesBlock } from './PanelAdvantagesBlock/Component'
+import { PanelNeedBlock } from './PanelNeedBlock/Component'
+import { PanelPresentationBlock } from './PanelPresentationBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
   mediaBlock: MediaBlock,
+  panelOverwiewBlock:PanelOverwiewBlock,
+  panelAdvantagesBlock:PanelAdvantagesBlock,
+  panelNeedBlock:PanelNeedBlock,
+  panelPresentationBlock:PanelPresentationBlock
 }
 
 export const RenderBlocks: React.FC<{
