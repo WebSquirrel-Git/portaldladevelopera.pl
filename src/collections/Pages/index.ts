@@ -16,6 +16,8 @@ import {
   OverviewField,
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
+import { PanelOverwiewBlock } from '@/blocks/PanelOverwiewBlock/config'
+import { PanelAdvantagesBlock } from '@/blocks/PanelAdvantagesBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -72,7 +74,7 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [ Archive,],
+              blocks: [ Archive,PanelOverwiewBlock,PanelAdvantagesBlock],
               required: true,
               admin: {
                 initCollapsed: true,

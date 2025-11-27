@@ -26,7 +26,7 @@ export const HeaderClient: React.FC<HeaderProps> = ({ data }) => {
 
 
   return (
-    <header className="w-full flex flex-row box-border justify-between items-center h-fit absolute top-0 left-0 z-20 py-[14px] 2xl:py-[20px] px-4 2xl:px-[200px] xl:px-[100px] bg-black">
+    <header className="w-full flex flex-row box-border justify-between items-center h-fit z-20 py-[14px] 2xl:py-[20px] px-4 2xl:px-[200px] xl:px-[100px] bg-black">
       
         <Link className='flex flex-col xl:flex-row gap-1 xl:gap-5 xl:items-center items-start' href="/">
           <Image src={Logo} alt="Piotr Wilk Meble" className="h-10 w-auto" />

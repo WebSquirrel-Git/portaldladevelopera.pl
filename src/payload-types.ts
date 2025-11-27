@@ -178,7 +178,7 @@ export interface Page {
       };
     };
   };
-  layout: ArchiveBlock[];
+  layout: (ArchiveBlock | PanelOverwiewBlock | PanelAdvantagesBlock)[];
   meta?: {
     title?: string | null;
     /**
@@ -407,6 +407,56 @@ export interface User {
       }[]
     | null;
   password?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PanelOverwiewBlock".
+ */
+export interface PanelOverwiewBlock {
+  tagsList: {
+    icon: string;
+    title: string;
+    id?: string | null;
+  }[];
+  description: string;
+  button: {
+    title: string;
+    url: string;
+  };
+  testimonialsList: {
+    stars: number;
+    testimonial: string;
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'panelOverwiewBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PanelAdvantagesBlock".
+ */
+export interface PanelAdvantagesBlock {
+  header: {
+    normal: string;
+    gradient: string;
+  };
+  description: {
+    bold: string;
+    normal: string;
+  };
+  advantagesList: {
+    icon: string;
+    title: string;
+    advantagesList: {
+      advantage: string;
+      id?: string | null;
+    }[];
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'panelAdvantagesBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -672,6 +722,8 @@ export interface PagesSelect<T extends boolean = true> {
     | T
     | {
         archive?: T | ArchiveBlockSelect<T>;
+        panelOverwiewBlock?: T | PanelOverwiewBlockSelect<T>;
+        panelAdvantagesBlock?: T | PanelAdvantagesBlockSelect<T>;
       };
   meta?:
     | T
@@ -697,6 +749,68 @@ export interface ArchiveBlockSelect<T extends boolean = true> {
   relationTo?: T;
   limit?: T;
   selectedDocs?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PanelOverwiewBlock_select".
+ */
+export interface PanelOverwiewBlockSelect<T extends boolean = true> {
+  tagsList?:
+    | T
+    | {
+        icon?: T;
+        title?: T;
+        id?: T;
+      };
+  description?: T;
+  button?:
+    | T
+    | {
+        title?: T;
+        url?: T;
+      };
+  testimonialsList?:
+    | T
+    | {
+        stars?: T;
+        testimonial?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PanelAdvantagesBlock_select".
+ */
+export interface PanelAdvantagesBlockSelect<T extends boolean = true> {
+  header?:
+    | T
+    | {
+        normal?: T;
+        gradient?: T;
+      };
+  description?:
+    | T
+    | {
+        bold?: T;
+        normal?: T;
+      };
+  advantagesList?:
+    | T
+    | {
+        icon?: T;
+        title?: T;
+        advantagesList?:
+          | T
+          | {
+              advantage?: T;
+              id?: T;
+            };
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
