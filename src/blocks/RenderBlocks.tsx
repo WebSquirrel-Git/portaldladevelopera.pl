@@ -8,6 +8,7 @@ import { PanelOverwiewBlock } from './PanelOverwiewBlock/Component'
 import { PanelAdvantagesBlock } from './PanelAdvantagesBlock/Component'
 import { PanelNeedBlock } from './PanelNeedBlock/Component'
 import { PanelPresentationBlock } from './PanelPresentationBlock/Component'
+import { PanelPhonesGalleryBlock } from './PanelPhonesGalleryBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -15,7 +16,8 @@ const blockComponents = {
   panelOverwiewBlock:PanelOverwiewBlock,
   panelAdvantagesBlock:PanelAdvantagesBlock,
   panelNeedBlock:PanelNeedBlock,
-  panelPresentationBlock:PanelPresentationBlock
+  panelPresentationBlock:PanelPresentationBlock,
+  panelPhonesGalleryBlock:PanelPhonesGalleryBlock
 }
 
 export const RenderBlocks: React.FC<{
