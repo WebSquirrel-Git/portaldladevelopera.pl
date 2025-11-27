@@ -1,0 +1,16 @@
+import {Inter } from 'next/font/google'
+import localFont from 'next/font/local'
+
+export const inter = Inter({
+  subsets: ['latin-ext'],
+  weight: ['300', '400', '500', '600', '700', '800'],
+  display: 'swap',
+  variable: '--inter',
+})
+
+// export const satoshi = localFont({
+//   src: '@/app/fonts/Satoshi-Variable.ttf',
+//   variable: '--satoshi',
+//   display: 'swap',
+  
+// })
