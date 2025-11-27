@@ -4,7 +4,7 @@ import type { Header as HeaderType } from '@/payload-types'
 import Link from 'next/link'
 import Image from 'next/image'
 import Logo from '@/assets/logo/logo.svg'
-import { usePathname } from 'next/navigation'
+// import { usePathname } from 'next/navigation'
 import { Icon } from '@iconify/react'
 import { motion } from 'motion/react'
 import { CMSLink } from '@/components/Link'
@@ -20,7 +20,7 @@ export const NavListMobile: React.FC<NavListMobilePropsType> = ({
   onHideMenu,
 }) => {
   const navItems = data?.navItems || []
-  const pathname = usePathname() || ''
+  // const pathname = usePathname() || ''
 
   if (!showMenu) return null
 

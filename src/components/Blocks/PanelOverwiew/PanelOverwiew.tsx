@@ -1,7 +1,5 @@
 'use client'
-
 import { PanelOverwiewBlockPropsType } from '@/blocks/PanelOverwiewBlock/Component'
-import { Icon } from '@iconify/react';
 import StarIcon from '@/assets/icons/star.svg';
 import Laptop from '@/assets/laptop.svg';
 import AiIcon from '@/assets/icons/ai.svg';
@@ -26,18 +24,18 @@ const TAGS_LIST = [
 ]
 
 export const PanelOverwiew:React.FC<PanelOverwiewBlockPropsType>=(props)=>{
-    const {tagsList,description,button,testimonialsList} = props;
+    const {description,button,testimonialsList} = props;
 
     return(
         <div className='pt-10 px-4 gap-12 flex flex-col 2xl:pt-[100px] 2xl:px-[274px] justify-center items-center'>
             <div className='flex flex-col gap-3 2xl:gap-6 justify-start items-center'>
                 <div className='flex flex-row gap-3 items-center w-fit'>
                     {TAGS_LIST.map((tag,i)=>(
-                        <div className='flex bg-gradientOrangeButton p-[1px] rounded-[32px]'>
-                        <div className='flex flex-row gap-2.5 bg-[#512714] py-1 pl-[7px] pr-3 rounded-[32px]'>
+                        <div key={i} className='flex bg-gradientOrangeButton p-[1px] rounded-[32px]'>
+                        <div className='flex flex-row gap-2.5 bg-[#512714] xl:py-1 xl:pl-[7px] xl:pr-3 p-1 rounded-[32px]'>
                             <Image src={tag.icon} alt={tag.text} className='w-6 h-6'/>
                             {/* <Icon icon={tag.icon} className='gradient-text text-gradientOrangeButton bg-clip-text text-transparent w-6 h-6'/> */}
-                            <span className='bg-blend-screen gradient-text bg-gradientOrangeButton bg-clip-text text-transparent'>{tag.text}</span>
+                            <span className='xl:flex hidden bg-blend-screen gradient-text bg-gradientOrangeButton bg-clip-text text-transparent'>{tag.text}</span>
                         </div>
                         </div>
                     ))}
@@ -52,7 +50,7 @@ Sprzedaży <b className='gradient-text font-normal bg-gradientOrangeButton bg-wh
             </div>
             <div className='flex xl:flex-row flex-col xl:gap-[90px] gap-[18px]'>
                 {testimonialsList.map((testimonial,i)=>(
-                    <div className='flex flex-col w-full sm:w-[340px] gap-3 items-center justify-start'>
+                    <div key={i} className='flex flex-col w-full sm:w-[340px] gap-3 items-center justify-start'>
                         <div className='flex flex-row gap-1'>
                            {Array.from({ length: testimonial.stars }).map((_, i) => (
 <Image

@@ -1,7 +1,7 @@
 'use client'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import React, { useEffect, useState } from 'react'
+// import { usePathname } from 'next/navigation'
+import React, { useState } from 'react'
 import type { Header } from '@/payload-types'
 import Logo from '@/assets/logo/logo.svg'
 import Image from 'next/image'
@@ -14,8 +14,7 @@ interface HeaderProps {
 
 export const HeaderClient: React.FC<HeaderProps> = ({ data }) => {
   /* Storing the value in a useState to avoid hydration errors */
-  const [theme, setTheme] = useState<string | null>(null)
-  const pathname = usePathname() || ''
+  // const pathname = usePathname() || ''
   const [showMenu, setShowMenu] = useState(false)
   const onShowMenu = () => {
     setShowMenu(true)

@@ -178,7 +178,7 @@ export interface Page {
       };
     };
   };
-  layout: (ArchiveBlock | PanelOverwiewBlock | PanelAdvantagesBlock)[];
+  layout: (ArchiveBlock | PanelOverwiewBlock | PanelAdvantagesBlock | PanelNeedBlock | PanelPresentationBlock)[];
   meta?: {
     title?: string | null;
     /**
@@ -460,6 +460,78 @@ export interface PanelAdvantagesBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PanelNeedBlock".
+ */
+export interface PanelNeedBlock {
+  header: {
+    gradient: string;
+    normal: string;
+  };
+  description: {
+    normal: string;
+    bold: string;
+  };
+  button: {
+    title: string;
+    url: string;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'panelNeedBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PanelPresentationBlock".
+ */
+export interface PanelPresentationBlock {
+  header: string;
+  slidesArray?:
+    | {
+        slide: {
+          header: {
+            root: {
+              type: string;
+              children: {
+                type: any;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          };
+          slideList: {
+            slideListDescription: {
+              root: {
+                type: string;
+                children: {
+                  type: any;
+                  version: number;
+                  [k: string]: unknown;
+                }[];
+                direction: ('ltr' | 'rtl') | null;
+                format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                indent: number;
+                version: number;
+              };
+              [k: string]: unknown;
+            };
+            id?: string | null;
+          }[];
+          image: string | Media;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'panelPresentationBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -724,6 +796,8 @@ export interface PagesSelect<T extends boolean = true> {
         archive?: T | ArchiveBlockSelect<T>;
         panelOverwiewBlock?: T | PanelOverwiewBlockSelect<T>;
         panelAdvantagesBlock?: T | PanelAdvantagesBlockSelect<T>;
+        panelNeedBlock?: T | PanelNeedBlockSelect<T>;
+        panelPresentationBlock?: T | PanelPresentationBlockSelect<T>;
       };
   meta?:
     | T
@@ -808,6 +882,58 @@ export interface PanelAdvantagesBlockSelect<T extends boolean = true> {
           | {
               advantage?: T;
               id?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PanelNeedBlock_select".
+ */
+export interface PanelNeedBlockSelect<T extends boolean = true> {
+  header?:
+    | T
+    | {
+        gradient?: T;
+        normal?: T;
+      };
+  description?:
+    | T
+    | {
+        normal?: T;
+        bold?: T;
+      };
+  button?:
+    | T
+    | {
+        title?: T;
+        url?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PanelPresentationBlock_select".
+ */
+export interface PanelPresentationBlockSelect<T extends boolean = true> {
+  header?: T;
+  slidesArray?:
+    | T
+    | {
+        slide?:
+          | T
+          | {
+              header?: T;
+              slideList?:
+                | T
+                | {
+                    slideListDescription?: T;
+                    id?: T;
+                  };
+              image?: T;
             };
         id?: T;
       };

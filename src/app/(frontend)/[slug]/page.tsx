@@ -59,7 +59,9 @@ export default async function Page({ params: paramsPromise }: Args) {
   const { hero, layout } = page
 
   return (
-    <main className='bg-[url(/background-gradient.webp)] bg-cover min-h-[11000px]'>
+    <main className='bg-black'
+    //  className='bg-[url(/background-gradient.webp)] bg-cover min-h-[11000px]'
+     >
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
 
