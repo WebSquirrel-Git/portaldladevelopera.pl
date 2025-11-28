@@ -24,7 +24,7 @@ export const ArchiveBlock: React.FC<
     const fetchedPosts = await payload.find({
       collection: 'posts',
       depth: 1,
-      limit
+      limit,
     })
 
     posts = fetchedPosts.docs

@@ -8,7 +8,7 @@ import type { Post } from '@/payload-types'
 
 import { Media } from '@/components/Media'
 
-export type CardPostData = Pick<Post, 'slug'  | 'meta' | 'title'>
+export type CardPostData = Pick<Post, 'slug' | 'meta' | 'title'>
 
 export const Card: React.FC<{
   alignItems?: 'center'
@@ -18,9 +18,9 @@ export const Card: React.FC<{
   title?: string
 }> = (props) => {
   const { card, link } = useClickableCard({})
-  const { className, doc, relationTo,  title: titleFromProps } = props
+  const { className, doc, relationTo, title: titleFromProps } = props
 
-  const { slug,  meta, title } = doc || {}
+  const { slug, meta, title } = doc || {}
   const { description, image: metaImage } = meta || {}
 
   const titleToUse = titleFromProps || title
@@ -40,7 +40,6 @@ export const Card: React.FC<{
         {metaImage && typeof metaImage !== 'string' && <Media resource={metaImage} size="33vw" />}
       </div>
       <div className="p-4">
-      
         {titleToUse && (
           <div className="prose">
             <h3>

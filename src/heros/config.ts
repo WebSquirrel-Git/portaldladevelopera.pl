@@ -7,7 +7,6 @@ import {
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 
-
 export const hero: Field = {
   name: 'hero',
   type: 'group',
@@ -32,7 +31,7 @@ export const hero: Field = {
     {
       name: 'backgroundImage',
       type: 'upload',
-      label:'Zdjęcie w tle',
+      label: 'Zdjęcie w tle',
       admin: {
         condition: (_, { type } = {}) => ['mainHero'].includes(type),
       },
@@ -44,32 +43,31 @@ export const hero: Field = {
       label: 'Karta',
       type: 'group',
       required: true,
-       admin: {
+      admin: {
         condition: (_, { type } = {}) => ['mainHero'].includes(type),
       },
       fields: [
         {
           name: 'header',
           label: 'Nagłówek',
-           type: 'text',
-         required: true,
-        
+          type: 'text',
+          required: true,
         },
         {
           name: 'description',
           label: 'Opis',
           type: 'richText',
-          required:true,
-      editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-          ]
-        },
-      }),
+          required: true,
+          editor: lexicalEditor({
+            features: ({ rootFeatures }) => {
+              return [
+                ...rootFeatures,
+                HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+                FixedToolbarFeature(),
+                InlineToolbarFeature(),
+              ]
+            },
+          }),
         },
         {
           name: 'ctaButton',
@@ -89,7 +87,7 @@ export const hero: Field = {
               type: 'text',
               required: true,
             },
-             {
+            {
               name: 'icon',
               label: 'Ikona - wejdź na stronę https://icon-sets.iconify.design/ i wklej kod ikony.',
               type: 'text',

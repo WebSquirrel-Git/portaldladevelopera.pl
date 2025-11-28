@@ -1,4 +1,4 @@
-import {Inter } from 'next/font/google'
+import { Inter } from 'next/font/google'
 
 export const inter = Inter({
   subsets: ['latin-ext'],
@@ -11,5 +11,5 @@ export const inter = Inter({
 //   src: '@/app/fonts/Satoshi-Variable.ttf',
 //   variable: '--satoshi',
 //   display: 'swap',
-  
+
 // })

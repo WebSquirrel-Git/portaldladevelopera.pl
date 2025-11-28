@@ -8,13 +8,13 @@ export const PanelAdvantagesBlock: Block = {
     plural: 'Zalety Panelu',
   },
   fields: [
-     {
+    {
       name: 'header',
       label: 'Nagłówek',
       type: 'group',
       required: true,
-      fields:[
-         {
+      fields: [
+        {
           name: 'normal',
           label: 'Tekst - normalny kolor',
           type: 'text',
@@ -26,35 +26,34 @@ export const PanelAdvantagesBlock: Block = {
           type: 'text',
           required: true,
         },
-      ]
+      ],
     },
-     {
+    {
       name: 'description',
       label: 'Opis',
       type: 'group',
       required: true,
-      fields:[
-         {
+      fields: [
+        {
           name: 'bold',
           label: 'Tekst - pogrubiony',
           type: 'text',
           required: true,
         },
-         {
+        {
           name: 'normal',
           label: 'Tekst - normalny',
           type: 'text',
           required: true,
         },
-       
-      ]
+      ],
     },
-   {
+    {
       name: 'advantagesList',
       label: 'Lista Zalet',
-      labels:{
-        singular:'Zaleta',
-        plural:'Zalety'
+      labels: {
+        singular: 'Zaleta',
+        plural: 'Zalety',
       },
       type: 'array',
       required: true,
@@ -72,25 +71,24 @@ export const PanelAdvantagesBlock: Block = {
           required: true,
         },
         {
-           name: 'advantagesList',
+          name: 'advantagesList',
           label: 'Lista zalet',
           type: 'array',
-           labels:{
-        singular:'Zaleta',
-        plural:'Zalety'
-      },
+          labels: {
+            singular: 'Zaleta',
+            plural: 'Zalety',
+          },
           required: true,
-          fields:[
-             {
-          name: 'advantage',
-          label: 'Zaleta',
-          type: 'text',
-          required: true,
+          fields: [
+            {
+              name: 'advantage',
+              label: 'Zaleta',
+              type: 'text',
+              required: true,
+            },
+          ],
         },
-          ]
-        }
       ],
     },
-    
   ],
 }

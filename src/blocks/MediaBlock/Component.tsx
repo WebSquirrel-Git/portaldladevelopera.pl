@@ -17,33 +17,22 @@ type Props = MediaBlockProps & {
 }
 
 export const MediaBlock: React.FC<Props> = (props) => {
-  const {
-    className,
-    enableGutter = true,
-    imgClassName,
-    media,
-    staticImage,
-  } = props
+  const { className, enableGutter = true, imgClassName, media, staticImage } = props
 
   if (media && typeof media === 'object')
-
-  return (
-    <div
-      className={cn(
-        '',
-        {
-          container: enableGutter,
-        },
-        className,
-      )}
-    >
-      {(media || staticImage) && (
-        <Media
-          imgClassName={cn( imgClassName)}
-          resource={media}
-          src={staticImage}
-        />
-      )}
-    </div>
-  )
+    return (
+      <div
+        className={cn(
+          '',
+          {
+            container: enableGutter,
+          },
+          className,
+        )}
+      >
+        {(media || staticImage) && (
+          <Media imgClassName={cn(imgClassName)} resource={media} src={staticImage} />
+        )}
+      </div>
+    )
 }

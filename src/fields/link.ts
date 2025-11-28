@@ -35,7 +35,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
           {
             name: 'type',
             type: 'radio',
-            label:'Typ',
+            label: 'Typ',
             admin: {
               layout: 'horizontal',
               width: '50%',
@@ -74,7 +74,7 @@ export const link: LinkType = ({ appearances, disableLabel = false, overrides = 
       type: 'relationship',
       admin: {
         condition: (_, siblingData) => siblingData?.type === 'reference',
-        placeholder:'Wybierz stronę'
+        placeholder: 'Wybierz stronę',
       },
       label: 'Link do strony',
       relationTo: ['pages', 'posts'],

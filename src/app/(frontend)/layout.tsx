@@ -3,7 +3,7 @@ import React from 'react'
 import { Footer } from '@/Footer/Component'
 import { Header } from '@/Header/Component'
 import { mergeOpenGraph } from '@/utilities/mergeOpenGraph'
-import {inter} from '@/config/font'
+import { inter } from '@/config/font'
 import '../styles/globals.css'
 import { getServerSideURL } from '@/utilities/getURL'
 import localFont from 'next/font/local'
@@ -12,11 +12,9 @@ const satoshi = localFont({
   src: '../fonts/Satoshi-Variable.ttf',
   variable: '--satoshi',
   display: 'swap',
-  
 })
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-
   return (
     <html lang="pl" suppressHydrationWarning>
       <head>
@@ -24,10 +22,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <link href="/favicon.svg" rel="icon" type="image/svg+xml" />
       </head>
       <body className={`${inter.variable} ${satoshi.variable} flex flex-col`}>
-
-          <Header />
-          {children}
-          <Footer />
+        <Header />
+        {children}
+        <Footer />
       </body>
     </html>
   )

@@ -5,9 +5,9 @@ import { authenticated } from '../access/authenticated'
 
 export const Media: CollectionConfig = {
   slug: 'media',
-  labels:{
-    singular:'Zdjęcie',
-    plural:'Zdjęcia'
+  labels: {
+    singular: 'Zdjęcie',
+    plural: 'Zdjęcia',
   },
   folders: true,
   access: {
@@ -25,7 +25,7 @@ export const Media: CollectionConfig = {
   ],
   upload: {
     // Upload to the public/media directory in Next.js making them publicly accessible even outside of Payload
-   disableLocalStorage: true,
+    disableLocalStorage: true,
     adminThumbnail: 'thumbnail',
     focalPoint: true,
     imageSizes: [
