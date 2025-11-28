@@ -29,9 +29,9 @@ import { slugField } from 'payload'
 
 export const Posts: CollectionConfig<'posts'> = {
   slug: 'posts',
-  labels:{
-    singular:'Post',
-    plural:'Posty'
+  labels: {
+    singular: 'Post',
+    plural: 'Posty',
   },
   access: {
     create: authenticated,

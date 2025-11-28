@@ -9,15 +9,19 @@ import { PanelAdvantagesBlock } from './PanelAdvantagesBlock/Component'
 import { PanelNeedBlock } from './PanelNeedBlock/Component'
 import { PanelPresentationBlock } from './PanelPresentationBlock/Component'
 import { PanelPhonesGalleryBlock } from './PanelPhonesGalleryBlock/Component'
+import { PanelDevelopmentBlock } from './PanelDevelopmentBlock/Component'
+import { PanelFaqBlock } from './PanelFaqBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
   mediaBlock: MediaBlock,
-  panelOverwiewBlock:PanelOverwiewBlock,
-  panelAdvantagesBlock:PanelAdvantagesBlock,
-  panelNeedBlock:PanelNeedBlock,
-  panelPresentationBlock:PanelPresentationBlock,
-  panelPhonesGalleryBlock:PanelPhonesGalleryBlock
+  panelOverwiewBlock: PanelOverwiewBlock,
+  panelAdvantagesBlock: PanelAdvantagesBlock,
+  panelNeedBlock: PanelNeedBlock,
+  panelPresentationBlock: PanelPresentationBlock,
+  panelPhonesGalleryBlock: PanelPhonesGalleryBlock,
+  panelDevelopmentBlock: PanelDevelopmentBlock,
+  panelFaqBlock: PanelFaqBlock,
 }
 
 export const RenderBlocks: React.FC<{

@@ -13,11 +13,9 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   /* Storing the value in a useState to avoid hydration errors */
   // const pathname = usePathname()
 
-
   return (
-    <header className="container relative z-20   " >
+    <header className="container relative z-20   ">
       <div className="py-8 flex justify-between">
-        
         <HeaderNav data={data} />
       </div>
     </header>

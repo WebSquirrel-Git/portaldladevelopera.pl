@@ -10,20 +10,26 @@ export const NavListDesktop: React.FC<{ data: HeaderType }> = ({ data }) => {
   // const pathname = usePathname() || ''
   return (
     <nav className="xl:flex hidden flex-row items-center gap-6">
-<div className='hover:bg-gradientOrange transition-all duration-500 rounded-lg flex box-border p-[1px] h-fit w-fit'>
- <Link className='rounded-lg box-border bg-black !text-white font-medium text-[16px] py-3 px-6 cursor-pointer ' href={process.env.NEXT_PUBLIC_APP_URL as string}>Home</Link>
-</div>
-     
-     <span className='w-[1px] bg-lightGrey h-6'></span>
+      <div className="hover:bg-gradientOrange transition-all duration-500 rounded-lg flex box-border p-[1px] h-fit w-fit">
+        <Link
+          className="rounded-lg box-border bg-black !text-white font-medium text-[16px] py-3 px-6 cursor-pointer "
+          href={process.env.NEXT_PUBLIC_APP_URL as string}
+        >
+          Home
+        </Link>
+      </div>
+
+      <span className="w-[1px] bg-lightGrey h-6"></span>
       {navItems.map((item, i) => (
-        <div key={i} className='hover:bg-gradientOrange transition-all duration-500 rounded-lg flex box-border p-[1px] h-fit w-fit'>
-        <CMSLink
-          key={item.id}
-          
-          
-          {...item.link}
-          className={`rounded-lg box-border bg-black !text-white font-medium text-[16px] py-3 px-6 cursor-pointer `}
-        />
+        <div
+          key={i}
+          className="hover:bg-gradientOrange transition-all duration-500 rounded-lg flex box-border p-[1px] h-fit w-fit"
+        >
+          <CMSLink
+            key={item.id}
+            {...item.link}
+            className={`rounded-lg box-border bg-black !text-white font-medium text-[16px] py-3 px-6 cursor-pointer `}
+          />
         </div>
       ))}
       <Link

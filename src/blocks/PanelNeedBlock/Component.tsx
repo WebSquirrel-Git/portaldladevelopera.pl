@@ -1,21 +1,20 @@
-import { PanelNeed } from '@/components/Blocks/PanelNeed/PanelNeed';
+import { PanelNeed } from '@/components/Blocks/PanelNeed/PanelNeed'
 
 export interface PanelNeedBlockPropsType {
-  header:{
-    normal:string;
-    gradient:string;
+  header: {
+    normal: string
+    gradient: string
   }
-  description:{
-    normal:string;
-    bold:string;
+  description: {
+    normal: string
+    bold: string
   }
- button:{
-    title:string;
-    url:string;
-  };
-  
+  button: {
+    title: string
+    url: string
+  }
 }
 
 export const PanelNeedBlock: React.FC<PanelNeedBlockPropsType> = (props) => {
-  return <PanelNeed {...props}/>
+  return <PanelNeed {...props} />
 }

@@ -8,12 +8,12 @@ export const PanelOverwiewBlock: Block = {
     plural: 'Prezentacja Panelu',
   },
   fields: [
-   {
+    {
       name: 'tagsList',
       label: 'Lista Tagów',
-      labels:{
-        singular:'Tag',
-        plural:'Tagi'
+      labels: {
+        singular: 'Tag',
+        plural: 'Tagi',
       },
       type: 'array',
       required: true,
@@ -38,51 +38,51 @@ export const PanelOverwiewBlock: Block = {
       type: 'text',
       required: true,
     },
-     {
+    {
       name: 'button',
       label: 'Przycisk',
       type: 'group',
       required: true,
-      fields:[
-         {
+      fields: [
+        {
           name: 'title',
           label: 'Tytuł',
           type: 'text',
           required: true,
         },
-         {
+        {
           name: 'url',
           label: 'Adres Url',
           type: 'text',
           required: true,
         },
-      ]
+      ],
     },
-     {
+    {
       name: 'testimonialsList',
       label: 'Lista Opinii',
       type: 'array',
-      labels:{
-        singular:'Opinia',
-        plural:'Opinie'
+      labels: {
+        singular: 'Opinia',
+        plural: 'Opinie',
       },
       required: true,
       fields: [
-  {
+        {
           name: 'stars',
           label: 'Ilość gwiazdek',
           type: 'number',
-          max:5,
-          min:1,
+          max: 5,
+          min: 1,
           required: true,
         },
-         {
+        {
           name: 'testimonial',
           label: 'Opinia',
           type: 'text',
           required: true,
         },
-      ]
-     }
+      ],
+    },
   ],
 }

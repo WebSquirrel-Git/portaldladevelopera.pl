@@ -5,7 +5,7 @@ import { revalidateHeader } from './hooks/revalidateHeader'
 
 export const Header: GlobalConfig = {
   slug: 'header',
-  label:'Menu Nawigacyjne',
+  label: 'Menu Nawigacyjne',
   access: {
     read: () => true,
   },
@@ -13,10 +13,10 @@ export const Header: GlobalConfig = {
     {
       name: 'navItems',
       type: 'array',
-       label:'Menu nawigacyjne',
-      labels:{
-        singular:'Link',
-        plural:'Linki'
+      label: 'Menu nawigacyjne',
+      labels: {
+        singular: 'Link',
+        plural: 'Linki',
       },
       fields: [
         link({

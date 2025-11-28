@@ -1,16 +1,20 @@
 'use client'
 import { PanelPhonesGalleryBlockPropsType } from '@/blocks/PanelPhonesGalleryBlock/Component'
-import RichText from '@/components/RichText';
-import StarIcon from '@/assets/icons/star-list.svg'
-import Image from 'next/image';
-import { Media } from '@/components/Media';
+import RichText from '@/components/RichText'
+import EmblaCarousel from './EmblaCarousel/EmblaCarousel'
 
-export const PanelPhonesGallery:React.FC<PanelPhonesGalleryBlockPropsType>=(props)=>{
-    const {} = props;
+export const PanelPhonesGallery: React.FC<PanelPhonesGalleryBlockPropsType> = (props) => {
+  const { header, galleryArray } = props
 
-    return(
-        <div className='bg-[url(/background-black-blur-circles.webp)] py-[96px] xl:pt-[160px] px-4 gap-[64px] xl:12 flex flex-col xl:pb-0 xl:px-[274px] justify-center items-center'>
-        
-          </div>
-    )
+  return (
+    <div className="relative bg-[url(/background-gradient.webp)] xl:min-h-0 min-h-[1000px] py-[57px] xl:py-[127px] px-4 gap-[19px] xl:gap-[41px] flex flex-col justify-start items-center">
+      <RichText
+        data={header}
+        className="richtext-h2-with-gradient !text-white mx-0 text-center max-w-full"
+      />
+      <div className="xl:w-[1208px] w-full h-full">
+        <EmblaCarousel slides={galleryArray} />
+      </div>
+    </div>
+  )
 }

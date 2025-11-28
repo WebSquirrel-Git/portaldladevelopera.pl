@@ -21,12 +21,14 @@ import { PanelAdvantagesBlock } from '@/blocks/PanelAdvantagesBlock/config'
 import { PanelNeedBlock } from '@/blocks/PanelNeedBlock/config'
 import { PanelPresentationBlock } from '@/blocks/PanelPresentationBlock/config'
 import { PanelPhonesGalleryBlock } from '@/blocks/PanelPhonesGalleryBlock/config'
+import { PanelDevelopmentBlock } from '@/blocks/PanelDevelopmentBlock/config'
+import { PanelFaqBlock } from '@/blocks/PanelFaqBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
-  labels:{
-    singular:'Strona',
-    plural:'Strony'
+  labels: {
+    singular: 'Strona',
+    plural: 'Strony',
   },
   access: {
     create: authenticated,
@@ -77,7 +79,16 @@ export const Pages: CollectionConfig<'pages'> = {
             {
               name: 'layout',
               type: 'blocks',
-              blocks: [ Archive,PanelOverwiewBlock,PanelAdvantagesBlock,PanelNeedBlock,PanelPresentationBlock,PanelPhonesGalleryBlock],
+              blocks: [
+                Archive,
+                PanelOverwiewBlock,
+                PanelAdvantagesBlock,
+                PanelNeedBlock,
+                PanelPresentationBlock,
+                PanelPhonesGalleryBlock,
+                PanelDevelopmentBlock,
+                PanelFaqBlock,
+              ],
               required: true,
               admin: {
                 initCollapsed: true,

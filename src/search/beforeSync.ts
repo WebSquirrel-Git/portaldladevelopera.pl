@@ -1,8 +1,7 @@
 import { BeforeSync, DocToSync } from '@payloadcms/plugin-search/types'
 
-export const beforeSyncWithSearch: BeforeSync = async ({  originalDoc, searchDoc }) => {
-
-  const { slug,   title, meta } = originalDoc
+export const beforeSyncWithSearch: BeforeSync = async ({ originalDoc, searchDoc }) => {
+  const { slug, title, meta } = originalDoc
 
   const modifiedDoc: DocToSync = {
     ...searchDoc,
@@ -14,8 +13,6 @@ export const beforeSyncWithSearch: BeforeSync = async ({  originalDoc, searchDoc
       description: meta?.description,
     },
   }
-
- 
 
   return modifiedDoc
 }

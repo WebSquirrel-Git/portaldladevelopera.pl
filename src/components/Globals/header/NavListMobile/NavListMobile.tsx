@@ -14,11 +14,7 @@ interface NavListMobilePropsType {
   onHideMenu: () => void
 }
 
-export const NavListMobile: React.FC<NavListMobilePropsType> = ({
-  data,
-  showMenu,
-  onHideMenu,
-}) => {
+export const NavListMobile: React.FC<NavListMobilePropsType> = ({ data, showMenu, onHideMenu }) => {
   const navItems = data?.navItems || []
   // const pathname = usePathname() || ''
 
@@ -35,48 +31,62 @@ export const NavListMobile: React.FC<NavListMobilePropsType> = ({
       }}
       className="fixed flex flex-col w-full top-0 left-0 p-4 pt-[14px] bg-black h-screen"
     >
-     <div className='flex flex-row justify-between items-center w-full'>
-        <Link className='flex flex-col gap-1 items-start' href="/">
+      <div className="flex flex-row justify-between items-center w-full">
+        <Link className="flex flex-col gap-1 items-start" href="/">
           <Image src={Logo} alt="Panel dla Developera" className="h-10 w-auto" />
-          <span className='gradient-text bg-gradientGreyWhite bg-clip-text text-transparent text-[10px]'>PanelDlaDewelopera.pl</span>
+          <span className="gradient-text bg-gradientGreyWhite bg-clip-text text-transparent text-[10px]">
+            PanelDlaDewelopera.pl
+          </span>
         </Link>
-         <div className={`h-8 w-fit flex items-center pl-[1px] bg-grey xl:hidden ${showMenu ? 'flex':'hidden' }`}>
+        <div
+          className={`h-8 w-fit flex items-center pl-[1px] bg-grey xl:hidden ${showMenu ? 'flex' : 'hidden'}`}
+        >
           <button
-                  role="button"
-                  aria-label="close"
-                  className='cursor-pointer flex box-border w-fit h-8 border-none pl-6 bg-black items-center justify-center '
-                  onClick={onHideMenu}
-                >
-                  <Icon icon="line-md:close" className="w-6 h-6 text-primaryOrange" />
-                </button>
-                </div>
-     </div>
-     <div className='flex flex-col w-full justify-end items-end'>
-      <div className='flex flex-col w-fit justify-start items-start pr-6'>
-      {navItems.map((navItem)=>(
-        <CMSLink key={navItem.id} {...navItem.link}
-        className=' pr-9 py-8 text-left w-fit text-white min-w-[206px] font-medium text-[16px]'/>
-      ))}
-      <Link className=' pr-9 py-8 text-left w-fit text-white min-w-[206px] font-medium text-[16px]' href={process.env.NEXT_PUBLIC_APP_URL as string}>Kontakt</Link>
-      <Link
-        href={`${process.env.NEXT_PUBLIC_APP_URL}`}
-        className="w-full text-center text-black rounded-lg box-border bg-primaryOrange border-[1px] border-primaryOrange font-medium text-[16px] py-3 px-6 cursor-pointer"
-      >
-        Zaloguj się
-      </Link>
-      <div className='flex flex-row justify-start items-center gap-4 pr-9 py-8'>
-        <Link href="/" className='w-10 h-10 flex items-center justify-center'>
-         <Icon icon="ph:facebook-logo-fill" className="w-6 h-6 text-white" />
-        </Link>
-         <Link href="/" className='w-10 h-10 flex items-center justify-center'>
-         <Icon icon="ph:instagram-logo" className="w-6 h-6 text-white" />
-        </Link>
+            role="button"
+            aria-label="close"
+            className="cursor-pointer flex box-border w-fit h-8 border-none pl-6 bg-black items-center justify-center "
+            onClick={onHideMenu}
+          >
+            <Icon icon="line-md:close" className="w-6 h-6 text-primaryOrange" />
+          </button>
+        </div>
       </div>
-      <span className='flex pr-9 py-8 text-white text-[12px] leading-[20px]'>
-Copyright © 2025,<br/>Panel dla Dewelopera, Inc.
-      </span>
+      <div className="flex flex-col w-full justify-end items-end">
+        <div className="flex flex-col w-fit justify-start items-start pr-6">
+          {navItems.map((navItem) => (
+            <CMSLink
+              key={navItem.id}
+              {...navItem.link}
+              className=" pr-9 py-8 text-left w-fit text-white min-w-[206px] font-medium text-[16px]"
+            />
+          ))}
+          <Link
+            className=" pr-9 py-8 text-left w-fit text-white min-w-[206px] font-medium text-[16px]"
+            href={process.env.NEXT_PUBLIC_APP_URL as string}
+          >
+            Kontakt
+          </Link>
+          <Link
+            href={`${process.env.NEXT_PUBLIC_APP_URL}`}
+            className="w-full text-center text-black rounded-lg box-border bg-primaryOrange border-[1px] border-primaryOrange font-medium text-[16px] py-3 px-6 cursor-pointer"
+          >
+            Zaloguj się
+          </Link>
+          <div className="flex flex-row justify-start items-center gap-4 pr-9 py-8">
+            <Link href="/" className="w-10 h-10 flex items-center justify-center">
+              <Icon icon="ph:facebook-logo-fill" className="w-6 h-6 text-white" />
+            </Link>
+            <Link href="/" className="w-10 h-10 flex items-center justify-center">
+              <Icon icon="ph:instagram-logo" className="w-6 h-6 text-white" />
+            </Link>
+          </div>
+          <span className="flex pr-9 py-8 text-white text-[12px] leading-[20px]">
+            Copyright © 2025,
+            <br />
+            Panel dla Dewelopera, Inc.
+          </span>
+        </div>
       </div>
-     </div>
     </motion.div>
   )
 }

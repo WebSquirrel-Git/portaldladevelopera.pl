@@ -46,9 +46,9 @@ export const plugins: Plugin[] = [
   redirectsPlugin({
     collections: ['pages', 'posts'],
     overrides: {
-      labels:{
-        singular:'Przekierowanie',
-        plural:'Przekierowania'
+      labels: {
+        singular: 'Przekierowanie',
+        plural: 'Przekierowania',
       },
       // @ts-expect-error - This is a valid override, mapped fields don't resolve to the same type
       fields: ({ defaultFields }) => {
@@ -81,9 +81,9 @@ export const plugins: Plugin[] = [
     collections: ['posts'],
     beforeSync: beforeSyncWithSearch,
     searchOverrides: {
-        labels:{
-        singular:'Wyniki wyszukiwania',
-        plural:'Wyniki wyszukiwań'
+      labels: {
+        singular: 'Wyniki wyszukiwania',
+        plural: 'Wyniki wyszukiwań',
       },
       fields: ({ defaultFields }) => {
         return [...defaultFields, ...searchFields]

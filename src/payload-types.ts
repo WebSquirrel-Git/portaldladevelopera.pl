@@ -71,6 +71,7 @@ export interface Config {
     posts: Post;
     media: Media;
     users: User;
+    faq: Faq;
     redirects: Redirect;
     search: Search;
     'payload-kv': PayloadKv;
@@ -82,7 +83,7 @@ export interface Config {
   };
   collectionsJoins: {
     'payload-folders': {
-      documentsAndFolders: 'payload-folders' | 'media';
+      documentsAndFolders: 'payload-folders' | 'media' | 'faq';
     };
   };
   collectionsSelect: {
@@ -90,6 +91,7 @@ export interface Config {
     posts: PostsSelect<false> | PostsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
+    faq: FaqSelect<false> | FaqSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     search: SearchSelect<false> | SearchSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
@@ -185,6 +187,8 @@ export interface Page {
     | PanelNeedBlock
     | PanelPresentationBlock
     | PanelPhonesGalleryBlock
+    | PanelDevelopmentBlock
+    | PanelFaqBlock
   )[];
   meta?: {
     title?: string | null;
@@ -300,11 +304,41 @@ export interface FolderInterface {
           relationTo?: 'media';
           value: string | Media;
         }
+      | {
+          relationTo?: 'faq';
+          value: string | Faq;
+        }
     )[];
     hasNextPage?: boolean;
     totalDocs?: number;
   };
-  folderType?: 'media'[] | null;
+  folderType?: ('media' | 'faq')[] | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faq".
+ */
+export interface Faq {
+  id: string;
+  title: string;
+  description: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  folder?: (string | null) | FolderInterface;
   updatedAt: string;
   createdAt: string;
 }
@@ -575,6 +609,68 @@ export interface PanelPhonesGalleryBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PanelDevelopmentBlock".
+ */
+export interface PanelDevelopmentBlock {
+  header: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  categoriesList: {
+    category: {
+      title: string;
+      subcategoriesList: {
+        icon: string;
+        title: string;
+        description: {
+          root: {
+            type: string;
+            children: {
+              type: any;
+              version: number;
+              [k: string]: unknown;
+            }[];
+            direction: ('ltr' | 'rtl') | null;
+            format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+            indent: number;
+            version: number;
+          };
+          [k: string]: unknown;
+        };
+        id?: string | null;
+      }[];
+    };
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'panelDevelopmentBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PanelFaqBlock".
+ */
+export interface PanelFaqBlock {
+  header: string;
+  subheader: string;
+  questionsList: (string | Faq)[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'panelFaqBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -755,6 +851,10 @@ export interface PayloadLockedDocument {
         value: string | User;
       } | null)
     | ({
+        relationTo: 'faq';
+        value: string | Faq;
+      } | null)
+    | ({
         relationTo: 'redirects';
         value: string | Redirect;
       } | null)
@@ -842,6 +942,8 @@ export interface PagesSelect<T extends boolean = true> {
         panelNeedBlock?: T | PanelNeedBlockSelect<T>;
         panelPresentationBlock?: T | PanelPresentationBlockSelect<T>;
         panelPhonesGalleryBlock?: T | PanelPhonesGalleryBlockSelect<T>;
+        panelDevelopmentBlock?: T | PanelDevelopmentBlockSelect<T>;
+        panelFaqBlock?: T | PanelFaqBlockSelect<T>;
       };
   meta?:
     | T
@@ -1009,6 +1111,44 @@ export interface PanelPhonesGalleryBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PanelDevelopmentBlock_select".
+ */
+export interface PanelDevelopmentBlockSelect<T extends boolean = true> {
+  header?: T;
+  categoriesList?:
+    | T
+    | {
+        category?:
+          | T
+          | {
+              title?: T;
+              subcategoriesList?:
+                | T
+                | {
+                    icon?: T;
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PanelFaqBlock_select".
+ */
+export interface PanelFaqBlockSelect<T extends boolean = true> {
+  header?: T;
+  subheader?: T;
+  questionsList?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "posts_select".
  */
 export interface PostsSelect<T extends boolean = true> {
@@ -1152,6 +1292,17 @@ export interface UsersSelect<T extends boolean = true> {
         createdAt?: T;
         expiresAt?: T;
       };
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "faq_select".
+ */
+export interface FaqSelect<T extends boolean = true> {
+  title?: T;
+  description?: T;
+  folder?: T;
+  updatedAt?: T;
+  createdAt?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
