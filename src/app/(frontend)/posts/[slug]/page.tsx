@@ -6,13 +6,12 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
 import React, { cache } from 'react'
-import RichText from '@/components/RichText'
-
 import type { Post } from '@/payload-types'
 
-import { PostHero } from '@/heros/PostHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
+import { PostHeader } from '@/components/Posts/PostHeader/PostHeader'
+import { RenderPostBlocks } from '@/blocks/Posts/RenderPostBlocks'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -52,25 +51,32 @@ export default async function Post({ params: paramsPromise }: Args) {
   if (!post) return <PayloadRedirects url={url} />
 
   return (
-    <article className="pt-16 pb-16">
+    <article className="bg-black pt-[18px] pb-[96px] px-4 xl:pt-16 xl:pb-[120px] xl:px-[360px] flex flex-col xl:flex-row">
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
 
       {draft && <LivePreviewListener />}
 
-      <PostHero post={post} />
+      
+<div className='flex flex-col bg-[#1B1B1C]/90 rounded-lg xl:rounded-xl'>
+  <PostHeader 
+  title={post.title}
+  coverImage={post.coverImage}
+  cardDescription={post.cardDescription}
+  headerSection={post.headerSection}
+  publishedAt={post.publishedAt}
 
-      <div className="flex flex-col items-center gap-4 pt-8">
-        <div className="container">
-          <RichText className="max-w-[48rem] mx-auto" data={post.content} enableGutter={false} />
-          {post.relatedPosts && post.relatedPosts.length > 0 && (
+  />
+<RenderPostBlocks blocks={post.content} />
+</div>
+<div className='flex flex-col bg-red-500'>
+ {post.relatedPosts && post.relatedPosts.length > 0 && (
             <RelatedPosts
               className="mt-12 max-w-[52rem] lg:grid lg:grid-cols-subgrid col-start-1 col-span-3 grid-rows-[2fr]"
               docs={post.relatedPosts.filter((post) => typeof post === 'object')}
             />
           )}
-        </div>
-      </div>
+</div>
     </article>
   )
 }
