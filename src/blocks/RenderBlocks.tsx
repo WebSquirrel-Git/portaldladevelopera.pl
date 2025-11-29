@@ -11,6 +11,7 @@ import { PanelPresentationBlock } from './PanelPresentationBlock/Component'
 import { PanelPhonesGalleryBlock } from './PanelPhonesGalleryBlock/Component'
 import { PanelDevelopmentBlock } from './PanelDevelopmentBlock/Component'
 import { PanelFaqBlock } from './PanelFaqBlock/Component'
+import { TextArticleBlock } from './Posts/TextArticleBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -22,6 +23,7 @@ const blockComponents = {
   panelPhonesGalleryBlock: PanelPhonesGalleryBlock,
   panelDevelopmentBlock: PanelDevelopmentBlock,
   panelFaqBlock: PanelFaqBlock,
+  textBlock:TextArticleBlock
 }
 
 export const RenderBlocks: React.FC<{
@@ -42,7 +44,7 @@ export const RenderBlocks: React.FC<{
 
             if (Block) {
               return (
-                <div className="my-16" key={index}>
+                <div key={index}>
                   {/* @ts-expect-error there may be some mismatch between the expected types here */}
                   <Block {...block} disableInnerContainer />
                 </div>

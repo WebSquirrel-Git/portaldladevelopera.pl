@@ -1,0 +1,40 @@
+import React, { Fragment } from "react";
+import { TextArticleBlock } from "./TextArticleBlock/Component";
+import type { Post } from "@/payload-types";
+import { TableArticleBlock } from './TableArticleBlock/Component';
+
+const postBlockComponents = {
+  textArticleBlock: TextArticleBlock,
+  tableArticleBlock:TableArticleBlock
+};
+
+export const RenderPostBlocks: React.FC<{
+  blocks: Post["content"][0][];
+}> = (props) => {
+ const { blocks } = props
+
+  const hasBlocks = blocks && Array.isArray(blocks) && blocks.length > 0
+if (hasBlocks) {
+  return (
+    <Fragment>
+      {blocks.map((block, index) => {
+          const { blockType } = block
+
+          if (blockType && blockType in postBlockComponents) {
+            const Block = postBlockComponents[blockType]
+
+            if (Block) {
+              return (
+                <div key={index}>
+                  {/* @ts-expect-error there may be some mismatch between the expected types here */}
+                  <Block {...block} disableInnerContainer />
+                </div>
+              )
+            }
+          }
+          return null
+        })}
+    </Fragment>
+  )
+}return null;
+};

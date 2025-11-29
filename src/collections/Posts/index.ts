@@ -11,7 +11,6 @@ import {
 
 import { authenticated } from '../../access/authenticated'
 import { authenticatedOrPublished } from '../../access/authenticatedOrPublished'
-import { Banner } from '../../blocks/RichText/Banner/config'
 import { Code } from '../../blocks/RichText/Code/config'
 import { MediaBlock } from '../../blocks/MediaBlock/config'
 import { generatePreviewPath } from '../../utilities/generatePreviewPath'
@@ -26,6 +25,8 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import { slugField } from 'payload'
+import { TextArticleBlock } from '@/blocks/Posts/TextArticleBlock/config'
+import { TableArticleBlock } from '@/blocks/Posts/TableArticleBlock/config'
 
 export const Posts: CollectionConfig<'posts'> = {
   slug: 'posts',
@@ -69,39 +70,113 @@ export const Posts: CollectionConfig<'posts'> = {
     useAsTitle: 'title',
   },
   fields: [
-    {
+     {
       name: 'title',
+      label:'Tytuł artykułu',
+      type: 'text',
+      required: true,
+    },
+     {
+              name: 'coverImage',
+              type: 'upload',
+              relationTo: 'media',
+              label:'Zdjęcie okładki i nagłówka',
+               required: true,
+            },
+             {
+      name: 'cardDescription',
+      label:'Krótki opis na karte artykułu',
+      type: 'textarea',
+      required: true,
+    },
+    {
+      name:'headerSection',
+      label:'Sekcja nagłówka',
+      type:'group',
+      required:true,
+      fields:[
+
+    
+     {
+      name: 'author',
+      label:'Autor',
       type: 'text',
       required: true,
     },
     {
-      type: 'tabs',
-      tabs: [
+       name: 'navMenu',
+      label:'Spis treści',
+      type: 'array',
+      labels:{
+        singular:'Punkt spisu treści',
+        plural:'Punkty spisu treści'
+      },
+      required: true,
+      fields:[
         {
-          fields: [
-            {
-              name: 'heroImage',
-              type: 'upload',
-              relationTo: 'media',
-            },
-            {
-              name: 'content',
+           name: 'navItem',
+      label:'Punkt spisu treści',
+      type: 'text',
+      required: true,
+        }
+      ]
+    },
+      {
+              name: 'description',
               type: 'richText',
               editor: lexicalEditor({
-                features: ({ rootFeatures }) => {
+                features: ({ rootFeatures,defaultFeatures }) => {
                   return [
-                    ...rootFeatures,
+                    ...rootFeatures,...defaultFeatures,
                     HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-                    BlocksFeature({ blocks: [Banner, Code, MediaBlock] }),
+                    BlocksFeature({ blocks: [ Code, MediaBlock] }),
                     FixedToolbarFeature(),
                     InlineToolbarFeature(),
                     HorizontalRuleFeature(),
                   ]
                 },
               }),
-              label: false,
+              label: 'Opis pod spisem treści',
               required: true,
             },
+      ]
+    },
+   
+    {
+      type: 'tabs',
+      tabs: [
+        {
+          fields: [
+           
+            {
+                          name: 'content',
+                          type: 'blocks',
+                          blocks: [
+                            TextArticleBlock,TableArticleBlock
+                          ],
+                          required: true,
+                          admin: {
+                            initCollapsed: true,
+                          },
+                        },
+            // {
+            //   name: 'content',
+            //   type: 'richText',
+            //   editor: lexicalEditor({
+            //     features: ({ rootFeatures }) => {
+            //       return [
+            //         ...rootFeatures,
+            //         HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+            //         BlocksFeature({ blocks: [Banner, Code, MediaBlock] }),
+            //         FixedToolbarFeature(),
+            //         InlineToolbarFeature(),
+            //         HorizontalRuleFeature(),
+            //       ]
+            //     },
+            //   }),
+            //   label: false,
+            //   required: true,
+            // },
           ],
           label: 'Content',
         },

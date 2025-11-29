@@ -382,22 +382,31 @@ export interface ArchiveBlock {
 export interface Post {
   id: string;
   title: string;
-  heroImage?: (string | null) | Media;
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: any;
+  coverImage: string | Media;
+  cardDescription: string;
+  headerSection: {
+    author: string;
+    navMenu: {
+      navItem: string;
+      id?: string | null;
+    }[];
+    description: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
         version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
+      };
+      [k: string]: unknown;
     };
-    [k: string]: unknown;
   };
+  content: (TextArticleBlock | TableArticleBlock)[];
   relatedPosts?: (string | Post)[] | null;
   meta?: {
     title?: string | null;
@@ -423,6 +432,53 @@ export interface Post {
   updatedAt: string;
   createdAt: string;
   _status?: ('draft' | 'published') | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TextArticleBlock".
+ */
+export interface TextArticleBlock {
+  header: string;
+  headerSize: 'h2' | 'h3';
+  navPoint: number;
+  text: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'textArticleBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TableArticleBlock".
+ */
+export interface TableArticleBlock {
+  header: string;
+  headerSize: 'h2' | 'h3';
+  navPoint: number;
+  table: {
+    header: string;
+    rows: {
+      row: string;
+      id?: string | null;
+    }[];
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'tableArticleBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1153,8 +1209,26 @@ export interface PanelFaqBlockSelect<T extends boolean = true> {
  */
 export interface PostsSelect<T extends boolean = true> {
   title?: T;
-  heroImage?: T;
-  content?: T;
+  coverImage?: T;
+  cardDescription?: T;
+  headerSection?:
+    | T
+    | {
+        author?: T;
+        navMenu?:
+          | T
+          | {
+              navItem?: T;
+              id?: T;
+            };
+        description?: T;
+      };
+  content?:
+    | T
+    | {
+        textArticleBlock?: T | TextArticleBlockSelect<T>;
+        tableArticleBlock?: T | TableArticleBlockSelect<T>;
+      };
   relatedPosts?: T;
   meta?:
     | T
@@ -1176,6 +1250,41 @@ export interface PostsSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TextArticleBlock_select".
+ */
+export interface TextArticleBlockSelect<T extends boolean = true> {
+  header?: T;
+  headerSize?: T;
+  navPoint?: T;
+  text?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "TableArticleBlock_select".
+ */
+export interface TableArticleBlockSelect<T extends boolean = true> {
+  header?: T;
+  headerSize?: T;
+  navPoint?: T;
+  table?:
+    | T
+    | {
+        header?: T;
+        rows?:
+          | T
+          | {
+              row?: T;
+              id?: T;
+            };
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1645,31 +1754,6 @@ export interface TaskSchedulePublish {
     user?: (string | null) | User;
   };
   output?: unknown;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "BannerBlock".
- */
-export interface BannerBlock {
-  style: 'info' | 'warning' | 'error' | 'success';
-  content: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'banner';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

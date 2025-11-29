@@ -62,4 +62,49 @@ backdrop-filter: blur(90px);
     color:#F0642E!important;
   }
 }
+.richtext-text-article{
+  h1{
+    color:white;
+  };
+   h2{
+    color:white;
+  };
+   h3{
+    color:white;
+  };
+   h4{
+    color:white;
+  };
+   h5{
+    color:white;
+  };
+  p{
+    color:#D0D0D0;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  li{
+    color:#D0D0D0;
+    font-size: 16px;
+    line-height: 24px;
+  }
+  a{
+    font-size: 16px;
+    line-height: 24px;
+    color: #F0642E;
+    text-decoration: underline!important;
+  }
+  ol li{
+    color:white;
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 500;
+  }
+  ol li::marker{
+      color:white;
+    font-size: 20px;
+    line-height: 26px;
+    font-weight: 500;
+  }
+}
 
