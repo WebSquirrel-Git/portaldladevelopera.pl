@@ -2,13 +2,13 @@
 @tailwind utilities;
 @import './colors.css';
 @import './typography.css';
-html {
-  margin: 0;
-  padding: 0;
+html{
+ margin: 0;
+  padding: 0; 
   /* -webkit-text-fill-color: inherit !important; */
 }
 
-body {
+body{
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -25,49 +25,41 @@ body {
 .gradient-text {
   -webkit-text-fill-color: transparent !important;
 }
-.gradient-orange {
-  background:
-    linear-gradient(90deg, #ff541f 0.01%, #f29120 50.01%, #ffdc5f 100%),
-    linear-gradient(0deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4));
+.gradient-orange{
+  background: linear-gradient(90deg, #FF541F 0.01%, #F29120 50.01%, #FFDC5F 100%),
+linear-gradient(0deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4));
 }
-.gradient-orange-text {
-  background: -webkit-linear-gradient(#f0642e, #ee201c, #f29120);
+.gradient-orange-text{
+  background: -webkit-linear-gradient( #F0642E, #EE201C, #F29120);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.gradient-brown {
-  background: linear-gradient(325.41deg, #1b1b1c 49.82%, rgba(250, 172, 121, 0.1) 128.97%);
+.gradient-brown{
+  background: linear-gradient(325.41deg, #1B1B1C 49.82%, rgba(250, 172, 121, 0.1) 128.97%);
 }
-.gradient-black-brown {
-  background: linear-gradient(
-    305.88deg,
-    rgba(27, 27, 28, 0.9) 43.54%,
-    rgba(79, 61, 49, 0.9) 100.01%
-  );
+
+.gradient-black-brown{
+  background: linear-gradient(305.88deg, rgba(27, 27, 28, 0.9) 43.54%, rgba(79, 61, 49, 0.9) 100.01%);
 }
-.gradient-orange-black-radial {
-  background: radial-gradient(
-    125.47% 103.4% at 50% 10%,
-    rgba(0, 0, 0, 0) 37.41%,
-    #f0642e 69.27%,
-    #ffdc5f 100%
-  );
-  backdrop-filter: blur(90px);
+.gradient-orange-black-radial{
+ background: radial-gradient(125.47% 103.4% at 50% 10%, rgba(0, 0, 0, 0) 37.41%, #F0642E 69.27%, #FFDC5F 100%);
+backdrop-filter: blur(90px);
 }
-.richtext-h2-with-gradient {
-  color: white !important;
-  strong {
-    background: -webkit-linear-gradient(#f0642e, #ee201c, #f29120);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 400 !important;
+.richtext-h2-with-gradient{
+  color: white !important;;
+  strong{
+    background: -webkit-linear-gradient( #F0642E, #EE201C, #F29120);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 400!important;
   }
 }
-.richtext-p-with-link {
-  strong {
-    font-weight: 600 !important;
+.richtext-p-with-link{
+  strong{
+    font-weight: 600!important;   
   }
-  a {
-    color: #f0642e !important;
+   a{
+    color:#F0642E!important;
   }
 }
+
