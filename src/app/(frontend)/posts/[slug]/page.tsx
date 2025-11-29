@@ -18,6 +18,7 @@ export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
   const posts = await payload.find({
     collection: 'posts',
+    depth:2,
     draft: false,
     limit: 1000,
     overrideAccess: false,

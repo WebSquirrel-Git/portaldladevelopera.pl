@@ -1457,7 +1457,22 @@ export interface Header {
  */
 export interface Footer {
   id: string;
-  navItems?:
+  title: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  companyNavItems?:
     | {
         link: {
           type?: ('reference' | 'custom') | null;
@@ -1477,6 +1492,45 @@ export interface Footer {
         id?: string | null;
       }[]
     | null;
+  regulationsNavItems?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: string | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: string | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+        };
+        id?: string | null;
+      }[]
+    | null;
+  companyInformations: {
+    email: string;
+    website: {
+      label: string;
+      url: string;
+    };
+    facebook?: {
+      ikona?: string | null;
+      url?: string | null;
+    };
+    instagram?: {
+      ikona?: string | null;
+      url?: string | null;
+    };
+    youtube?: {
+      ikona?: string | null;
+      url?: string | null;
+    };
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1508,7 +1562,8 @@ export interface HeaderSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
-  navItems?:
+  title?: T;
+  companyNavItems?:
     | T
     | {
         link?:
@@ -1521,6 +1576,49 @@ export interface FooterSelect<T extends boolean = true> {
               label?: T;
             };
         id?: T;
+      };
+  regulationsNavItems?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+            };
+        id?: T;
+      };
+  companyInformations?:
+    | T
+    | {
+        email?: T;
+        website?:
+          | T
+          | {
+              label?: T;
+              url?: T;
+            };
+        facebook?:
+          | T
+          | {
+              ikona?: T;
+              url?: T;
+            };
+        instagram?:
+          | T
+          | {
+              ikona?: T;
+              url?: T;
+            };
+        youtube?:
+          | T
+          | {
+              ikona?: T;
+              url?: T;
+            };
       };
   updatedAt?: T;
   createdAt?: T;
