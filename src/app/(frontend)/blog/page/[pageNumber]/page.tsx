@@ -9,17 +9,20 @@ import React from 'react'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import BlogIcon from '@/assets/icons/blog.svg'
+import { LimitSelector } from '@/components/Posts/PostLimitSelector/PostLimitSelector'
 
 export const revalidate = 600
 
 type Args = {
   params: Promise<{
-    pageNumber: string
+    pageNumber: string;
+    limit?: string
   }>
 }
 
 export default async function Page({ params: paramsPromise }: Args) {
-  const { pageNumber } = await paramsPromise
+  const { pageNumber, limit: limitParam } = await paramsPromise;
+  const limit = limitParam ? parseInt(limitParam) : 1;
   const payload = await getPayload({ config: configPromise })
 
   const sanitizedPageNumber = Number(pageNumber)
@@ -29,36 +32,12 @@ export default async function Page({ params: paramsPromise }: Args) {
   const posts = await payload.find({
     collection: 'posts',
     depth: 2,
-    limit: 2,
+    limit,
     page: sanitizedPageNumber,
     overrideAccess: false,
   })
 
   return (
-    // <div className="pt-24 pb-24">
-    //   <div className="container mb-16">
-    //     <div className="prose dark:prose-invert max-w-none">
-    //       <h1>Posts</h1>
-    //     </div>
-    //   </div>
-
-    //   <div className="container mb-8">
-    //     <PageRange
-    //       collection="posts"
-    //       currentPage={posts.page}
-    //       limit={2}
-    //       totalDocs={posts.totalDocs}
-    //     />
-    //   </div>
-
-    //   <CollectionArchive posts={posts.docs} />
-
-    //   <div className="container">
-    //     {posts?.page && posts?.totalPages > 1 && (
-    //       <Pagination page={posts.page} totalPages={posts.totalPages} />
-    //     )}
-    //   </div>
-    // </div>
       <div className="flex flex-col bg-black">
           <div className='bg-[url(/background-gradient.webp)] justify-center items-center flex flex-col gap-6 px-4 pt-12 pb-[123px] 2xl:px-[320px] xl:pt-[75px] xl:pb-[175px]'>
     <div className="flex w-fit bg-gradientOrangeButton p-[1px] rounded-[32px]">
@@ -75,24 +54,16 @@ export default async function Page({ params: paramsPromise }: Args) {
           </div>
     <div className='flex flex-col py-12 px-4 xl:py-[96px] 2xl:px-[360px] gap-[18px] xl:gap-8'>
      <CollectionArchive posts={posts.docs} />
-    <div className="container">
-            {posts.totalPages > 1 && posts.page && (
-              <Pagination page={posts.page} totalPages={posts.totalPages} />
-            )}
-          </div>
+   <div className='flex flex-row w-full justify-between'>
+   <LimitSelector/>
+  <div className="container">
+          {posts.totalPages > 1 && posts.page && (
+            <Pagination page={posts.page} totalPages={posts.totalPages} />
+          )}
+        </div>
+   </div>
     </div>
-          
-    
-         
-    
-    {/* <div className="container mb-8">
-            <PageRange
-              collection="posts"
-              currentPage={posts.page}
-              limit={3}
-              totalDocs={posts.totalDocs}
-            />
-          </div> */}
+   
           
         </div>
   )

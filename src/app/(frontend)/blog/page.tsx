@@ -9,23 +9,27 @@ import { getPayload } from 'payload'
 import BlogIcon from '@/assets/icons/blog.svg'
 import Image from 'next/image'
 import { Search } from '@/search/Component'
+import { LimitSelector } from '@/components/Posts/PostLimitSelector/PostLimitSelector'
 export const dynamic = 'force-dynamic'
 export const revalidate = 600
 
 type Args = {
   searchParams: Promise<{
-    q: string
+    q: string;
+    limit?: string
+    page?: string
   }>
 }
 
 export default async function Page({ searchParams: searchParamsPromise }: Args) {
-    const { q: query } = await searchParamsPromise
+    const { q: query, limit: limitParam } = await searchParamsPromise;
+    const limit = limitParam ? parseInt(limitParam) : 1;
   const payload = await getPayload({ config: configPromise })
 
   const posts = await payload.find({
     collection: 'posts',
     depth: 2,
-    limit: 2,
+    limit,
     overrideAccess: false,
      pagination: true,
     ...(query
@@ -84,24 +88,16 @@ w zarządzaniu inwestycjami.</p>
 <div className='flex flex-col py-12 px-4 xl:py-[96px] 2xl:px-[360px] gap-[18px] xl:gap-8'>
  <Search />
  <CollectionArchive posts={posts.docs} />
+ <div className='flex flex-row w-full justify-between'>
+ <LimitSelector/>
 <div className="container">
         {posts.totalPages > 1 && posts.page && (
           <Pagination page={posts.page} totalPages={posts.totalPages} />
         )}
       </div>
+ </div>
+
 </div>
-      
-
-     
-
-{/* <div className="container mb-8">
-        <PageRange
-          collection="posts"
-          currentPage={posts.page}
-          limit={3}
-          totalDocs={posts.totalDocs}
-        />
-      </div> */}
       
     </div>
   )

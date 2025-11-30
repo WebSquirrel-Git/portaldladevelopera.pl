@@ -27,7 +27,6 @@ interface CollectionArchiveProps{
 
 export const CollectionArchive: React.FC<CollectionArchiveProps> = (props) => {
   const { posts } = props
-console.log(props)
   return (
     <div className='flex flex-col gap-3 xl:gap-[40px]'>
       {posts.length>0&&<CardWide {...posts[0]}/>}
