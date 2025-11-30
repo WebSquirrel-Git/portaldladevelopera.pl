@@ -2,10 +2,12 @@ import React, { Fragment } from "react";
 import { TextArticleBlock } from "./TextArticleBlock/Component";
 import type { Post } from "@/payload-types";
 import { TableArticleBlock } from './TableArticleBlock/Component';
+import { FaqArticleBlock } from './FaqArticleBlock/Component';
 
 const postBlockComponents = {
   textArticleBlock: TextArticleBlock,
-  tableArticleBlock:TableArticleBlock
+  tableArticleBlock:TableArticleBlock,
+  faqArticleBlock:FaqArticleBlock
 };
 
 export const RenderPostBlocks: React.FC<{

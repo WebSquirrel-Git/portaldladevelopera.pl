@@ -1,31 +1,48 @@
 import { cn } from '@/utilities/ui'
 import React from 'react'
 
-import { Card, CardPostData } from '@/components/Posts/Card'
+import { Card, CardPostData } from '@/components/Posts/Card/Card'
+import { Media } from '@/payload-types'
+import { CardWide } from '../CardWide/CardWide'
 
 export type Props = {
   posts: CardPostData[]
 }
 
-export const CollectionArchive: React.FC<Props> = (props) => {
-  const { posts } = props
+interface CollectionArchiveProps{
+  posts: {
+    id: string;
+    title: string;
+    coverImage: string | Media;
+    cardDescription: string;
+    meta?: {
+        title?: string | null;
+        image?: (string | null) | Media;
+        description?: string | null;
+    } | undefined;
+    publishedAt?: string | null | undefined;
+    slug: string;
+}[]
+}
 
+export const CollectionArchive: React.FC<CollectionArchiveProps> = (props) => {
+  const { posts } = props
+console.log(props)
   return (
-    <div className={cn('container')}>
-      <div>
-        <div className="grid grid-cols-4 sm:grid-cols-8 lg:grid-cols-12 gap-y-4 gap-x-4 lg:gap-y-8 lg:gap-x-8 xl:gap-x-8">
-          {posts?.map((result, index) => {
+    <div className='flex flex-col gap-3 xl:gap-[40px]'>
+      <CardWide {...posts[0]}/>
+      <div className='flex flex-row flex-wrap xl:gap-4 gap-3'>
+       {posts?.slice(1).map((result, index) => {
             if (typeof result === 'object' && result !== null) {
               return (
                 <div className="col-span-4" key={index}>
-                  <Card className="h-full" doc={result} relationTo="posts" />
+                  <Card {...result}/>
                 </div>
               )
             }
 
             return null
           })}
-        </div>
       </div>
     </div>
   )

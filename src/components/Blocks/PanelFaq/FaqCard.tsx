@@ -37,7 +37,7 @@ export const FaqCard: React.FC<FaqCardProps> = (props) => {
       <button
         onClick={() => onActiveCard(id)}
         key={id}
-        className="cursor-pointer flex flex-row gap-2 border-0 w-full justify-between items-center bg-darkGrey"
+        className="px-0 cursor-pointer flex flex-row gap-2 border-0 w-full justify-between items-center bg-darkGrey"
       >
         <p className="text-left">{title}</p>
 
