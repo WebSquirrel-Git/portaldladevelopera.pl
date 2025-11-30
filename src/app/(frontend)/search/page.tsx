@@ -5,7 +5,7 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import React from 'react'
 import { Search } from '@/search/Component'
-import { CardPostData } from '@/components/Posts/Card'
+import { CardPostData } from '@/components/Posts/Card/Card'
 
 type Args = {
   searchParams: Promise<{
@@ -69,11 +69,11 @@ export default async function Page({ searchParams: searchParamsPromise }: Args) 
         </div>
       </div>
 
-      {posts.totalDocs > 0 ? (
+      {/* {posts.totalDocs > 0 ? (
         <CollectionArchive posts={posts.docs as CardPostData[]} />
       ) : (
         <div className="container">No results found.</div>
-      )}
+      )} */}
     </div>
   )
 }

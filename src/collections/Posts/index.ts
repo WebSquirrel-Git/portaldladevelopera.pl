@@ -27,6 +27,7 @@ import {
 import { slugField } from 'payload'
 import { TextArticleBlock } from '@/blocks/Posts/TextArticleBlock/config'
 import { TableArticleBlock } from '@/blocks/Posts/TableArticleBlock/config'
+import { FaqArticleBlock } from '@/blocks/Posts/FaqArticleBlock/config'
 
 export const Posts: CollectionConfig<'posts'> = {
   slug: 'posts',
@@ -45,7 +46,10 @@ export const Posts: CollectionConfig<'posts'> = {
   // Type safe if the collection slug generic is passed to `CollectionConfig` - `CollectionConfig<'posts'>
   defaultPopulate: {
     title: true,
-    slug: true,
+  slug: true,
+  cardDescription: true,
+  publishedAt: true,
+  coverImage: true,
     meta: {
       image: true,
       description: true,
@@ -152,7 +156,7 @@ export const Posts: CollectionConfig<'posts'> = {
                           name: 'content',
                           type: 'blocks',
                           blocks: [
-                            TextArticleBlock,TableArticleBlock
+                            TextArticleBlock,TableArticleBlock,FaqArticleBlock
                           ],
                           required: true,
                           admin: {

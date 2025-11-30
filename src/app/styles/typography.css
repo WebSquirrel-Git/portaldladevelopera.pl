@@ -9,7 +9,7 @@ h5 {
 p,
 span,
 a,
-button,li,th,td {
+button,li,th,td,time {
   font-family: var(--inter);
   font-weight: 400;
 }

@@ -406,7 +406,7 @@ export interface Post {
       [k: string]: unknown;
     };
   };
-  content: (TextArticleBlock | TableArticleBlock)[];
+  content: (TextArticleBlock | TableArticleBlock | FaqArticleBlock)[];
   relatedPosts?: (string | Post)[] | null;
   meta?: {
     title?: string | null;
@@ -479,6 +479,18 @@ export interface TableArticleBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'tableArticleBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FaqArticleBlock".
+ */
+export interface FaqArticleBlock {
+  header: string;
+  navPoint: number;
+  questionsList: (string | Faq)[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'faqArticleBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1228,6 +1240,7 @@ export interface PostsSelect<T extends boolean = true> {
     | {
         textArticleBlock?: T | TextArticleBlockSelect<T>;
         tableArticleBlock?: T | TableArticleBlockSelect<T>;
+        faqArticleBlock?: T | FaqArticleBlockSelect<T>;
       };
   relatedPosts?: T;
   meta?:
@@ -1283,6 +1296,17 @@ export interface TableArticleBlockSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FaqArticleBlock_select".
+ */
+export interface FaqArticleBlockSelect<T extends boolean = true> {
+  header?: T;
+  navPoint?: T;
+  questionsList?: T;
   id?: T;
   blockName?: T;
 }
