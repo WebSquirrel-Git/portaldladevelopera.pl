@@ -12,7 +12,7 @@ export type Props = {
 interface CollectionArchiveProps{
   posts: {
     id: string;
-    title: string;
+    title?: string;
     coverImage: string | Media;
     cardDescription: string;
     meta?: {
@@ -21,7 +21,7 @@ interface CollectionArchiveProps{
         description?: string | null;
     } | undefined;
     publishedAt?: string | null | undefined;
-    slug: string;
+    slug?: string;
 }[]
 }
 
@@ -30,7 +30,7 @@ export const CollectionArchive: React.FC<CollectionArchiveProps> = (props) => {
 console.log(props)
   return (
     <div className='flex flex-col gap-3 xl:gap-[40px]'>
-      <CardWide {...posts[0]}/>
+      {posts.length>0&&<CardWide {...posts[0]}/>}
       <div className='flex flex-row flex-wrap xl:gap-4 gap-3'>
        {posts?.slice(1).map((result, index) => {
             if (typeof result === 'object' && result !== null) {

@@ -8,10 +8,18 @@ import { getPayload } from 'payload'
 
 import BlogIcon from '@/assets/icons/blog.svg'
 import Image from 'next/image'
+import { Search } from '@/search/Component'
 export const dynamic = 'force-dynamic'
 export const revalidate = 600
 
-export default async function Page() {
+type Args = {
+  searchParams: Promise<{
+    q: string
+  }>
+}
+
+export default async function Page({ searchParams: searchParamsPromise }: Args) {
+    const { q: query } = await searchParamsPromise
   const payload = await getPayload({ config: configPromise })
 
   const posts = await payload.find({
@@ -19,6 +27,35 @@ export default async function Page() {
     depth: 2,
     limit: 2,
     overrideAccess: false,
+     pagination: true,
+    ...(query
+      ? {
+          where: {
+            or: [
+              {
+                title: {
+                  like: query,
+                },
+              },
+              {
+                'meta.description': {
+                  like: query,
+                },
+              },
+              {
+                'meta.title': {
+                  like: query,
+                },
+              },
+              {
+                slug: {
+                  like: query,
+                },
+              },
+            ],
+          },
+        }
+      : {}),
     select: {
       title: true,
       slug: true,
@@ -45,6 +82,7 @@ export default async function Page() {
 w zarządzaniu inwestycjami.</p>
       </div>
 <div className='flex flex-col py-12 px-4 xl:py-[96px] 2xl:px-[360px] gap-[18px] xl:gap-8'>
+ <Search />
  <CollectionArchive posts={posts.docs} />
 <div className="container">
         {posts.totalPages > 1 && posts.page && (

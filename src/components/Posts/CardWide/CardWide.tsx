@@ -15,8 +15,8 @@ interface CardWideProps{
   coverImage:MediaType|string;
   id:string;
 publishedAt?:string | null | undefined;
-slug:string;
-title:string;
+slug?:string;
+title?:string;
 cardDescription:string;
 
 }

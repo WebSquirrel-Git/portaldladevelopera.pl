@@ -16,8 +16,8 @@ interface CardProps{
   coverImage:MediaType|string;
   id:string;
 publishedAt?:string | null | undefined;
-slug:string;
-title:string;
+slug?:string | undefined;
+title?:string | undefined;
 cardDescription:string;
 
 }
