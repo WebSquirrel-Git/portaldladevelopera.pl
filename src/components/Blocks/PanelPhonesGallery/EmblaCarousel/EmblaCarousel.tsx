@@ -65,7 +65,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
       <div className={styles.emblaViewport} ref={emblaRef}>
         <div className={styles.emblaContainer}>
           {slides.map((index, i) => (
-            <div key={i} className="flex items-center justify-center w-full h-full">
+            <div key={i} className="max-h-[800px] flex items-center justify-center w-full h-full">
               <Media
                 resource={index.image}
                 imgClassName="xl:w-auto xl:max-h-none max-h-[400px] w-[444px] sm:w-[100vw] object-contain"
