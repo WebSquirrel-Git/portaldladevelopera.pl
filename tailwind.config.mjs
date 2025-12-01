@@ -46,13 +46,13 @@ const config = {
         grey: '#93979E',
         darkGrey: '#333333',
         black: '#060606',
-        gradientOrange: 'linear-gradient(to right, #F0642E, #EE201C, #F29120)',
+        gradientOrange: 'linear-gradient(90deg, #FE9A79 0.01%, #F8C07D 50.01%, #FEE298 100%)',
       },
       backgroundImage: {
         gradientGreyWhite: 'linear-gradient(to right, #989898, #FEFEFE)',
-        gradientOrange: 'linear-gradient(to right, #F0642E, #EE201C, #F29120)',
+        gradientOrange: 'linear-gradient(90deg, #FE9A79 0.01%, #F8C07D 50.01%, #FEE298 100%)',
         gradientOrangeButton:
-          'linear-gradient(90deg, #FF541F 0.01%, #F29120 50.01%, #FFDC5F 100%), linear-gradient(0deg, rgba(255,255,255,0.4), rgba(255,255,255,0.4))',
+          'linear-gradient(90deg, #FE9A79 0.01%, #F8C07D 50.01%, #FEE298 100%)',
         gradientBrown:
           'linear-gradient(325.41deg, #1B1B1C 49.82%, rgba(250, 172, 121, 0.1) 128.97%)',
       },

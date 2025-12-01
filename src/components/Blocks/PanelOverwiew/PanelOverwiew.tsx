@@ -31,7 +31,7 @@ export const PanelOverwiew: React.FC<PanelOverwiewBlockPropsType> = (props) => {
       <div className="flex flex-col gap-3 2xl:gap-6 justify-start items-center">
         <div className="flex flex-row gap-3 items-center w-fit">
           {TAGS_LIST.map((tag, i) => (
-            <div key={i} className="flex bg-gradientOrangeButton p-[1px] rounded-[32px]">
+            <div key={i} className="flex bg-gradientOrangeButton pl-0 pb-0 p-[1px] rounded-[32px]">
               <div className="flex flex-row gap-2.5 bg-[#512714] xl:py-1 xl:pl-[7px] xl:pr-3 p-1 rounded-[32px]">
                 <Image src={tag.icon} alt={tag.text} className="w-6 h-6" />
                 {/* <Icon icon={tag.icon} className='gradient-text text-gradientOrangeButton bg-clip-text text-transparent w-6 h-6'/> */}
