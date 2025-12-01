@@ -23,6 +23,8 @@ import { PanelPresentationBlock } from '@/blocks/PanelPresentationBlock/config'
 import { PanelPhonesGalleryBlock } from '@/blocks/PanelPhonesGalleryBlock/config'
 import { PanelDevelopmentBlock } from '@/blocks/PanelDevelopmentBlock/config'
 import { PanelFaqBlock } from '@/blocks/PanelFaqBlock/config'
+import { PrivacyPolicyBlock } from '@/blocks/PrivacyPolicyBlock/config'
+import { RegulationsBlock } from '@/blocks/RegulationsBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -88,6 +90,8 @@ export const Pages: CollectionConfig<'pages'> = {
                 PanelPhonesGalleryBlock,
                 PanelDevelopmentBlock,
                 PanelFaqBlock,
+                PrivacyPolicyBlock,
+                RegulationsBlock,
               ],
               required: true,
               admin: {

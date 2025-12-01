@@ -3,12 +3,12 @@ import { useState } from 'react'
 import { Faq } from '@/payload-types'
 import { FaqCard } from '@/components/Blocks/PanelFaq/FaqCard'
 
-interface PostFaqProps{
+interface PostFaqProps {
   questionsList: Faq[]
 }
 
 export const PostFaq: React.FC<PostFaqProps> = (props) => {
-  const { questionsList } = props;
+  const { questionsList } = props
   const [activeCard, setActiveCard] = useState('999999999')
 
   const onActiveCard = (id: string) => {
@@ -20,10 +20,14 @@ export const PostFaq: React.FC<PostFaqProps> = (props) => {
   }
   return (
     <div className="flex flex-col justify-center items-center gap-4">
-       {questionsList.map((question) => (
-            <FaqCard key={question.id} onActiveCard={onActiveCard} activeCardId={activeCard} {...question} />
-          ))}
-      
+      {questionsList.map((question) => (
+        <FaqCard
+          key={question.id}
+          onActiveCard={onActiveCard}
+          activeCardId={activeCard}
+          {...question}
+        />
+      ))}
     </div>
   )
 }

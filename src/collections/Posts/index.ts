@@ -46,10 +46,10 @@ export const Posts: CollectionConfig<'posts'> = {
   // Type safe if the collection slug generic is passed to `CollectionConfig` - `CollectionConfig<'posts'>
   defaultPopulate: {
     title: true,
-  slug: true,
-  cardDescription: true,
-  publishedAt: true,
-  coverImage: true,
+    slug: true,
+    cardDescription: true,
+    publishedAt: true,
+    coverImage: true,
     meta: {
       image: true,
       description: true,
@@ -74,95 +74,91 @@ export const Posts: CollectionConfig<'posts'> = {
     useAsTitle: 'title',
   },
   fields: [
-     {
+    {
       name: 'title',
-      label:'Tytuł artykułu',
+      label: 'Tytuł artykułu',
       type: 'text',
       required: true,
     },
-     {
-              name: 'coverImage',
-              type: 'upload',
-              relationTo: 'media',
-              label:'Zdjęcie okładki i nagłówka',
-               required: true,
-            },
-             {
+    {
+      name: 'coverImage',
+      type: 'upload',
+      relationTo: 'media',
+      label: 'Zdjęcie okładki i nagłówka',
+      required: true,
+    },
+    {
       name: 'cardDescription',
-      label:'Krótki opis na karte artykułu',
+      label: 'Krótki opis na karte artykułu',
       type: 'textarea',
       required: true,
     },
     {
-      name:'headerSection',
-      label:'Sekcja nagłówka',
-      type:'group',
-      required:true,
-      fields:[
-
-    
-     {
-      name: 'author',
-      label:'Autor',
-      type: 'text',
+      name: 'headerSection',
+      label: 'Sekcja nagłówka',
+      type: 'group',
       required: true,
-    },
-    {
-       name: 'navMenu',
-      label:'Spis treści',
-      type: 'array',
-      labels:{
-        singular:'Punkt spisu treści',
-        plural:'Punkty spisu treści'
-      },
-      required: true,
-      fields:[
+      fields: [
         {
-           name: 'navItem',
-      label:'Punkt spisu treści',
-      type: 'text',
-      required: true,
-        }
-      ]
-    },
-      {
-              name: 'description',
-              type: 'richText',
-              editor: lexicalEditor({
-                features: ({ rootFeatures,defaultFeatures }) => {
-                  return [
-                    ...rootFeatures,...defaultFeatures,
-                    HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-                    BlocksFeature({ blocks: [ Code, MediaBlock] }),
-                    FixedToolbarFeature(),
-                    InlineToolbarFeature(),
-                    HorizontalRuleFeature(),
-                  ]
-                },
-              }),
-              label: 'Opis pod spisem treści',
+          name: 'author',
+          label: 'Autor',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'navMenu',
+          label: 'Spis treści',
+          type: 'array',
+          labels: {
+            singular: 'Punkt spisu treści',
+            plural: 'Punkty spisu treści',
+          },
+          required: true,
+          fields: [
+            {
+              name: 'navItem',
+              label: 'Punkt spisu treści',
+              type: 'text',
               required: true,
             },
-      ]
+          ],
+        },
+        {
+          name: 'description',
+          type: 'richText',
+          editor: lexicalEditor({
+            features: ({ rootFeatures, defaultFeatures }) => {
+              return [
+                ...rootFeatures,
+                ...defaultFeatures,
+                HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+                BlocksFeature({ blocks: [Code, MediaBlock] }),
+                FixedToolbarFeature(),
+                InlineToolbarFeature(),
+                HorizontalRuleFeature(),
+              ]
+            },
+          }),
+          label: 'Opis pod spisem treści',
+          required: true,
+        },
+      ],
     },
-   
+
     {
       type: 'tabs',
       tabs: [
         {
           fields: [
-           
             {
-                          name: 'content',
-                          type: 'blocks',
-                          blocks: [
-                            TextArticleBlock,TableArticleBlock,FaqArticleBlock
-                          ],
-                          required: true,
-                          admin: {
-                            initCollapsed: true,
-                          },
-                        },
+              name: 'content',
+              type: 'blocks',
+              blocks: [TextArticleBlock, TableArticleBlock, FaqArticleBlock],
+              required: true,
+              admin: {
+                initCollapsed: true,
+              },
+            },
             // {
             //   name: 'content',
             //   type: 'richText',
@@ -187,6 +183,7 @@ export const Posts: CollectionConfig<'posts'> = {
         {
           fields: [
             {
+              label: 'Powiązane posty',
               name: 'relatedPosts',
               type: 'relationship',
               admin: {
@@ -236,6 +233,7 @@ export const Posts: CollectionConfig<'posts'> = {
     },
     {
       name: 'publishedAt',
+      label: 'Data publikacji',
       type: 'date',
       admin: {
         date: {
@@ -256,6 +254,7 @@ export const Posts: CollectionConfig<'posts'> = {
     },
     {
       name: 'authors',
+      label: 'Autorzy',
       type: 'relationship',
       admin: {
         position: 'sidebar',

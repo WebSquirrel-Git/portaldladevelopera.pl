@@ -1,5 +1,19 @@
 export const formatDateTimeMonthName = (timestamp: string): string => {
-  const MONTHS = ['','stycznia','lutego','marca','kwietnia','maja','czerwca','lipca','sierpnia','września','października','listopada','grudnia']
+  const MONTHS = [
+    '',
+    'stycznia',
+    'lutego',
+    'marca',
+    'kwietnia',
+    'maja',
+    'czerwca',
+    'lipca',
+    'sierpnia',
+    'września',
+    'października',
+    'listopada',
+    'grudnia',
+  ]
   const now = new Date()
   let date = now
   if (timestamp) date = new Date(timestamp)

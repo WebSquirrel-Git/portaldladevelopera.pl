@@ -25,12 +25,22 @@ export const PanelFaq: React.FC<PanelFaqBlockPropsType> = (props) => {
       <div className="flex flex-col gap-3 2xl:flex-row 2xl:gap-8 w-full">
         <div className="flex flex-col 2xl:gap-4 gap-3 w-full">
           {evenFaqList.map((question) => (
-            <FaqCard key={question.id} onActiveCard={onActiveCard} activeCardId={activeCard} {...question} />
+            <FaqCard
+              key={question.id}
+              onActiveCard={onActiveCard}
+              activeCardId={activeCard}
+              {...question}
+            />
           ))}
         </div>
         <div className="flex flex-col 2xl:gap-4 gap-3 w-full">
           {oddFaqList.map((question) => (
-            <FaqCard key={question.id} onActiveCard={onActiveCard} activeCardId={activeCard} {...question} />
+            <FaqCard
+              key={question.id}
+              onActiveCard={onActiveCard}
+              activeCardId={activeCard}
+              {...question}
+            />
           ))}
         </div>
       </div>

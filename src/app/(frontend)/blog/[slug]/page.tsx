@@ -13,12 +13,13 @@ import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { PostHeader } from '@/components/Posts/PostHeader/PostHeader'
 import { RenderPostBlocks } from '@/blocks/Posts/RenderPostBlocks'
 import { formatDateTimeMonthName } from '@/utilities/formatDateTimeMonthName'
+import { SharePost } from '@/components/Posts/SharePost/SharePost'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
   const posts = await payload.find({
     collection: 'posts',
-    depth:2,
+    depth: 2,
     draft: false,
     limit: 1000,
     overrideAccess: false,
@@ -49,6 +50,26 @@ export default async function Post({ params: paramsPromise }: Args) {
   const url = '/blog/' + decodedSlug
   const post = await queryPostBySlug({ slug: decodedSlug })
 
+  const payload = await getPayload({ config: configPromise })
+  const latestPosts = await payload.find({
+    collection: 'posts',
+    limit: 3,
+    depth: 2,
+    sort: '-publishedAt', // lub -createdAt
+    select: {
+      title: true,
+      slug: true,
+      meta: true,
+      coverImage: true,
+      publishedAt: true,
+      cardDescription: true,
+    },
+    where: {
+      slug: {
+        not_equals: slug, // wykluczenie aktualnego posta
+      },
+    },
+  })
   if (!post) return <PayloadRedirects url={url} />
 
   return (
@@ -58,32 +79,34 @@ export default async function Post({ params: paramsPromise }: Args) {
 
       {draft && <LivePreviewListener />}
 
-      <div className='flex flex-col-reverse 2xl:flex-row gap-6'>
-<div className='flex flex-col bg-[#1B1B1C]/90 rounded-lg xl:rounded-xl pb-16'>
-  <PostHeader 
-  title={post.title}
-  coverImage={post.coverImage}
-  cardDescription={post.cardDescription}
-  headerSection={post.headerSection}
-  publishedAt={post.publishedAt}
+      <div className="flex flex-col-reverse lg:flex-row gap-6">
+        <div className="flex flex-col bg-[#1B1B1C]/90 rounded-lg xl:rounded-xl pb-16">
+          <PostHeader
+            title={post.title}
+            coverImage={post.coverImage}
+            cardDescription={post.cardDescription}
+            headerSection={post.headerSection}
+            publishedAt={post.publishedAt}
+          />
+          <RenderPostBlocks blocks={post.content} />
+          <div className="flex flex-col gap-[18px] xl:gap-[20px] px-3 xl:px-16 py-[18px] xl:py-[20px]">
+            <p className="!text-grey text-[16px]">
+              <b className="font-semibold">Autor:</b> {post.headerSection.author}
+            </p>
+            <p className="!text-grey text-[16px]">
+              <b className="font-semibold">Ostatnia aktualizacja:</b>{' '}
+              {post.publishedAt && (
+                <time dateTime={post.publishedAt}>{formatDateTimeMonthName(post.publishedAt)}</time>
+              )}
+            </p>
+          </div>
+        </div>
+        <SharePost latestPosts={latestPosts.docs} slug={slug} />
+      </div>
 
-  />
-<RenderPostBlocks blocks={post.content} />
-<div className='flex flex-col gap-[18px] xl:gap-[20px] px-3 xl:px-16 py-[18px] xl:py-[20px]'>
-  <p className='!text-grey text-[16px]'><b className='font-semibold'>Autor:</b> {post.headerSection.author}</p>
-  <p className='!text-grey text-[16px]'><b className='font-semibold'>Ostatnia aktualizacja:</b> {post.publishedAt && (<time dateTime={post.publishedAt}>{formatDateTimeMonthName(post.publishedAt)}</time> )}</p>
-
-</div>
-</div>
-<div className='flex flex-col bg-green-500 w-full h-[100px] xl:w-[223px]'>123</div>
-</div>
-
- 
- {post.relatedPosts && post.relatedPosts.length > 0 && (
-            <RelatedPosts
-              docs={post.relatedPosts.filter((post) => typeof post === 'object')}
-            />
-          )}
+      {post.relatedPosts && post.relatedPosts.length > 0 && (
+        <RelatedPosts docs={post.relatedPosts.filter((post) => typeof post === 'object')} />
+      )}
     </article>
   )
 }

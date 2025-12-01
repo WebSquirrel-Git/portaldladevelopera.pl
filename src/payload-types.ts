@@ -189,6 +189,8 @@ export interface Page {
     | PanelPhonesGalleryBlock
     | PanelDevelopmentBlock
     | PanelFaqBlock
+    | PrivacyPolicyBlock
+    | RegulationsBlock
   )[];
   meta?: {
     title?: string | null;
@@ -739,6 +741,103 @@ export interface PanelFaqBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PrivacyPolicyBlock".
+ */
+export interface PrivacyPolicyBlock {
+  headerSection: {
+    headerSection: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+    navMenu: {
+      navItem: string;
+      id?: string | null;
+    }[];
+  };
+  content: {
+    header: string;
+    headerSize: 'h2' | 'h3';
+    navPoint: number;
+    text: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'privacyPolicyBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "RegulationsBlock".
+ */
+export interface RegulationsBlock {
+  headerSection: {
+    headerSection: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+  };
+  content: {
+    header: string;
+    headerSize: 'h2' | 'h3';
+    text: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+    id?: string | null;
+  }[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'regulationsBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1012,6 +1111,8 @@ export interface PagesSelect<T extends boolean = true> {
         panelPhonesGalleryBlock?: T | PanelPhonesGalleryBlockSelect<T>;
         panelDevelopmentBlock?: T | PanelDevelopmentBlockSelect<T>;
         panelFaqBlock?: T | PanelFaqBlockSelect<T>;
+        privacyPolicyBlock?: T | PrivacyPolicyBlockSelect<T>;
+        regulationsBlock?: T | RegulationsBlockSelect<T>;
       };
   meta?:
     | T
@@ -1212,6 +1313,55 @@ export interface PanelFaqBlockSelect<T extends boolean = true> {
   header?: T;
   subheader?: T;
   questionsList?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PrivacyPolicyBlock_select".
+ */
+export interface PrivacyPolicyBlockSelect<T extends boolean = true> {
+  headerSection?:
+    | T
+    | {
+        headerSection?: T;
+        navMenu?:
+          | T
+          | {
+              navItem?: T;
+              id?: T;
+            };
+      };
+  content?:
+    | T
+    | {
+        header?: T;
+        headerSize?: T;
+        navPoint?: T;
+        text?: T;
+        id?: T;
+      };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "RegulationsBlock_select".
+ */
+export interface RegulationsBlockSelect<T extends boolean = true> {
+  headerSection?:
+    | T
+    | {
+        headerSection?: T;
+      };
+  content?:
+    | T
+    | {
+        header?: T;
+        headerSize?: T;
+        text?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
