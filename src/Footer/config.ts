@@ -2,7 +2,12 @@ import type { GlobalConfig } from 'payload'
 
 import { link } from '@/fields/link'
 import { revalidateFooter } from './hooks/revalidateFooter'
-import { FixedToolbarFeature, HeadingFeature, InlineToolbarFeature, lexicalEditor } from '@payloadcms/richtext-lexical'
+import {
+  FixedToolbarFeature,
+  HeadingFeature,
+  InlineToolbarFeature,
+  lexicalEditor,
+} from '@payloadcms/richtext-lexical'
 
 export const Footer: GlobalConfig = {
   slug: 'footer',
@@ -12,21 +17,21 @@ export const Footer: GlobalConfig = {
   },
   fields: [
     {
-                      name: 'title',
-                      label: 'Nagłówek',
-                      type: 'richText',
-                      required: true,
-                      editor: lexicalEditor({
-                        features: ({ rootFeatures }) => {
-                          return [
-                            ...rootFeatures,
-                            HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
-                            FixedToolbarFeature(),
-                            InlineToolbarFeature(),
-                          ]
-                        },
-                      }),
-                    },
+      name: 'title',
+      label: 'Nagłówek',
+      type: 'richText',
+      required: true,
+      editor: lexicalEditor({
+        features: ({ rootFeatures }) => {
+          return [
+            ...rootFeatures,
+            HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+          ]
+        },
+      }),
+    },
     {
       name: 'companyNavItems',
       label: 'Menu nawigacyjne',
@@ -70,90 +75,90 @@ export const Footer: GlobalConfig = {
       },
     },
     {
-      name:'companyInformations',
-      label:'Informacje o Firmie',
-      required:true,
-      type:'group',
-      fields:[
+      name: 'companyInformations',
+      label: 'Informacje o Firmie',
+      required: true,
+      type: 'group',
+      fields: [
         {
-          name:'email',
-          label:'E-mail',
-          type:'text',
-          required:true
-        },
-        {
-          name:'website',
-          label:'Link do strony',
-          type:'group',
-          required:true,
-          fields:[
-           {
-          name:'label',
-          label:'Etykieta',
-          type:'text',
-          required:true
+          name: 'email',
+          label: 'E-mail',
+          type: 'text',
+          required: true,
         },
         {
-          name:'url',
-          label:'Url',
-          type:'text',
-          required:true
-        }, 
-          ]
+          name: 'website',
+          label: 'Link do strony',
+          type: 'group',
+          required: true,
+          fields: [
+            {
+              name: 'label',
+              label: 'Etykieta',
+              type: 'text',
+              required: true,
+            },
+            {
+              name: 'url',
+              label: 'Url',
+              type: 'text',
+              required: true,
+            },
+          ],
         },
         {
-          name:'facebook',
-          label:'Facebook',
-          type:'group',
-          fields:[
-           {
-          name:'ikona',
-          label: 'Ikona - wejdź na stronę https://icon-sets.iconify.design/ i wklej kod ikony.',
-          type:'text',
+          name: 'facebook',
+          label: 'Facebook',
+          type: 'group',
+          fields: [
+            {
+              name: 'ikona',
+              label: 'Ikona - wejdź na stronę https://icon-sets.iconify.design/ i wklej kod ikony.',
+              type: 'text',
+            },
+            {
+              name: 'url',
+              label: 'Url',
+              type: 'text',
+            },
+          ],
         },
         {
-          name:'url',
-          label:'Url',
-          type:'text',
-        }, 
-          ]
-        },
-         {
-          name:'instagram',
-          label:'Instagram',
-          type:'group',
-          fields:[
-           {
-          name:'ikona',
-          label: 'Ikona - wejdź na stronę https://icon-sets.iconify.design/ i wklej kod ikony.',
-          type:'text',
-        },
-        {
-          name:'url',
-          label:'Url',
-          type:'text',
-        }, 
-          ]
-        },
-         {
-          name:'youtube',
-          label:'YouTube',
-          type:'group',
-          fields:[
-           {
-          name:'ikona',
-          label: 'Ikona - wejdź na stronę https://icon-sets.iconify.design/ i wklej kod ikony.',
-          type:'text',
+          name: 'instagram',
+          label: 'Instagram',
+          type: 'group',
+          fields: [
+            {
+              name: 'ikona',
+              label: 'Ikona - wejdź na stronę https://icon-sets.iconify.design/ i wklej kod ikony.',
+              type: 'text',
+            },
+            {
+              name: 'url',
+              label: 'Url',
+              type: 'text',
+            },
+          ],
         },
         {
-          name:'url',
-          label:'Url',
-          type:'text',
-        }, 
-          ]
+          name: 'youtube',
+          label: 'YouTube',
+          type: 'group',
+          fields: [
+            {
+              name: 'ikona',
+              label: 'Ikona - wejdź na stronę https://icon-sets.iconify.design/ i wklej kod ikony.',
+              type: 'text',
+            },
+            {
+              name: 'url',
+              label: 'Url',
+              type: 'text',
+            },
+          ],
         },
-      ]
-    }
+      ],
+    },
   ],
   hooks: {
     afterChange: [revalidateFooter],

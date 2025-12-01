@@ -5,7 +5,7 @@ import sharp from 'sharp' // sharp-import
 import path from 'path'
 import { buildConfig, PayloadRequest } from 'payload'
 import { fileURLToPath } from 'url'
-import { pl } from "@payloadcms/translations/languages/pl";
+import { pl } from '@payloadcms/translations/languages/pl'
 import { Media } from './collections/Media'
 import { Pages } from './collections/Pages'
 import { Posts } from './collections/Posts'
@@ -62,9 +62,9 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.DATABASE_URI || '',
   }),
-  collections: [Pages, Posts, Media, Users,Faq],
+  collections: [Pages, Posts, Media, Users, Faq],
   cors: [getServerSideURL()].filter(Boolean),
-  globals: [Header,Footer],
+  globals: [Header, Footer],
   plugins: [
     ...plugins,
     // storage-adapter-placeholder
@@ -89,20 +89,20 @@ export default buildConfig({
     },
     tasks: [],
   },
-   i18n: {
+  i18n: {
     supportedLanguages: {
       pl,
     },
-    fallbackLanguage: "pl",
+    fallbackLanguage: 'pl',
   },
   localization: {
     locales: [
       {
-        label: "Polski",
-        code: "pl",
+        label: 'Polski',
+        code: 'pl',
       },
     ],
-    defaultLocale: "pl",
+    defaultLocale: 'pl',
     fallback: true,
   },
 })

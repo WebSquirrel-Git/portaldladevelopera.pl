@@ -25,16 +25,16 @@ export const TextArticleBlock: Block = {
       label: 'Typ nagłówka',
       type: 'select',
       required: true,
-      options:[
+      options: [
         {
-          value:'h2',
-          label:'H2'
+          value: 'h2',
+          label: 'H2',
         },
-         {
-          value:'h3',
-          label:'H3'
+        {
+          value: 'h3',
+          label: 'H3',
         },
-      ]
+      ],
     },
     {
       name: 'navPoint',
@@ -43,20 +43,21 @@ export const TextArticleBlock: Block = {
       required: true,
     },
     {
-              name: 'text',
-              label: 'Tekst',
-              type: 'richText',
-              required: true,
-              editor: lexicalEditor({
-                features: ({ rootFeatures,defaultFeatures }) => {
-                  return [
-                    ...rootFeatures,...defaultFeatures,
-                    HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
-                    FixedToolbarFeature(),
-                    InlineToolbarFeature(),
-                  ]
-                },
-              }),
-            },
+      name: 'text',
+      label: 'Tekst',
+      type: 'richText',
+      required: true,
+      editor: lexicalEditor({
+        features: ({ rootFeatures, defaultFeatures }) => {
+          return [
+            ...rootFeatures,
+            ...defaultFeatures,
+            HeadingFeature({ enabledHeadingSizes: ['h2', 'h3', 'h4'] }),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+          ]
+        },
+      }),
+    },
   ],
 }

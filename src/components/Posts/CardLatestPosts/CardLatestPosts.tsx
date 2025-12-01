@@ -2,39 +2,39 @@
 import Link from 'next/link'
 import React from 'react'
 
-import type { Media as MediaType } from '@/payload-types'
+import type { Media as MediaType, Post } from '@/payload-types'
 import LinkIcon from '@/assets/icons/link.svg'
 import { Media } from '@/components/Media'
 import Image from 'next/image'
 import { formatDateTime } from '@/utilities/formatDateTime'
 
-interface CardWideProps {
+export type CardLatestPostsData = Pick<Post, 'slug' | 'meta' | 'title'>
+
+interface CardLatestPostsProps {
   coverImage: MediaType | string
   id: string
   publishedAt?: string | null | undefined
-  slug?: string
-  title?: string
+  slug?: string | undefined
+  title?: string | undefined
   cardDescription: string
 }
 
-export const CardWide: React.FC<CardWideProps> = (props) => {
+export const CardLatestPosts: React.FC<CardLatestPostsProps> = (props) => {
   const { slug, coverImage, publishedAt, title, cardDescription } = props
 
   return (
-    <article className="relative gap-2 flex xl:flex-row flex-col w-full sm:h-[357px] rounded-xl bg-[#1B1B1CE5]/90 border-darkGrey border-solid border p-2">
+    <article className="relative gap-2 flex flex-col w-full sm:h-fit rounded-xl bg-[#1B1B1CE5]/90 border-darkGrey border-solid border p-2">
       {publishedAt && (
         <time className="z-20 top-0 right-0 absolute text-[14px] leading-[22px] text-lightGrey pt-[10px] pr-[14px] pb-[6px] pl-[10px] bg-darkGrey rounded-bl-[10px] rounded-tr-[12px]">
           {formatDateTime(publishedAt)}
         </time>
       )}
-      <div className="relative xl:w-[580px] w-full xl:h-full h-[144px] rounded-md">
+      <div className="relative w-full h-[144px] rounded-md">
         <Media resource={coverImage} fill imgClassName="object-cover position-center rounded-md" />
       </div>
-      <div className="flex flex-col p-2 gap-3 justify-between xl:pr-8 xl:pt-8 ">
-        <div className="flex flex-col gap-2 xl:max-w-[474px]">
-          <h2 className="!font-semibold xl:!text-[34px] xl:!font-normal xl:!leading-[40px] !text-[16px] !leading-[24px] text-left !text-white">
-            {title}
-          </h2>
+      <div className="flex flex-col p-2 gap-3">
+        <div className="flex flex-col gap-2">
+          <p className="font-semibold text-[16px] leading-[24px] text-left !text-white">{title}</p>
           <p className="text-[14px] leading-[22px] text-lightGrey">{cardDescription}</p>
         </div>
         <Link

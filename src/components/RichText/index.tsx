@@ -13,14 +13,10 @@ import {
 
 import { CodeBlock, CodeBlockProps } from '@/blocks/RichText/Code/Component'
 
-import type {
-  MediaBlock as MediaBlockProps,
-} from '@/payload-types'
+import type { MediaBlock as MediaBlockProps } from '@/payload-types'
 import { cn } from '@/utilities/ui'
 
-type NodeTypes =
-  | DefaultNodeTypes
-  | SerializedBlockNode<MediaBlockProps | CodeBlockProps>
+type NodeTypes = DefaultNodeTypes | SerializedBlockNode<MediaBlockProps | CodeBlockProps>
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   const { value, relationTo } = linkNode.fields.doc!

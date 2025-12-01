@@ -1,6 +1,4 @@
 import type { ButtonProps } from '@/components/ui/button'
-
-import { buttonVariants } from '@/components/ui/button'
 import { cn } from '@/utilities/ui'
 import { ChevronLeft, ChevronRight, MoreHorizontal } from 'lucide-react'
 import * as React from 'react'
@@ -22,7 +20,7 @@ const PaginationContent: React.FC<
 
 const PaginationItem: React.FC<
   { ref?: React.Ref<HTMLLIElement> } & React.HTMLAttributes<HTMLLIElement>
-> = ({ className, ref, ...props }) => <li className='list-none' ref={ref} {...props} />
+> = ({ className, ref, ...props }) => <li className="list-none" ref={ref} {...props} />
 
 type PaginationLinkProps = {
   isActive?: boolean
@@ -32,8 +30,8 @@ type PaginationLinkProps = {
 const PaginationLink = ({ className, isActive, size = 'icon', ...props }: PaginationLinkProps) => (
   <button
     aria-current={isActive ? 'page' : undefined}
-     className={cn(
-      `flex items-center rounded-lg justify-center disabled:!cursor-default disabled:text-white/10 ${isActive?'text-black !bg-primaryOrange !border-white/40 !cursor-default':'text-lightGrey'} cursor-pointer p-0 w-10 text-[16px] h-10 list-none bg-darkGrey border border-solid border-white/10`,
+    className={cn(
+      `flex items-center rounded-lg justify-center disabled:!cursor-default disabled:text-white/10 ${isActive ? 'text-black !bg-primaryOrange !border-white/40 !cursor-default' : 'text-lightGrey'} cursor-pointer p-0 w-10 text-[16px] h-10 list-none bg-darkGrey border border-solid border-white/10`,
       className,
     )}
     {...props}
@@ -46,31 +44,22 @@ const PaginationPrevious = ({
 }: React.ComponentProps<typeof PaginationLink>) => (
   <PaginationLink
     aria-label="Go to previous page"
-    className={cn( className)}
+    className={cn(className)}
     size="default"
-    {...props}  
+    {...props}
   >
     <ChevronLeft className="h-4 w-4" />
   </PaginationLink>
 )
 
 const PaginationNext = ({ className, ...props }: React.ComponentProps<typeof PaginationLink>) => (
-  <PaginationLink
-    aria-label="Go to next page"
-    size="default"
-    {...props}
-    className={cn( className)}
-  >
+  <PaginationLink aria-label="Go to next page" size="default" {...props} className={cn(className)}>
     <ChevronRight className="h-4 w-4" />
   </PaginationLink>
 )
 
 const PaginationEllipsis = ({ className, ...props }: React.ComponentProps<'span'>) => (
-  <span
-    aria-hidden
-    className={cn( className)}
-    {...props}
-  >
+  <span aria-hidden className={cn(className)} {...props}>
     <MoreHorizontal className="h-4 w-4" />
     <span className="sr-only">More pages</span>
   </span>

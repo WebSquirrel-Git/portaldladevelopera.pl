@@ -12,6 +12,8 @@ import { PanelPhonesGalleryBlock } from './PanelPhonesGalleryBlock/Component'
 import { PanelDevelopmentBlock } from './PanelDevelopmentBlock/Component'
 import { PanelFaqBlock } from './PanelFaqBlock/Component'
 import { TextArticleBlock } from './Posts/TextArticleBlock/Component'
+import { PrivacyPolicyBlock } from './PrivacyPolicyBlock/Component'
+import { RegulationsBlock } from './RegulationsBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -23,7 +25,9 @@ const blockComponents = {
   panelPhonesGalleryBlock: PanelPhonesGalleryBlock,
   panelDevelopmentBlock: PanelDevelopmentBlock,
   panelFaqBlock: PanelFaqBlock,
-  textBlock:TextArticleBlock
+  textBlock: TextArticleBlock,
+  privacyPolicyBlock: PrivacyPolicyBlock,
+  regulationsBlock: RegulationsBlock,
 }
 
 export const RenderBlocks: React.FC<{
