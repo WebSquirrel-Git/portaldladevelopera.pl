@@ -33,7 +33,7 @@ export const FaqCard: React.FC<FaqCardProps> = (props) => {
   const isOpen = activeCardId === id
 
   return (
-    <div className="flex flex-col gap-6 py-4 px-[20px] xl:py-[20px] xl:px-8 bg-darkGrey rounded-lg w-full">
+    <div className="flex flex-col gap-6 py-4 px-[20px] xl:py-[20px] xl:px-8 bg-darkGrey rounded-2xl w-full">
       <button
         onClick={() => onActiveCard(id)}
         key={id}

@@ -33,22 +33,22 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
       <DescriptionCard
         {...slides[0].description}
         active={selectedIndex === 0}
-        className="xl:top-[10%] xl:right-0 xl:left-[-20px] border-r border-b border-l-0 border-t-0"
+        className="xl:top-[104px] xl:right-0 xl:left-0 border-r border-b border-l-0 border-t-0 xl:w-[320px]"
       />
       <DescriptionCard
         {...slides[1].description}
         active={selectedIndex === 1}
-        className="xl:bottom-[10%] xl:right-0 xl:left-0 border-r border-b border-l-0 border-t-0"
+        className="xl:top-[433px] xl:right-0 xl:left-0 border-r border-b border-l-0 border-t-0 xl:w-[326px]"
       />
       <DescriptionCard
         {...slides[2].description}
         active={selectedIndex === 2}
-        className="xl:top-[0%] xl:left-auto xl:right-0 border-r border-b border-l-0 border-t-0"
+        className="xl:top-[41px] xl:left-auto xl:right-0 border-r border-b border-l-0 border-t-0 xl:w-[338px]"
       />
       <DescriptionCard
         {...slides[3].description}
         active={selectedIndex === 3}
-        className="xl:bottom-[25%] xl:left-auto xl:right-[-28px] border-r border-b border-l-0 border-t-0"
+        className="xl:top-[339px] xl:left-auto xl:right-0 border-r border-b border-l-0 border-t-0 xl:w-[310px]"
       />
       <div className={styles.emblaControls}>
         <div className={styles.emblaDots}>
@@ -65,10 +65,14 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
       <div className={styles.emblaViewport} ref={emblaRef}>
         <div className={styles.emblaContainer}>
           {slides.map((index, i) => (
-            <div key={i} className="max-h-[800px] flex items-center justify-center w-full h-full">
+            <div
+              key={i}
+              className={`${styles.emblaSlide} xl:max-h-[630px] flex items-center justify-center w-full h-full`}
+            >
               <Media
                 resource={index.image}
-                imgClassName="xl:w-auto xl:max-h-none max-h-[400px] w-[444px] sm:w-[100vw] object-contain"
+                className="flex justify-center xl:max-h-[630px] max-h-[351px] h-full w-full"
+                imgClassName=" xl:max-h-none xl:max-h-[630px] xl:h-[630px] xl:w-[503px] w-[280px] h-[351px] max-h-[351px] object-contain"
               />
             </div>
           ))}

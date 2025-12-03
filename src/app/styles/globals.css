@@ -26,19 +26,23 @@ body {
   -webkit-text-fill-color: transparent !important;
 }
 .gradient-orange {
- background: linear-gradient(90deg, #FE9A79 0.01%, #F8C07D 50.01%, #FEE298 100%);
+  background: linear-gradient(90deg, #fe9a79 0.01%, #f8c07d 50.01%, #fee298 100%);
 }
 .gradient-orange-text {
-background: linear-gradient(90deg, #FE9A79 0.01%, #F8C07D 50.01%, #FEE298 100%);
+  background: linear-gradient(90deg, #fe9a79 0.01%, #f8c07d 50.01%, #fee298 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .gradient-brown {
   background: linear-gradient(325.41deg, #1b1b1c 49.82%, rgba(250, 172, 121, 0.1) 128.97%);
 }
-.gradient-radial-orange{
-  background: radial-gradient(130% 107.13% at 50% 10%, rgba(0, 0, 0, 0) 37.41%, #FF541F 69.27%, #FFDC5F 100%);
-
+.gradient-radial-orange {
+  background: radial-gradient(
+    130% 107.13% at 50% 10%,
+    rgba(0, 0, 0, 0) 37.41%,
+    #ff541f 69.27%,
+    #ffdc5f 100%
+  );
 }
 .gradient-black-brown {
   background: linear-gradient(
@@ -59,7 +63,7 @@ background: linear-gradient(90deg, #FE9A79 0.01%, #F8C07D 50.01%, #FEE298 100%);
 .richtext-h2-with-gradient {
   color: white !important;
   strong {
-   background: linear-gradient(90deg, #FE9A79 0.01%, #F8C07D 50.01%, #FEE298 100%);
+    background: linear-gradient(90deg, #fe9a79 0.01%, #f8c07d 50.01%, #fee298 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     font-weight: 400 !important;
