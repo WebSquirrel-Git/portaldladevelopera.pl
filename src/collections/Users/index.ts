@@ -26,6 +26,11 @@ export const Users: CollectionConfig = {
       type: 'text',
       label: 'Nazwa użytkownika',
     },
+    {
+      name: 'articleName',
+      type: 'text',
+      label: 'Blog - nazwa użytkownika',
+    },
   ],
   timestamps: true,
 }

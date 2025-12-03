@@ -128,3 +128,6 @@ body {
     font-weight: 500;
   }
 }
+.lexical-table-container {
+  overflow-x: auto !important;
+}

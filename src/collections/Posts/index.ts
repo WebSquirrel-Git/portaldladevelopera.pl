@@ -7,6 +7,7 @@ import {
   HorizontalRuleFeature,
   InlineToolbarFeature,
   lexicalEditor,
+  EXPERIMENTAL_TableFeature,
 } from '@payloadcms/richtext-lexical'
 
 import { authenticated } from '../../access/authenticated'
@@ -94,92 +95,42 @@ export const Posts: CollectionConfig<'posts'> = {
       required: true,
     },
     {
-      name: 'headerSection',
-      label: 'Sekcja nagłówka',
-      type: 'group',
+      name: 'richTextContent',
+      type: 'richText',
+      editor: lexicalEditor({
+        features: ({ rootFeatures, defaultFeatures }) => {
+          return [
+            ...rootFeatures,
+            ...defaultFeatures,
+            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
+            BlocksFeature({ blocks: [Code, MediaBlock, FaqArticleBlock] }),
+            FixedToolbarFeature(),
+            InlineToolbarFeature(),
+            HorizontalRuleFeature(),
+            EXPERIMENTAL_TableFeature(),
+          ]
+        },
+      }),
+      label: 'Treść artykułu',
       required: true,
-      fields: [
-        {
-          name: 'author',
-          label: 'Autor',
-          type: 'text',
-          required: true,
-        },
-        {
-          name: 'navMenu',
-          label: 'Spis treści',
-          type: 'array',
-          labels: {
-            singular: 'Punkt spisu treści',
-            plural: 'Punkty spisu treści',
-          },
-          required: true,
-          fields: [
-            {
-              name: 'navItem',
-              label: 'Punkt spisu treści',
-              type: 'text',
-              required: true,
-            },
-          ],
-        },
-        {
-          name: 'description',
-          type: 'richText',
-          editor: lexicalEditor({
-            features: ({ rootFeatures, defaultFeatures }) => {
-              return [
-                ...rootFeatures,
-                ...defaultFeatures,
-                HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-                BlocksFeature({ blocks: [Code, MediaBlock] }),
-                FixedToolbarFeature(),
-                InlineToolbarFeature(),
-                HorizontalRuleFeature(),
-              ]
-            },
-          }),
-          label: 'Opis pod spisem treści',
-          required: true,
-        },
-      ],
     },
 
     {
       type: 'tabs',
       tabs: [
-        {
-          fields: [
-            {
-              name: 'content',
-              type: 'blocks',
-              blocks: [TextArticleBlock, TableArticleBlock, FaqArticleBlock],
-              required: true,
-              admin: {
-                initCollapsed: true,
-              },
-            },
-            // {
-            //   name: 'content',
-            //   type: 'richText',
-            //   editor: lexicalEditor({
-            //     features: ({ rootFeatures }) => {
-            //       return [
-            //         ...rootFeatures,
-            //         HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            //         BlocksFeature({ blocks: [Banner, Code, MediaBlock] }),
-            //         FixedToolbarFeature(),
-            //         InlineToolbarFeature(),
-            //         HorizontalRuleFeature(),
-            //       ]
-            //     },
-            //   }),
-            //   label: false,
-            //   required: true,
-            // },
-          ],
-          label: 'Content',
-        },
+        // {
+        //   fields: [
+        //     {
+        //       name: 'content',
+        //       type: 'blocks',
+        //       blocks: [TextArticleBlock, TableArticleBlock, FaqArticleBlock],
+        //       admin: {
+        //         initCollapsed: true,
+        //       },
+        //     },
+        //   ],
+        //   label: 'Bloki (FaQ itp.)',
+        // },
         {
           fields: [
             {
