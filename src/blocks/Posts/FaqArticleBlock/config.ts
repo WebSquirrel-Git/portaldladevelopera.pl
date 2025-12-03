@@ -9,18 +9,6 @@ export const FaqArticleBlock: Block = {
   },
   fields: [
     {
-      name: 'header',
-      label: 'Nagłówek',
-      type: 'text',
-      required: true,
-    },
-    {
-      name: 'navPoint',
-      label: 'Punkt ze spisu treści',
-      type: 'number',
-      required: true,
-    },
-    {
       name: 'questionsList',
       label: 'Lista pytań',
       type: 'relationship',

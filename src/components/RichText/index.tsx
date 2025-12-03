@@ -15,8 +15,12 @@ import { CodeBlock, CodeBlockProps } from '@/blocks/RichText/Code/Component'
 
 import type { MediaBlock as MediaBlockProps } from '@/payload-types'
 import { cn } from '@/utilities/ui'
+import { FaqArticleBlockPropsType } from '@/blocks/Posts/FaqArticleBlock/Component'
+import { FaqArticleBlockRichText } from '@/blocks/Posts/FaqArticleBlock/RichText'
 
-type NodeTypes = DefaultNodeTypes | SerializedBlockNode<MediaBlockProps | CodeBlockProps>
+type NodeTypes =
+  | DefaultNodeTypes
+  | SerializedBlockNode<MediaBlockProps | CodeBlockProps | FaqArticleBlockPropsType>
 
 const internalDocToHref = ({ linkNode }: { linkNode: SerializedLinkNode }) => {
   const { value, relationTo } = linkNode.fields.doc!
@@ -41,6 +45,20 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
       />
     ),
     code: ({ node }) => <CodeBlock className="col-start-2" {...node.fields} />,
+    faqArticleBlock: ({ node }: { node: SerializedBlockNode<FaqArticleBlockPropsType> }) => (
+      <FaqArticleBlockRichText {...node.fields} />
+    ),
+  },
+  heading: ({ node, nodesToJSX }) => {
+    const children = nodesToJSX({ nodes: node.children })
+    // const id = slugify(children.join(''))
+    const Tag = node.tag
+    if (node.tag === 'h2') {
+      const first = node.children?.[0] as any
+      const text = first?.text ?? ''
+
+      return <Tag id={text ? text.toLowerCase().replace(/\s+/g, '-') : undefined}>{children}</Tag>
+    }
   },
 })
 

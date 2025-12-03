@@ -42,9 +42,9 @@ export const FaqCard: React.FC<FaqCardProps> = (props) => {
         <p className="text-left">{title}</p>
 
         {isOpen ? (
-          <Image src={MinusIcon} alt="Minus" className="w-6 h-6" />
+          <Image src={MinusIcon} alt="Minus" className="w-6 h-6 m-0" />
         ) : (
-          <Image src={PlusIcon} alt="Plus" className="w-6 h-6" />
+          <Image src={PlusIcon} alt="Plus" className="w-6 h-6 m-0" />
         )}
       </button>
       <AnimatePresence initial={false}>

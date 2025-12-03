@@ -6,14 +6,14 @@ import configPromise from '@payload-config'
 import { getPayload } from 'payload'
 import { draftMode } from 'next/headers'
 import React, { cache } from 'react'
-import type { Post } from '@/payload-types'
+import type { Post, User } from '@/payload-types'
 
 import { generateMeta } from '@/utilities/generateMeta'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
-import { PostHeader } from '@/components/Posts/PostHeader/PostHeader'
-import { RenderPostBlocks } from '@/blocks/Posts/RenderPostBlocks'
+// import { RenderPostBlocks } from '@/blocks/Posts/RenderPostBlocks'
 import { formatDateTimeMonthName } from '@/utilities/formatDateTimeMonthName'
 import { SharePost } from '@/components/Posts/SharePost/SharePost'
+import { PostContent } from '@/components/Posts/PostContent/PostContent'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -71,7 +71,7 @@ export default async function Post({ params: paramsPromise }: Args) {
     },
   })
   if (!post) return <PayloadRedirects url={url} />
-
+  const author = post.authors?.find((a) => typeof a === 'object') as User | undefined
   return (
     <article className="bg-black pt-[18px] pb-[96px] px-4 xl:pt-16 xl:pb-[120px] 2xl:px-[360px] flex flex-col xl:gap-12 gap-6">
       {/* Allows redirects for valid pages too */}
@@ -81,18 +81,20 @@ export default async function Post({ params: paramsPromise }: Args) {
 
       <div className="flex flex-col-reverse lg:flex-row gap-6">
         <div className="flex flex-col bg-[#1B1B1C]/90 rounded-lg xl:rounded-xl pb-16">
-          <PostHeader
+          <PostContent
             title={post.title}
             coverImage={post.coverImage}
-            cardDescription={post.cardDescription}
-            headerSection={post.headerSection}
+            content={post.richTextContent}
+            authors={post.authors}
             publishedAt={post.publishedAt}
           />
-          <RenderPostBlocks blocks={post.content} />
+          {/* {post.content&&<RenderPostBlocks blocks={post.content} />}  */}
           <div className="flex flex-col gap-[18px] xl:gap-[20px] px-3 xl:px-16 py-[18px] xl:py-[20px]">
-            <p className="!text-grey text-[16px]">
-              <b className="font-semibold">Autor:</b> {post.headerSection.author}
-            </p>
+            {author && (
+              <p className="!text-grey text-[16px]">
+                <b className="font-semibold">Autor:</b> {author.articleName}
+              </p>
+            )}
             <p className="!text-grey text-[16px]">
               <b className="font-semibold">Ostatnia aktualizacja:</b>{' '}
               {post.publishedAt && (

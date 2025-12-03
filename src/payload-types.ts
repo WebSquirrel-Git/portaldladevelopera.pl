@@ -386,29 +386,21 @@ export interface Post {
   title: string;
   coverImage: string | Media;
   cardDescription: string;
-  headerSection: {
-    author: string;
-    navMenu: {
-      navItem: string;
-      id?: string | null;
-    }[];
-    description: {
-      root: {
-        type: string;
-        children: {
-          type: any;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
+  richTextContent: {
+    root: {
+      type: string;
+      children: {
+        type: any;
         version: number;
-      };
-      [k: string]: unknown;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
     };
+    [k: string]: unknown;
   };
-  content: (TextArticleBlock | TableArticleBlock | FaqArticleBlock)[];
   relatedPosts?: (string | Post)[] | null;
   meta?: {
     title?: string | null;
@@ -437,70 +429,12 @@ export interface Post {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "TextArticleBlock".
- */
-export interface TextArticleBlock {
-  header: string;
-  headerSize: 'h2' | 'h3';
-  navPoint: number;
-  text: {
-    root: {
-      type: string;
-      children: {
-        type: any;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  };
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'textArticleBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "TableArticleBlock".
- */
-export interface TableArticleBlock {
-  header: string;
-  headerSize: 'h2' | 'h3';
-  navPoint: number;
-  table: {
-    header: string;
-    rows: {
-      row: string;
-      id?: string | null;
-    }[];
-    id?: string | null;
-  }[];
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'tableArticleBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FaqArticleBlock".
- */
-export interface FaqArticleBlock {
-  header: string;
-  navPoint: number;
-  questionsList: (string | Faq)[];
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'faqArticleBlock';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
   id: string;
   name?: string | null;
+  articleName?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -1373,25 +1307,7 @@ export interface PostsSelect<T extends boolean = true> {
   title?: T;
   coverImage?: T;
   cardDescription?: T;
-  headerSection?:
-    | T
-    | {
-        author?: T;
-        navMenu?:
-          | T
-          | {
-              navItem?: T;
-              id?: T;
-            };
-        description?: T;
-      };
-  content?:
-    | T
-    | {
-        textArticleBlock?: T | TextArticleBlockSelect<T>;
-        tableArticleBlock?: T | TableArticleBlockSelect<T>;
-        faqArticleBlock?: T | FaqArticleBlockSelect<T>;
-      };
+  richTextContent?: T;
   relatedPosts?: T;
   meta?:
     | T
@@ -1413,52 +1329,6 @@ export interface PostsSelect<T extends boolean = true> {
   updatedAt?: T;
   createdAt?: T;
   _status?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "TextArticleBlock_select".
- */
-export interface TextArticleBlockSelect<T extends boolean = true> {
-  header?: T;
-  headerSize?: T;
-  navPoint?: T;
-  text?: T;
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "TableArticleBlock_select".
- */
-export interface TableArticleBlockSelect<T extends boolean = true> {
-  header?: T;
-  headerSize?: T;
-  navPoint?: T;
-  table?:
-    | T
-    | {
-        header?: T;
-        rows?:
-          | T
-          | {
-              row?: T;
-              id?: T;
-            };
-        id?: T;
-      };
-  id?: T;
-  blockName?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "FaqArticleBlock_select".
- */
-export interface FaqArticleBlockSelect<T extends boolean = true> {
-  header?: T;
-  navPoint?: T;
-  questionsList?: T;
-  id?: T;
-  blockName?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -1559,6 +1429,7 @@ export interface MediaSelect<T extends boolean = true> {
  */
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
+  articleName?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -1949,6 +1820,16 @@ export interface MediaBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'mediaBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FaqArticleBlock".
+ */
+export interface FaqArticleBlock {
+  questionsList: (string | Faq)[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'faqArticleBlock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
