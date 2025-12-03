@@ -144,7 +144,7 @@ export const FooterContent: React.FC<FooterContentProps> = ({
           <div className="flex flex-row gap-4">
             {companyInformations.facebook && (
               <Link
-                className="w-10 h-10 rounded-[4px] bg-black flex justify-center items-center"
+                className="w-10 h-10 rounded-[8px] bg-black flex justify-center items-center"
                 href={companyInformations.facebook.url || ''}
               >
                 <Icon
@@ -155,7 +155,7 @@ export const FooterContent: React.FC<FooterContentProps> = ({
             )}
             {companyInformations.instagram && (
               <Link
-                className="w-10 h-10 rounded-[4px] bg-black flex justify-center items-center"
+                className="w-10 h-10 rounded-[8px] bg-black flex justify-center items-center"
                 href={companyInformations.instagram.url || ''}
               >
                 <Icon
@@ -166,7 +166,7 @@ export const FooterContent: React.FC<FooterContentProps> = ({
             )}
             {companyInformations.youtube && (
               <Link
-                className="w-10 h-10 rounded-[4px] bg-black flex justify-center items-center"
+                className="w-10 h-10 rounded-[8px] bg-black flex justify-center items-center"
                 href={companyInformations.youtube.url || ''}
               >
                 <Icon

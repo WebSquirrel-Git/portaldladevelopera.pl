@@ -29,7 +29,7 @@ export const PanelAdvantages: React.FC<PanelAdvantagesBlockPropsType> = (props) 
             key={i}
             className="flex flex-col xl:pl-0 pl-[20px] xl:w-[264px] w-full xl:gap-[20px] gap-4"
           >
-            <div className="gradient-brown flex items-center justify-center w-12 h-12 rounded-lg border border-white/10 border-b-0">
+            <div className="gradient-brown flex items-center justify-center w-12 h-12 rounded-lg border border-solid border-white/10 border-b-0 border-l-0">
               <Icon icon={advantage.icon} className="w-6 h-6 text-primaryOrange" />
             </div>
             <h3 className="text-white">{advantage.title}</h3>

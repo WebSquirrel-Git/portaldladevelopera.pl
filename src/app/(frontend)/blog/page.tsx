@@ -62,11 +62,9 @@ export default async function Page({ searchParams }: Args) {
     <div className="flex flex-col bg-black">
       <div className="bg-[url(/background-gradient.webp)] justify-center items-center flex flex-col gap-6 px-4 pt-12 pb-[123px] 2xl:px-[320px] xl:pt-[75px] xl:pb-[175px]">
         <div className="flex w-fit bg-gradientOrangeButton p-[1px] rounded-[32px]">
-          <div className="flex flex-row gap-2.5 bg-[#512714] xl:py-1 xl:pl-[7px] xl:pr-3 p-1 rounded-[32px]">
+          <div className="flex flex-row gap-1 bg-[#512714] xl:py-1 xl:pl-[7px] xl:pr-[14px] p-1 rounded-[32px]">
             <Image src={BlogIcon} alt="Blog dla dewelopera" className="w-6 h-6" />
-            <span className="xl:flex hidden bg-blend-screen gradient-text bg-gradientOrangeButton bg-clip-text text-transparent">
-              Blog dla dewelopera
-            </span>
+            <span className="xl:flex hidden gradient-orange-text">Blog dla dewelopera</span>
           </div>
         </div>
 

@@ -17,7 +17,7 @@ export const PanelPresentation: React.FC<PanelPresentationBlockPropsType> = (pro
         {slidesArray.map((slide, i) => (
           <div
             key={i}
-            className={`flex flex-col-reverse gap-8 justify-between ${i % 2 === 0 ? 'xl:flex-row' : 'xl:flex-row-reverse'}`}
+            className={`flex flex-col-reverse h-fit gap-8 justify-between ${i % 2 === 0 ? 'xl:flex-row' : 'xl:flex-row-reverse'}`}
           >
             <div className="flex flex-col gap-8 max-w-[472px] justify-center">
               <div className="xl:flex hidden">
@@ -28,7 +28,10 @@ export const PanelPresentation: React.FC<PanelPresentationBlockPropsType> = (pro
               </div>
               <div className="flex flex-col gap-4">
                 {slide.slide.slideList.map((listItem, z) => (
-                  <div key={z} className="flex flex-row gap-2 items-center justify-start">
+                  <div
+                    key={z}
+                    className="flex flex-row gap-2 items-center justify-start max-h-[590px]"
+                  >
                     <Image src={StarIcon} className="w-6 h-6" alt="Gwiazdka" />
                     <RichText
                       data={listItem.slideListDescription}
@@ -40,8 +43,8 @@ export const PanelPresentation: React.FC<PanelPresentationBlockPropsType> = (pro
             </div>
             <Media
               resource={slide.slide.image}
-              className="xl:h-full xl:w-auto w-full h-auto"
-              imgClassName="object-contain w-full"
+              className="xl:max-h-[500px] max-w-[590px] w-fit"
+              imgClassName="object-contain w-full h-full"
             />
             <div className="xl:hidden flex">
               <RichText

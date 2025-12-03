@@ -4,6 +4,7 @@ import Image from 'next/image'
 import OtwarteDaneImg from '@/assets/otwarte_dane_wersja_podstawowa_poziom_pl.png'
 import MinisterstwoImg from '@/assets/Ministerstwo_Cyfryzacji_logo_2023.png'
 import Link from 'next/link'
+import { LinkButton } from '@/components/ui/LinkButton/LinkButton'
 
 export const PanelNeed: React.FC<PanelNeedBlockPropsType> = (props) => {
   const { header, description, button } = props
@@ -31,12 +32,7 @@ export const PanelNeed: React.FC<PanelNeedBlockPropsType> = (props) => {
           </div>
         </div>
       </div>
-      <Link
-        className="text-black rounded-lg box-border bg-primaryOrange border-[1px] border-white font-medium text-[18px] py-[18px] px-6 cursor-pointer"
-        href={button.url}
-      >
-        {button.title}
-      </Link>
+      <LinkButton url={button.url} label={button.title} />
     </div>
   )
 }
