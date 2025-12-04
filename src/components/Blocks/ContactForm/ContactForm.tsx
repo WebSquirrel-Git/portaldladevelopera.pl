@@ -24,7 +24,7 @@ interface ContactFormProps{
 const schema = z.object({
   name: z.string().min(3,'Minimalna długość wynosi 3 znaki'),
   email: z.email('Nieprawidłowy adres e-mail. Spróbuj ponownie.'),
-  privacyPolicy: z.literal(true,'To pole jest wymagane'),
+  privacyPolicy: z.literal(true,),
 });
 type FormFields = z.infer<typeof schema>
 
@@ -52,14 +52,18 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
     if(privacyPolicy===true){
  try {
       setStatus('Wysyłanie...')
-      const res = await fetch("/api/contact", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    "Imię i nazwisko": name,
-    "Email": email,
-  }),
-});
+      const res = await fetch( `https://formsubmit.co/ajax/${submitOnEmail}`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body:
+      JSON.stringify({
+        "Imię i nazwisko": name,
+        "Email": email,
+      }),
+        },)
 
       if (!res.ok) {
         setStatus('Błąd wysyłania')
