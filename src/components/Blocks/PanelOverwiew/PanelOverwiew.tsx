@@ -1,13 +1,13 @@
 'use client'
 import { PanelOverwiewBlockPropsType } from '@/blocks/PanelOverwiewBlock/Component'
 import StarIcon from '@/assets/icons/star.svg'
-import Laptop from '@/assets/laptop.svg'
+
 import AiIcon from '@/assets/icons/ai.svg'
 import BlogIcon from '@/assets/icons/blog.svg'
 import BuildingHomeIcon from '@/assets/icons/building-home.svg'
 import Image from 'next/image'
-import Link from 'next/link'
 import { LinkButton } from '@/components/ui/LinkButton/LinkButton'
+import { Laptop } from './Laptop'
 
 const TAGS_LIST = [
   {
@@ -71,7 +71,7 @@ export const PanelOverwiew: React.FC<PanelOverwiewBlockPropsType> = (props) => {
           </div>
         ))}
       </div>
-      <Image src={Laptop} alt="Panel dla Dewelopera" className="w-full h-auto" />
+     <Laptop/>
     </div>
   )
 }
