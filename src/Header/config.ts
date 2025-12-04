@@ -31,6 +31,40 @@ export const Header: GlobalConfig = {
         },
       },
     },
+     {
+          name: 'facebook',
+          label: 'Facebook',
+          type: 'group',
+          fields: [
+            {
+              name: 'ikona',
+              label: 'Ikona - wejdź na stronę https://icon-sets.iconify.design/ i wklej kod ikony.',
+              type: 'text',
+            },
+            {
+              name: 'url',
+              label: 'Url',
+              type: 'text',
+            },
+          ],
+        },
+        {
+          name: 'instagram',
+          label: 'Instagram',
+          type: 'group',
+          fields: [
+            {
+              name: 'ikona',
+              label: 'Ikona - wejdź na stronę https://icon-sets.iconify.design/ i wklej kod ikony.',
+              type: 'text',
+            },
+            {
+              name: 'url',
+              label: 'Url',
+              type: 'text',
+            },
+          ],
+        },
   ],
   hooks: {
     afterChange: [revalidateHeader],

@@ -54,7 +54,7 @@ body {
 .gradient-orange-black-radial {
   background: radial-gradient(
     125.47% 103.4% at 50% 10%,
-    rgba(0, 0, 0, 0) 37.41%,
+    rgba(0, 0, 0, 0) 47.41%,
     #f0642e 69.27%,
     #ffdc5f 100%
   );

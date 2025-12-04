@@ -73,11 +73,11 @@ export const NavListMobile: React.FC<NavListMobilePropsType> = ({ data, showMenu
             Zaloguj się
           </Link>
           <div className="flex flex-row justify-start items-center gap-4 pr-9 py-8">
-            <Link href="/" className="w-10 h-10 flex items-center justify-center">
-              <Icon icon="ph:facebook-logo-fill" className="w-6 h-6 text-white" />
+            <Link href={data.facebook?.url||''} className="w-10 h-10 flex items-center justify-center">
+              <Icon icon={data.facebook?.ikona||''} className="w-6 h-6 text-white" />
             </Link>
-            <Link href="/" className="w-10 h-10 flex items-center justify-center">
-              <Icon icon="ph:instagram-logo" className="w-6 h-6 text-white" />
+            <Link href={data.instagram?.url||''} className="w-10 h-10 flex items-center justify-center">
+              <Icon icon={data.instagram?.ikona||''} className="w-6 h-6 text-white" />
             </Link>
           </div>
           <span className="flex pr-9 py-8 text-white text-[12px] leading-[20px]">

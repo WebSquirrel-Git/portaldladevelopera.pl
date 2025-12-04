@@ -48,6 +48,7 @@ const config = {
         darkGrey: '#333333',
         black: '#060606',
         yellowStroke: '#FEE298',
+         dark: '#1B1B1C',
         gradientOrange: 'linear-gradient(90deg, #FE9A79 0.01%, #F8C07D 50.01%, #FEE298 100%)',
       },
       backgroundImage: {

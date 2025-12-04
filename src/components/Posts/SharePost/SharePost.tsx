@@ -6,8 +6,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 import LinkedinIcon from '@/assets/icons/streamline-logos_linkedin-logo-block.svg'
 import FacebookIcon from '@/assets/icons/raphael_facebook.svg'
-import InstagramIcon from '@/assets/icons/mage_instagram-square.svg'
-import SlackIcon from '@/assets/icons/streamline-logos_slack-logo-block.svg'
 import LinkIcon from '@/assets/icons/link-gradient.svg'
 
 interface SharePostProps {
@@ -62,20 +60,6 @@ export const SharePost: React.FC<SharePostProps> = (props) => {
           >
             <Image src={FacebookIcon} alt="Facebook" className="w-4 h-4" />
             <p className="lg:block hidden text-[14px] !text-lightGrey font-medium">Facebook</p>
-          </Link>
-          <Link
-            href={`https://www.instagram.com/?url=${process.env.NEXT_PUBLIC_APP_URL}/blog/${slug}`}
-            className="flex flex-row gap-2 items-center justify-center lg:justify-start h-10 px-4 w-10 lg:w-full border-solid border-dark/90 lg:border-none border lg:rounded-none rounded-lg"
-          >
-            <Image src={InstagramIcon} alt="Instagram" className="w-4 h-4" />
-            <p className="lg:block hidden text-[14px] !text-lightGrey font-medium">Instagram</p>
-          </Link>
-          <Link
-            href={`https://slack.com/share?text=${process.env.NEXT_PUBLIC_APP_URL}/blog/${slug}`}
-            className="flex flex-row gap-2 items-center justify-center lg:justify-start h-10 px-4 w-10 lg:w-full border-solid border-dark/90 lg:border-none border lg:rounded-none rounded-lg"
-          >
-            <Image src={SlackIcon} alt="Slack" className="w-4 h-4" />
-            <p className="lg:block hidden text-[14px] !text-lightGrey font-medium">Slack</p>
           </Link>
           <button
             onClick={copyLink}
