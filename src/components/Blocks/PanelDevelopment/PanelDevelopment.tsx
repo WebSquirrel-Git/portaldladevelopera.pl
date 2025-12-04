@@ -28,16 +28,16 @@ export const PanelDevelopment: React.FC<PanelDevelopmentBlockPropsType> = (props
         {categoriesList[activeCategory].category.subcategoriesList.map((subCat, z) => (
           <div
             key={z}
-            className="max-w-[560px] 2xl:max-w-[384px] flex flex-col gradient-black-brown rounded-[20px] border-solid border border-white/10 border-b-0"
+            className={`max-w-[560px] 2xl:max-w-[384px] flex flex-col ${z===0?'gradient-black-brown':'bg-dark/90'} rounded-[20px] border-solid border border-white/10 border-b-0`}
           >
             <div className="flex items-center justify-center py-6 xl:py-8 rounded-[20px]">
-              <div className="flex items-center justify-center w-[80px] h-[80px] rounded-full border border-solid border-white/10 gradient-brown">
+              <div className="flex items-center justify-center w-[60px] xl:w-[80px] h-[60px] xl:h-[80px] rounded-full border border-solid border-white/10 gradient-brown">
                 <div className="flex items-center justify-center gradient-orange w-10 h-10 rounded-full">
                   <Icon icon={subCat.icon} className="text-black w-4 h-4" />
                 </div>
               </div>
             </div>
-            <div className="flex flex-col gap-[18px] px-[20px] pb-8 xl:px-8 xl:pb-12">
+            <div className="flex flex-col gap-[18px] px-[20px] pb-8 xl:px-8">
               <h3 className="text-white text-center">{subCat.title}</h3>
               <RichText data={subCat.description} className="text-lightGrey text-center" />
             </div>

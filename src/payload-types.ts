@@ -191,6 +191,7 @@ export interface Page {
     | PanelFaqBlock
     | PrivacyPolicyBlock
     | RegulationsBlock
+    | ContactFormBlock
   )[];
   meta?: {
     title?: string | null;
@@ -772,6 +773,16 @@ export interface RegulationsBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactFormBlock".
+ */
+export interface ContactFormBlock {
+  submitOnEmail: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'contactFormBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1047,6 +1058,7 @@ export interface PagesSelect<T extends boolean = true> {
         panelFaqBlock?: T | PanelFaqBlockSelect<T>;
         privacyPolicyBlock?: T | PrivacyPolicyBlockSelect<T>;
         regulationsBlock?: T | RegulationsBlockSelect<T>;
+        contactFormBlock?: T | ContactFormBlockSelect<T>;
       };
   meta?:
     | T
@@ -1296,6 +1308,15 @@ export interface RegulationsBlockSelect<T extends boolean = true> {
         text?: T;
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "ContactFormBlock_select".
+ */
+export interface ContactFormBlockSelect<T extends boolean = true> {
+  submitOnEmail?: T;
   id?: T;
   blockName?: T;
 }
@@ -1602,6 +1623,14 @@ export interface Header {
         id?: string | null;
       }[]
     | null;
+  facebook?: {
+    ikona?: string | null;
+    url?: string | null;
+  };
+  instagram?: {
+    ikona?: string | null;
+    url?: string | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1706,6 +1735,18 @@ export interface HeaderSelect<T extends boolean = true> {
               label?: T;
             };
         id?: T;
+      };
+  facebook?:
+    | T
+    | {
+        ikona?: T;
+        url?: T;
+      };
+  instagram?:
+    | T
+    | {
+        ikona?: T;
+        url?: T;
       };
   updatedAt?: T;
   createdAt?: T;

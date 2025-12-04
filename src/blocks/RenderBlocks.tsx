@@ -14,6 +14,7 @@ import { PanelFaqBlock } from './PanelFaqBlock/Component'
 import { TextArticleBlock } from './Posts/TextArticleBlock/Component'
 import { PrivacyPolicyBlock } from './PrivacyPolicyBlock/Component'
 import { RegulationsBlock } from './RegulationsBlock/Component'
+import { ContactFormBlock } from './ContactFormBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -28,6 +29,7 @@ const blockComponents = {
   textBlock: TextArticleBlock,
   privacyPolicyBlock: PrivacyPolicyBlock,
   regulationsBlock: RegulationsBlock,
+  contactFormBlock:ContactFormBlock
 }
 
 export const RenderBlocks: React.FC<{

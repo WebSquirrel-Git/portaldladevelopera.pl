@@ -23,6 +23,7 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
     "@iconify/react": "^6.0.2",
     "@payloadcms/admin-bar": "3.65.0",
     "@payloadcms/db-mongodb": "3.65.0",
@@ -61,7 +62,8 @@
     "react-hook-form": "7.45.4",
     "sharp": "0.34.2",
     "tailwind-merge": "^2.3.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^4.1.13"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
