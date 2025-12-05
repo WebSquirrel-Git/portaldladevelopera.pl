@@ -5,9 +5,12 @@ import ZgodnoscCard from '@/assets/laptopAnimations/zgodnosc.svg'
 import AktualizacjaCard from '@/assets/laptopAnimations/darmowa-aktualizacja.svg'
 import DoswiadczenieCard from '@/assets/laptopAnimations/doswiadczenie.svg'
 import AutomatyczneRaportyCard from '@/assets/laptopAnimations/automatyczne-raporty.svg'
-import TworzenieInwestycjiCard from '@/assets/laptopAnimations/tworzenie.svg'
+import InwestycjeCard from '@/assets/laptopAnimations/tworzenie.svg'
 import MenuImage from '@/assets/laptopAnimations/Menu.png'
 import HeaderImage from '@/assets/laptopAnimations/header.png'
+import DeweloperzyBlock from '@/assets/laptopAnimations/przegląd.png'
+import AktualizacjeBlock from '@/assets/laptopAnimations/aktualizacje.png'
+import InwestycjeBlock from '@/assets/laptopAnimations/inwestycje.png'
 import Image from 'next/image'
 import { animate, createScope, spring, createDraggable, onScroll } from 'animejs';
 import { RefObject, useEffect, useRef, useState } from 'react';
@@ -21,129 +24,159 @@ useEffect(() => {
   
     scope.current = createScope({ root }).add( self => {
     
-// //header
-//  animate('.header', {
+//DEWELOPERZY
+ animate('.deweloperzyblock', {
       
-//         autoplay: onScroll({
-//     container: '.container',
-//     debug: true,
-//      onEnter: () => {
-//     animate('.header', {
-//       scaleY: [0, 1],
-//       duration: 500,
-//     })
-// }
-//   })
-//       });
-// //menu
-//  animate('.menu', {
+        autoplay: onScroll({
+    container: '.container',
+    debug: false,
+     onEnter: () => {
+    animate('.deweloperzyblock', {
+      scale: [0, 1],
+      opacity:[0,1],
+      duration: 700,
+    })
+}
+  })
+      });
+         //1
+      animate('.deweloperzycard', {
       
-//         autoplay: onScroll({
-//     container: '.container',
-//     debug: true,
-//      onEnter: () => {
-//     animate('.menu', {
-//       scaleX: [0, 1],
-//       duration: 500,
-//       delay:500
-//     })
-// }
-//   })
-//       });
+        autoplay: onScroll({
+    container: '.container',
+    debug: false,
+     onEnter: () => {
+    animate('.deweloperzycard', {
+      scale: [0, 1],
+       opacity:[0,1],
+      duration: 300,
+      delay:700
+    })
+}
+  })
+      });
 
-      //1
-      animate('.deweloperzy', {
+//AKTUALIZACJE
+ animate('.aktualizacjeblock', {
       
         autoplay: onScroll({
     container: '.container',
-    debug: true,
+    debug: false,
      onEnter: () => {
-    animate('.deweloperzy', {
+    animate('.aktualizacjeblock', {
       scale: [0, 1],
+      opacity:[0,1],
       duration: 700,
+      delay:1000
     })
 }
   })
       });
-      //2
-            animate('.zgodnosc', {
+      //3
+            animate('.aktualizacjecard', {
       
         autoplay: onScroll({
     container: '.container',
-    debug: true,
+    debug: false,
      onEnter: () => {
-    animate('.zgodnosc', {
+    animate('.aktualizacjecard', {
       scale: [0, 1],
-      duration: 700,
-      delay:600
+      opacity:[0,1],
+      duration: 300,
+      delay:1700
     })
 }
   })
       });
-      
-//3
-            animate('.aktualizacja', {
+
+      //INWESTYCJE
+       animate('.inwestycjeblock', {
       
         autoplay: onScroll({
     container: '.container',
-    debug: true,
+    debug: false,
      onEnter: () => {
-    animate('.aktualizacja', {
+    animate('.inwestycjeblock', {
       scale: [0, 1],
+      opacity:[0,1],
       duration: 700,
-      delay:1200
+      delay:2000
     })
 }
   })
       });
-//4
-                  animate('.doswiadczenie', {
+
+      animate('.inwestycjecard', {
       
         autoplay: onScroll({
     container: '.container',
-    debug: true,
+    debug: false,
      onEnter: () => {
-    animate('.doswiadczenie', {
+    animate('.inwestycjecard', {
       scale: [0, 1],
-      duration: 700,
-      delay:300
-    })
-}
-  })
-      });
-//5
-                  animate('.raporty', {
-      
-        autoplay: onScroll({
-    container: '.container',
-    debug: true,
-     onEnter: () => {
-    animate('.raporty', {
-      scale: [0, 1],
-      duration: 700,
-      delay:900
-    })
-}
-  })
-      });
-//6
-                  animate('.inwestycje', {
-      
-        autoplay: onScroll({
-    container: '.container',
-    debug: true,
-     onEnter: () => {
-    animate('.inwestycje', {
-      scale: [0, 1],
-      duration: 700,
-      delay:1500
+      opacity:[0,1],
+      duration: 300,
+      delay:2700
     })
 }
   })
       });
    
+      //2
+            animate('.zgodnoscard', {
+      
+        autoplay: onScroll({
+    container: '.container',
+    debug: false,
+     onEnter: () => {
+    animate('.zgodnoscard', {
+      scale: [0, 1],
+      opacity:[0,1],
+      duration: 300,
+      delay:3200
+    })
+}
+  })
+      });
+      
 
+//4
+                  animate('.doswiadczeniecard', {
+      
+        autoplay: onScroll({
+    container: '.container',
+    debug: false,
+     onEnter: () => {
+    animate('.doswiadczeniecard', {
+      scale: [0, 1],
+      opacity:[0,1],
+      duration: 300,
+      delay:3500
+    })
+}
+  })
+      });
+//5
+                  animate('.raportycard', {
+      
+        autoplay: onScroll({
+    container: '.container',
+    debug: false,
+     onEnter: () => {
+    animate('.raportycard', {
+      scale: [0, 1],
+      opacity:[0,1],
+      duration: 300,
+      delay:3800
+    })
+}
+  })
+      });
     });
+   
+
+//6
+            
 
     // Properly cleanup all anime.js instances declared inside the scope
     return () => scope.current.revert()
@@ -154,12 +187,20 @@ useEffect(() => {
         <div ref={root} className="relative container">
 <Image src={MenuImage} alt="Deweloperzy" className="menu scale-0 absolute h-[72%] object-contain object-left top-[1%] left-[18.5%]" />
 <Image src={HeaderImage} alt="Deweloperzy" className="header scale-0 absolute w-[56%] object-contain object-top top-[3%] left-[24%]" />
-            <Image src={DeweloperzyCard} alt="Deweloperzy" className="deweloperzy scale-0 absolute w-[211px] top-[16%] left-[9%]" />
-            <Image src={ZgodnoscCard} alt="Deweloperzy" className="zgodnosc scale-0 absolute w-[168px] top-[49%] left-[12%]" />
-            <Image src={AktualizacjaCard} alt="Deweloperzy" className="aktualizacja scale-0 absolute w-[238px] top-[57%] left-[14%]" />
-             <Image src={DoswiadczenieCard} alt="Deweloperzy" className="doswiadczenie absolute w-[238px] top-[11%] right-[8%]" />
-            <Image src={AutomatyczneRaportyCard} alt="Deweloperzy" className="raporty absolute w-[162px] top-[24%] right-[10%]" />
-            <Image src={TworzenieInwestycjiCard} alt="Deweloperzy" className="inwestycje absolute w-[248px] top-[49%] right-[11%]" />
+            <Image src={DeweloperzyBlock} alt="Deweloperzy" className="deweloperzyblock scale-0 opacity-0 absolute w-[56%] object-contain object-top top-[10%] left-[23.5%]" />
+            <Image src={DeweloperzyCard} alt="Deweloperzy" className="deweloperzycard scale-0 opacity-0 absolute w-[211px] top-[16%] left-[9%]" />
+            
+             <Image src={AktualizacjeBlock} alt="Deweloperzy" className="aktualizacjeblock scale-0 opacity-0 absolute w-[27.5%] object-contain object-top top-[26%] left-[24%]" />
+            <Image src={AktualizacjaCard} alt="Deweloperzy" className="aktualizacjecard scale-0 opacity-0 absolute w-[238px] top-[57%] left-[14%]" />
+
+ <Image src={InwestycjeBlock} alt="Deweloperzy" className="inwestycjeblock scale-0 opacity-0 absolute w-[33.1%] object-contain object-top top-[26%] left-[49%]" />
+ <Image src={InwestycjeCard} alt="Deweloperzy" className="inwestycjecard scale-0 opacity-0  absolute w-[248px] top-[49%] right-[11%]" />
+
+            <Image src={ZgodnoscCard} alt="Deweloperzy" className="zgodnoscard scale-0 opacity-0 absolute w-[168px] top-[49%] left-[12%]" />
+            
+             <Image src={DoswiadczenieCard} alt="Deweloperzy" className="doswiadczeniecard scale-0 opacity-0  absolute w-[238px] top-[11%] right-[8%]" />
+            <Image src={AutomatyczneRaportyCard} alt="Deweloperzy" className="raportycard scale-0 opacity-0  absolute w-[162px] top-[24%] right-[10%]" />
+           
            
             <Image src={LaptopImage} alt="Panel dla Dewelopera" className="w-full h-auto" />
         </div>
