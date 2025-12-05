@@ -4,6 +4,7 @@ import RichText from '@/components/RichText'
 import StarIcon from '@/assets/icons/star-list.svg'
 import Image from 'next/image'
 import { Media } from '@/components/Media'
+import { Card } from './Card'
 
 export const PanelPresentation: React.FC<PanelPresentationBlockPropsType> = (props) => {
   const { header, slidesArray } = props
@@ -41,11 +42,7 @@ export const PanelPresentation: React.FC<PanelPresentationBlockPropsType> = (pro
                 ))}
               </div>
             </div>
-            <Media
-              resource={slide.slide.image}
-              className="xl:max-h-[500px] max-w-[590px] w-fit"
-              imgClassName="object-contain w-full h-full"
-            />
+            <Card image={slide.slide.image} index={i}/>
             <div className="xl:hidden flex">
               <RichText
                 data={slide.slide.header}
