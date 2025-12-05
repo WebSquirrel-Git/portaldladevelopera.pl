@@ -28,7 +28,7 @@ export const PanelOverwiew: React.FC<PanelOverwiewBlockPropsType> = (props) => {
   const { description, button, testimonialsList } = props
 
   return (
-    <div className="pt-10 px-4 gap-12 flex flex-col 2xl:pt-[100px] 2xl:px-[274px] justify-center items-center">
+    <div className="pt-10 px-4 gap-12 flex flex-col 2xl:pt-[48px] 2xl:px-[274px] justify-center items-center">
       <div className="flex flex-col gap-3 2xl:gap-6 justify-start items-center">
         <div className="flex flex-row gap-3 items-center w-fit">
           {TAGS_LIST.map((tag, i) => (
