@@ -1,5 +1,5 @@
 'use client'
-import LaptopImage from '@/assets/laptopAnimations/laptop-circlebg.png'
+import LaptopImage from '@/assets/laptopAnimations/laptop.png'
 import DeweloperzyCard from '@/assets/laptopAnimations/zarzadzaj.svg'
 import ZgodnoscCard from '@/assets/laptopAnimations/zgodnosc.svg'
 import AktualizacjaCard from '@/assets/laptopAnimations/darmowa-aktualizacja.svg'
@@ -34,7 +34,7 @@ useEffect(() => {
     animate('.deweloperzyblock', {
       scale: [0, 1],
       opacity:[0,1],
-      duration: 700,
+      duration: 1000,
     })
 }
   })
@@ -49,29 +49,29 @@ useEffect(() => {
     animate('.deweloperzycard', {
       scale: [0, 1],
        opacity:[0,1],
-      duration: 300,
-      delay:700
-    })
-}
-  })
-      });
-
-//AKTUALIZACJE
- animate('.aktualizacjeblock', {
-      
-        autoplay: onScroll({
-    container: '.container',
-    debug: false,
-     onEnter: () => {
-    animate('.aktualizacjeblock', {
-      scale: [0, 1],
-      opacity:[0,1],
       duration: 700,
       delay:1000
     })
 }
   })
       });
+
+//AKTUALIZACJE
+//  animate('.aktualizacjeblock', {
+      
+//         autoplay: onScroll({
+//     container: '.container',
+//     debug: false,
+//      onEnter: () => {
+//     animate('.aktualizacjeblock', {
+//       scale: [0, 1],
+//       opacity:[0,1],
+//       duration: 700,
+//       delay:1000
+//     })
+// }
+//   })
+//       });
       //3
             animate('.aktualizacjecard', {
       
@@ -82,8 +82,8 @@ useEffect(() => {
     animate('.aktualizacjecard', {
       scale: [0, 1],
       opacity:[0,1],
-      duration: 300,
-      delay:1700
+      duration: 700,
+      delay:2000
     })
 }
   })
@@ -99,8 +99,8 @@ useEffect(() => {
     animate('.inwestycjeblock', {
       scale: [0, 1],
       opacity:[0,1],
-      duration: 700,
-      delay:2000
+      duration: 1000,
+      delay:6000
     })
 }
   })
@@ -115,8 +115,8 @@ useEffect(() => {
     animate('.inwestycjecard', {
       scale: [0, 1],
       opacity:[0,1],
-      duration: 300,
-      delay:2700
+      duration: 700,
+      delay:7000
     })
 }
   })
@@ -132,8 +132,8 @@ useEffect(() => {
     animate('.zgodnoscard', {
       scale: [0, 1],
       opacity:[0,1],
-      duration: 300,
-      delay:3200
+      duration: 700,
+      delay:3000
     })
 }
   })
@@ -150,8 +150,8 @@ useEffect(() => {
     animate('.doswiadczeniecard', {
       scale: [0, 1],
       opacity:[0,1],
-      duration: 300,
-      delay:3500
+      duration: 700,
+      delay:4000
     })
 }
   })
@@ -166,8 +166,9 @@ useEffect(() => {
     animate('.raportycard', {
       scale: [0, 1],
       opacity:[0,1],
-      duration: 300,
-      delay:3800
+      duration: 700,
+      delay:5000,
+      
     })
 }
   })
@@ -185,21 +186,21 @@ useEffect(() => {
 
     return(
         <div ref={root} className="relative container">
-<Image src={MenuImage} alt="Deweloperzy" className="menu scale-0 absolute h-[72%] object-contain object-left top-[1%] left-[18.5%]" />
-<Image src={HeaderImage} alt="Deweloperzy" className="header scale-0 absolute w-[56%] object-contain object-top top-[3%] left-[24%]" />
-            <Image src={DeweloperzyBlock} alt="Deweloperzy" className="deweloperzyblock scale-0 opacity-0 absolute w-[56%] object-contain object-top top-[10%] left-[23.5%]" />
-            <Image src={DeweloperzyCard} alt="Deweloperzy" className="deweloperzycard scale-0 opacity-0 absolute w-[211px] top-[16%] left-[9%]" />
+{/* <Image src={MenuImage} alt="Deweloperzy" className="menu scale-0 absolute h-[72%] object-contain object-left top-[1%] left-[18.5%]" />
+<Image src={HeaderImage} alt="Deweloperzy" className="header scale-0 absolute w-[56%] object-contain object-top top-[3%] left-[24%]" /> */}
+            <Image src={DeweloperzyBlock} alt="Deweloperzy" className="deweloperzyblock scale-0 opacity-0 absolute w-[15%] object-contain object-top top-[13.8%] left-[24.6%]" />
+            <Image src={DeweloperzyCard} alt="Deweloperzy" className="deweloperzycard scale-0 opacity-0 absolute w-[255px] top-[16%] left-[9%]" />
             
-             <Image src={AktualizacjeBlock} alt="Deweloperzy" className="aktualizacjeblock scale-0 opacity-0 absolute w-[27.5%] object-contain object-top top-[26%] left-[24%]" />
-            <Image src={AktualizacjaCard} alt="Deweloperzy" className="aktualizacjecard scale-0 opacity-0 absolute w-[238px] top-[57%] left-[14%]" />
+             {/* <Image src={AktualizacjeBlock} alt="Deweloperzy" className="aktualizacjeblock scale-0 opacity-0 absolute w-[27.5%] object-contain object-top top-[26%] left-[24%]" /> */}
+            <Image src={AktualizacjaCard} alt="Deweloperzy" className="aktualizacjecard scale-0 opacity-0 absolute w-[284px] top-[57%] left-[14%]" />
 
- <Image src={InwestycjeBlock} alt="Deweloperzy" className="inwestycjeblock scale-0 opacity-0 absolute w-[33.1%] object-contain object-top top-[26%] left-[49%]" />
- <Image src={InwestycjeCard} alt="Deweloperzy" className="inwestycjecard scale-0 opacity-0  absolute w-[248px] top-[49%] right-[11%]" />
+ <Image src={InwestycjeBlock} alt="Deweloperzy" className="inwestycjeblock scale-0 opacity-0 absolute w-[28.7%] object-contain object-top top-[38%] left-[51.1%]" />
+ <Image src={InwestycjeCard} alt="Deweloperzy" className="inwestycjecard scale-0 opacity-0  absolute w-[299px] top-[49%] right-[11%]" />
 
-            <Image src={ZgodnoscCard} alt="Deweloperzy" className="zgodnoscard scale-0 opacity-0 absolute w-[168px] top-[49%] left-[12%]" />
+            <Image src={ZgodnoscCard} alt="Deweloperzy" className="zgodnoscard scale-0 opacity-0 absolute w-[213px] top-[49%] left-[12%]" />
             
-             <Image src={DoswiadczenieCard} alt="Deweloperzy" className="doswiadczeniecard scale-0 opacity-0  absolute w-[238px] top-[11%] right-[8%]" />
-            <Image src={AutomatyczneRaportyCard} alt="Deweloperzy" className="raportycard scale-0 opacity-0  absolute w-[162px] top-[24%] right-[10%]" />
+             <Image src={DoswiadczenieCard} alt="Deweloperzy" className="doswiadczeniecard scale-0 opacity-0  absolute w-[297px] top-[11%] right-[8%]" />
+            <Image src={AutomatyczneRaportyCard} alt="Deweloperzy" className="raportycard scale-0 opacity-0  absolute w-[200px] top-[24%] right-[10%]" />
            
            
             <Image src={LaptopImage} alt="Panel dla Dewelopera" className="w-full h-auto" />
