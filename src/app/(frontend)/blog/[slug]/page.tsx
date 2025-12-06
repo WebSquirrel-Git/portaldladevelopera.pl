@@ -77,7 +77,7 @@ export default async function Post({ params: paramsPromise }: Args) {
   const schema = articleSchema(post)
   return (
     <article className="bg-black pt-[18px] pb-[96px] px-4 xl:pt-16 xl:pb-[120px] 2xl:px-[360px] flex flex-col xl:gap-12 gap-6">
-      <Script type='application/ld+json' strategy='lazyOnload'>
+      <Script id={`Schema-for-${post.slug}`} type='application/ld+json' strategy='lazyOnload'>
       {JSON.stringify(schema)}
       </Script>
       {/* Allows redirects for valid pages too */}
