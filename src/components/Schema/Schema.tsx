@@ -1,4 +1,19 @@
-import type {Media, Post} from '@/payload-types'
+import type {Media, Post, User} from '@/payload-types'
+
+export interface ArticleSchemaProps{
+    
+    '@context': string;
+    '@type': string;
+    headline: string;
+    datePublished: Date;
+    dateModified: Date;
+    image: string | null | undefined;
+    author: {
+        type: string;
+        name: string | User;
+    };
+
+}
 
 export const articleSchema = (props:Post)=>{
 const image:Media = props.meta?.image as Media
