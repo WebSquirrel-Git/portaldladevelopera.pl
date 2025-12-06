@@ -16,6 +16,7 @@ import { SharePost } from '@/components/Posts/SharePost/SharePost'
 import { PostContent } from '@/components/Posts/PostContent/PostContent'
 import { articleSchema } from '@/components/Schema/Schema'
 import Script from 'next/script'
+import { SchemaComponent } from '@/components/Schema/SchemaComponent'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -77,9 +78,7 @@ export default async function Post({ params: paramsPromise }: Args) {
   const schema = articleSchema(post)
   return (
     <article className="bg-black pt-[18px] pb-[96px] px-4 xl:pt-16 xl:pb-[120px] 2xl:px-[360px] flex flex-col xl:gap-12 gap-6">
-      <Script id={`Schema-for-${post.slug}`} type='application/ld+json' strategy='lazyOnload'>
-      {JSON.stringify(schema)}
-      </Script>
+     <SchemaComponent post={post} schema={schema}/>
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
 
