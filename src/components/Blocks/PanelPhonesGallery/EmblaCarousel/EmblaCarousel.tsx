@@ -27,7 +27,6 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
   }, [])
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } = useDotButton(emblaApi, onNavButtonClick)
-
   return (
     <section className={styles.embla}>
       <DescriptionCard

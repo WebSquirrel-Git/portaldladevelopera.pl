@@ -1,12 +1,12 @@
 import { PanelFaq } from '@/components/Blocks/PanelFaq/PanelFaq'
-import { Faq } from '@/payload-types'
+import { Faq, FolderInterface } from '@/payload-types'
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 
 export interface PanelFaqBlockPropsType {
   header: string
   subheader: string
-  questionsList: Faq[]
+  questionsFolder: FolderInterface
 }
 
 function isFaq(p: any): p is Faq {
@@ -14,8 +14,8 @@ function isFaq(p: any): p is Faq {
 }
 
 export const PanelFaqBlock: React.FC<PanelFaqBlockPropsType> = async (props) => {
+  const { questionsFolder } = props
   const payload = await getPayload({ config: configPromise })
-  const faqsIds = props.questionsList.map((r) => (typeof r === 'string' ? r : r.id))
   const { docs: faq } = await payload.find({
     collection: 'faq',
     depth: 2,
@@ -24,11 +24,11 @@ export const PanelFaqBlock: React.FC<PanelFaqBlockPropsType> = async (props) => 
       description: true,
     },
     where: {
-      id: {
-        in: faqsIds,
+      folder: {
+        equals: questionsFolder.id,
       },
     },
   })
-  const orderedFaqs: Faq[] = faqsIds.map((id) => faq.find((p) => p?.id === id)).filter(isFaq)
+  const orderedFaqs: Faq[] = faq.filter(isFaq)
   return <PanelFaq header={props.header} subheader={props.subheader} questionsList={orderedFaqs} />
 }

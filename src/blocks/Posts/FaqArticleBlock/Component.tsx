@@ -1,11 +1,11 @@
 'use server'
-import { Faq } from '@/payload-types'
+import { Faq, FolderInterface } from '@/payload-types'
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
 import { PostFaq } from '@/components/Posts/PostFaq/PostFaq'
 
 export interface FaqArticleBlockPropsType {
-  questionsList: Faq[]
+  questionsFolder: FolderInterface
 }
 
 function isFaq(p: any): p is Faq {
@@ -13,9 +13,8 @@ function isFaq(p: any): p is Faq {
 }
 
 export const FaqArticleBlock: React.FC<FaqArticleBlockPropsType> = async (props) => {
-  const { questionsList } = props
+  const { questionsFolder } = props
   const payload = await getPayload({ config: configPromise })
-  const faqsIds = questionsList?.map((r) => (typeof r === 'string' ? r : r.id))
   const { docs: faq } = await payload.find({
     collection: 'faq',
     depth: 2,
@@ -24,11 +23,11 @@ export const FaqArticleBlock: React.FC<FaqArticleBlockPropsType> = async (props)
       description: true,
     },
     where: {
-      id: {
-        in: faqsIds,
+      folder: {
+        equals: questionsFolder.id,
       },
     },
   })
-  const orderedFaqs: Faq[] = faqsIds.map((id) => faq.find((p) => p?.id === id)).filter(isFaq)
+  const orderedFaqs: Faq[] = faq.filter(isFaq)
   return <PostFaq questionsList={orderedFaqs} />
 }

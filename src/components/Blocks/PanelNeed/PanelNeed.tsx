@@ -3,7 +3,7 @@ import { PanelNeedBlockPropsType } from '@/blocks/PanelNeedBlock/Component'
 import Image from 'next/image'
 import OtwarteDaneImg from '@/assets/otwarte_dane_wersja_podstawowa_poziom_pl.png'
 import MinisterstwoImg from '@/assets/Ministerstwo_Cyfryzacji_logo_2023.png'
-import {LinkButtonSM } from '@/components/ui/LinkButton/LinkButton'
+import { LinkButtonSM } from '@/components/ui/LinkButton/LinkButton'
 
 export const PanelNeed: React.FC<PanelNeedBlockPropsType> = (props) => {
   const { header, description, button } = props

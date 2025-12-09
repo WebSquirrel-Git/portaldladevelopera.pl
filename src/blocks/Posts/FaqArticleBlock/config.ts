@@ -9,11 +9,12 @@ export const FaqArticleBlock: Block = {
   },
   fields: [
     {
-      name: 'questionsList',
-      label: 'Lista pytań',
+      name: 'questionsFolder',
+      label: 'Folder z pytaniami',
       type: 'relationship',
-      relationTo: 'faq',
-      hasMany: true,
+      relationTo: 'payload-folders',
+
+      hasMany: false,
       required: true,
     },
   ],

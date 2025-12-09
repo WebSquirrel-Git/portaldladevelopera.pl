@@ -28,7 +28,7 @@ export const PanelDevelopment: React.FC<PanelDevelopmentBlockPropsType> = (props
         {categoriesList[activeCategory].category.subcategoriesList.map((subCat, z) => (
           <div
             key={z}
-            className={`max-w-[560px] 2xl:max-w-[384px] flex flex-col ${z===0?'gradient-black-brown':'bg-dark/90'} rounded-[20px] border-solid border border-white/10 border-b-0`}
+            className={`max-w-[560px] 2xl:max-w-[384px] flex flex-col ${z === 0 ? 'gradient-black-brown' : 'bg-dark/90'} rounded-[20px] border-solid border border-white/10 border-b-0`}
           >
             <div className="flex items-center justify-center py-6 xl:py-8 rounded-[20px]">
               <div className="flex items-center justify-center w-[60px] xl:w-[80px] h-[60px] xl:h-[80px] rounded-full border border-solid border-white/10 gradient-brown">

@@ -1,0 +1,148 @@
+import type { Faq, FolderInterface, Media, Page, Post, User } from '@/payload-types'
+import { lexicalToPlainText } from '@/utilities/lexicalToPlainText'
+import { getPayload } from 'payload'
+import configPromise from '@payload-config'
+
+export async function getFaqsFromFolder(folder: FolderInterface): Promise<Faq[]> {
+  const payload = await getPayload({ config: configPromise })
+  const { docs: faqs } = await payload.find({
+    collection: 'faq',
+    depth: 2,
+    select: {
+      title: true,
+      description: true,
+    },
+    where: {
+      folder: {
+        equals: folder.id,
+      },
+    },
+  })
+  return faqs.filter((f): f is Faq => !!f?.id)
+}
+
+export interface SchemaHomePageProps {
+  '@context': string
+  '@graph': (
+    | {
+        '@type': string
+        url: string
+        name: string
+        logo: string
+        description: string
+        contactPoint?: undefined
+        mainEntity?: undefined
+      }
+    | {
+        '@type': string
+        url: string
+        name: string
+        description: string
+        logo?: undefined
+        contactPoint?: undefined
+        mainEntity?: undefined
+      }
+    | {
+        '@type': string
+        name: string
+        url: string
+        logo: string
+        description: string
+        contactPoint: {
+          '@type': string
+          contactType: string
+          email: string
+          availableLanguage: string[]
+        }
+        mainEntity?: undefined
+      }
+    | {
+        '@type': string
+        mainEntity: {
+          '@type': string
+          name: string
+          acceptedAnswer: {
+            '@type': string
+            text: string
+          }
+        }[]
+      }
+  )[]
+}
+
+export const homePageSchema = async (props: Page) => {
+  const faqBlocks = props.layout.filter((item) => item.blockType === 'panelFaqBlock')
+  const faqItems: Faq[] = []
+
+  for (const block of faqBlocks) {
+    const folder = block.questionsFolder
+    if (!folder) continue
+    let folderObj: FolderInterface
+    if (typeof folder === 'string') {
+      const payload = await getPayload({ config: configPromise })
+      const { docs } = await payload.find({
+        collection: 'payload-folders',
+        where: { id: { equals: folder } },
+        limit: 1,
+        depth: 0,
+        pagination: false,
+      })
+      folderObj = docs[0] as FolderInterface
+    } else {
+      folderObj = folder
+    }
+
+    const faqsFromFolder = await getFaqsFromFolder(folderObj)
+    faqItems.push(...faqsFromFolder)
+  }
+
+  const hasFaq = faqItems.length > 0
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        url: `${process.env.NEXT_PUBLIC_SERVER_URL}`,
+        name: 'PanelDlaDewelopera.pl',
+        logo: `${process.env.NEXT_PUBLIC_SERVER_URL}/Group.png`,
+        description:
+          'Nowoczesna aplikacja do integracji deweloperów z systemem Ministerstwa Cyfryzacji. Automatyczne publikowanie cen, historii i więcej.',
+      },
+      {
+        '@type': 'WebPage',
+        url: `${process.env.NEXT_PUBLIC_SERVER_URL}`,
+        name: `${props.meta?.title}`,
+        description: `${props.meta?.description}`,
+      },
+      {
+        '@type': 'Organization',
+        name: 'RENDPRO LIMITED',
+        url: `https://rend.pro/`,
+        logo: `https://rend.pro/logo.png`,
+        description:
+          'RENDPRO Limited dostarcza wizualizacje 3D, wirtualne spacery i marketing nieruchomości.',
+        contactPoint: {
+          '@type': 'ContactPoint',
+          contactType: 'customer support',
+          email: 'contact@rend.pro',
+          availableLanguage: ['pl'],
+        },
+      },
+      ...(hasFaq
+        ? [
+            {
+              '@type': 'FAQPage',
+              mainEntity: faqItems.map((item) => ({
+                '@type': 'Question',
+                name: item.title,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: lexicalToPlainText(item.description),
+                },
+              })),
+            },
+          ]
+        : []),
+    ],
+  }
+}

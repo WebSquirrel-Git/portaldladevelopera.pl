@@ -29,7 +29,7 @@ const blockComponents = {
   textBlock: TextArticleBlock,
   privacyPolicyBlock: PrivacyPolicyBlock,
   regulationsBlock: RegulationsBlock,
-  contactFormBlock:ContactFormBlock
+  contactFormBlock: ContactFormBlock,
 }
 
 export const RenderBlocks: React.FC<{

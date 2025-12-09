@@ -1,7 +1,7 @@
-import ContactForm from '@/components/Blocks/ContactForm/ContactForm';
+import ContactForm from '@/components/Blocks/ContactForm/ContactForm'
 
 export interface ContactFormBlockPropsType {
-  submitOnEmail:string;
+  submitOnEmail: string
 }
 
 export const ContactFormBlock: React.FC<ContactFormBlockPropsType> = (props) => {

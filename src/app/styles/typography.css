@@ -13,7 +13,8 @@ button,
 li,
 th,
 td,
-time,input {
+time,
+input {
   font-family: var(--inter);
   font-weight: 300;
 }

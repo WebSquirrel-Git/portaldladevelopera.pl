@@ -31,6 +31,26 @@ export const Users: CollectionConfig = {
       type: 'text',
       label: 'Blog - nazwa użytkownika',
     },
+    {
+      name: 'facebook',
+      type: 'text',
+      label: 'Facebook',
+    },
+    {
+      name: 'instagram',
+      type: 'text',
+      label: 'Instagram',
+    },
+    {
+      name: 'linkedin',
+      type: 'text',
+      label: 'LinkedIn',
+    },
+    {
+      name: 'website',
+      type: 'text',
+      label: 'Strona www',
+    },
   ],
   timestamps: true,
 }

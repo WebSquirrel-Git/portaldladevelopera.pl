@@ -139,7 +139,7 @@ export const FooterContent: React.FC<FooterContentProps> = ({
         </div>
         <div className="flex flex-col sm:w-fit w-full xl:flex-row xl:gap-10 gap-3 items-center sm:items-start xl:items-end">
           <p className="sm:text-left text-center">
-            <b className="!text-white font-normal">Copyright © 2025,</b> Panel Dla Dewelopera, Inc.
+            <b className="!text-white font-normal">Copyright © 2025,</b> Panel Dla Dewelopera
           </p>
           <div className="flex flex-row gap-4">
             {companyInformations.facebook && (

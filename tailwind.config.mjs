@@ -48,13 +48,15 @@ const config = {
         darkGrey: '#333333',
         black: '#060606',
         yellowStroke: '#FEE298',
-         dark: '#1B1B1C',
+        dark: '#1B1B1C',
         gradientOrange: 'linear-gradient(90deg, #FE9A79 0.01%, #F8C07D 50.01%, #FEE298 100%)',
       },
       backgroundImage: {
         gradientGreyWhite: 'linear-gradient(to right, #989898, #FEFEFE)',
         gradientOrange: 'linear-gradient(90deg, #FE9A79 0.01%, #F8C07D 50.01%, #FEE298 100%)',
         gradientOrangeButton: 'linear-gradient(90deg, #FE9A79 0.01%, #F8C07D 50.01%, #FEE298 100%)',
+        gradientButton:
+          'linear-gradient( 90deg, #F0642E 0%, #F0642E 50%, #FE9A79 50.01%, #F8C07D 75%, #FEE298 100% )',
         gradientBrown:
           'linear-gradient(325.41deg, #1B1B1C 49.82%, rgba(250, 172, 121, 0.1) 128.97%)',
       },

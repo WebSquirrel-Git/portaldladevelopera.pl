@@ -10,7 +10,10 @@ export const PanelPresentation: React.FC<PanelPresentationBlockPropsType> = (pro
   const { header, slidesArray } = props
 
   return (
-    <div className="bg-[url(/background-black-blur-circles.webp)] py-[96px] xl:pt-[160px] px-4 gap-[64px] xl:12 flex flex-col xl:pb-0 xl:px-[274px] justify-center items-center">
+    <div
+      id="jak-to-dziala"
+      className="bg-[url(/background-black-blur-circles.webp)] py-[96px] xl:pt-[160px] px-4 gap-[64px] xl:12 flex flex-col xl:pb-0 xl:px-[274px] justify-center items-center"
+    >
       <h2 className="xl:text-[64px] xl:leading-[78px] text-[48px] leading-[54px] text-white xl:text-center text-left">
         {header}
       </h2>
@@ -42,7 +45,7 @@ export const PanelPresentation: React.FC<PanelPresentationBlockPropsType> = (pro
                 ))}
               </div>
             </div>
-            <Card image={slide.slide.image} index={i}/>
+            <Card image={slide.slide.image} index={i} />
             <div className="xl:hidden flex">
               <RichText
                 data={slide.slide.header}

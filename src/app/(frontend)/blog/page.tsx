@@ -25,7 +25,7 @@ type Args = {
 export default async function Page({ searchParams }: Args) {
   const searchParamsResolved = await searchParams
   const query = searchParamsResolved?.q ?? ''
-  const limit = searchParamsResolved?.limit ? parseInt(searchParamsResolved!.limit!) : 1
+  const limit = searchParamsResolved?.limit ? parseInt(searchParamsResolved!.limit!) : 4
   const page = searchParamsResolved?.page ? parseInt(searchParamsResolved!.page!) : 1
 
   const payload = await getPayload({ config: configPromise })
@@ -73,9 +73,9 @@ export default async function Page({ searchParams }: Args) {
           deweloperski
         </h1>
 
-        <p className="max-w-[600px] text-[20px] leading-[32px] text-lightGrey text-center">
+        <h2 className="max-w-[600px] !text-[20px] !leading-[32px] !text-lightGrey text-center">
           Poznaj najnowsze trendy, porady prawne i najlepsze praktyki w zarządzaniu inwestycjami.
-        </p>
+        </h2>
       </div>
 
       <div className="flex flex-col py-12 px-4 xl:py-[96px] 2xl:px-[360px] gap-[18px] xl:gap-8">
@@ -95,5 +95,9 @@ export default async function Page({ searchParams }: Args) {
 }
 
 export function generateMetadata(): Metadata {
-  return { title: `Blog` }
+  return {
+    title: `Blog | PanelDlaDewelopera.pl`,
+    description:
+      'Artykuły o marketingu nieruchomości, stronach dla deweloperów i nowym prawie deweloperskim. Praktyczne porady dla deweloperów.',
+  }
 }

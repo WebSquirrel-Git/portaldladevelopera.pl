@@ -1,5 +1,5 @@
-import { verifyCaptcha } from "@/actions/verifyCaptcha";
-import React from "react";
+import { verifyCaptcha } from '@/actions/verifyCaptcha'
+import React from 'react'
 
 const useForm = ({
   parseBody,
@@ -7,81 +7,76 @@ const useForm = ({
   beforeSubmit,
   onSubmit,
 }: {
-  submitOnEmail: string;
-  parseBody: (data: Record<string, string>) => string;
-  beforeSubmit?: (data: Record<string, string>) => void | Promise<void>;
-  onSubmit?: () => void | Promise<void>;
+  submitOnEmail: string
+  parseBody: (data: Record<string, string>) => string
+  beforeSubmit?: (data: Record<string, string>) => void | Promise<void>
+  onSubmit?: () => void | Promise<void>
 }) => {
-  const recaptchaRef = React.useRef<any>(null);
-  const [isUnknownError, setIsUnknownError] = React.useState(false);
-  const [isDone, setIsDone] = React.useState(false);
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [recaptchaToken, setRecaptchaToken] = React.useState<string | null>(
-    null,
-  );
+  const recaptchaRef = React.useRef<any>(null)
+  const [isUnknownError, setIsUnknownError] = React.useState(false)
+  const [isDone, setIsDone] = React.useState(false)
+  const [isLoading, setIsLoading] = React.useState(false)
+  const [recaptchaToken, setRecaptchaToken] = React.useState<string | null>(null)
 
   const getCaptchaToken = React.useCallback(async () => {
     if (recaptchaToken) {
-      return recaptchaToken;
+      return recaptchaToken
     }
 
-    const token = await recaptchaRef.current.executeAsync();
-    setRecaptchaToken(token);
+    const token = await recaptchaRef.current.executeAsync()
+    setRecaptchaToken(token)
 
-    return token;
-  }, [recaptchaToken]);
+    return token
+  }, [recaptchaToken])
 
   const handleFormSubmit = async (data: Record<string, string>) => {
-    setIsUnknownError(false);
-    setIsLoading(true);
+    setIsUnknownError(false)
+    setIsLoading(true)
 
-    const token = await getCaptchaToken();
+    const token = await getCaptchaToken()
 
-    const isCaptchaValid = await verifyCaptcha(token);
+    const isCaptchaValid = await verifyCaptcha(token)
 
     if (!isCaptchaValid) {
-      console.error("Captcha can't be verified. Aborting the form submit");
-      setIsUnknownError(true);
-      setIsLoading(false);
-      return;
+      console.error("Captcha can't be verified. Aborting the form submit")
+      setIsUnknownError(true)
+      setIsLoading(false)
+      return
     }
 
     try {
       if (beforeSubmit) {
-        await beforeSubmit(data);
+        await beforeSubmit(data)
       }
 
-      const response = await fetch(
-        `https://formsubmit.co/ajax/${submitOnEmail}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: parseBody(data),
+      const response = await fetch(`https://formsubmit.co/ajax/${submitOnEmail}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-      );
+        body: parseBody(data),
+      })
 
       if (response.ok) {
-        setIsDone(true);
+        setIsDone(true)
         if (onSubmit) {
-          await onSubmit();
+          await onSubmit()
         }
       } else {
-        setIsUnknownError(true);
-        console.error("Failed to submit the form");
-        console.error("Reason:");
-        console.error(await response.text());
+        setIsUnknownError(true)
+        console.error('Failed to submit the form')
+        console.error('Reason:')
+        console.error(await response.text())
       }
     } catch (error) {
-      setIsUnknownError(true);
-      console.error("Failed to submit the form");
-      console.error("Reason:");
-      console.error(error);
+      setIsUnknownError(true)
+      console.error('Failed to submit the form')
+      console.error('Reason:')
+      console.error(error)
     }
 
-    setIsLoading(false);
-  };
+    setIsLoading(false)
+  }
 
   return {
     recaptchaRef,
@@ -90,7 +85,7 @@ const useForm = ({
     isLoading,
     setRecaptchaToken,
     handleFormSubmit,
-  };
-};
+  }
+}
 
-export default useForm;
+export default useForm

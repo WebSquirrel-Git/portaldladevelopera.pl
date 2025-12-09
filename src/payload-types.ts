@@ -436,6 +436,10 @@ export interface User {
   id: string;
   name?: string | null;
   articleName?: string | null;
+  facebook?: string | null;
+  instagram?: string | null;
+  linkedin?: string | null;
+  website?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -669,7 +673,7 @@ export interface PanelDevelopmentBlock {
 export interface PanelFaqBlock {
   header: string;
   subheader: string;
-  questionsList: (string | Faq)[];
+  questionsFolder: string | FolderInterface;
   id?: string | null;
   blockName?: string | null;
   blockType: 'panelFaqBlock';
@@ -1258,7 +1262,7 @@ export interface PanelDevelopmentBlockSelect<T extends boolean = true> {
 export interface PanelFaqBlockSelect<T extends boolean = true> {
   header?: T;
   subheader?: T;
-  questionsList?: T;
+  questionsFolder?: T;
   id?: T;
   blockName?: T;
 }
@@ -1451,6 +1455,10 @@ export interface MediaSelect<T extends boolean = true> {
 export interface UsersSelect<T extends boolean = true> {
   name?: T;
   articleName?: T;
+  facebook?: T;
+  instagram?: T;
+  linkedin?: T;
+  website?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -1867,7 +1875,7 @@ export interface MediaBlock {
  * via the `definition` "FaqArticleBlock".
  */
 export interface FaqArticleBlock {
-  questionsList: (string | Faq)[];
+  questionsFolder: string | FolderInterface;
   id?: string | null;
   blockName?: string | null;
   blockType: 'faqArticleBlock';
