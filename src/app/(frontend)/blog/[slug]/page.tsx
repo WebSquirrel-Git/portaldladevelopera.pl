@@ -14,9 +14,8 @@ import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { formatDateTimeMonthName } from '@/utilities/formatDateTimeMonthName'
 import { SharePost } from '@/components/Posts/SharePost/SharePost'
 import { PostContent } from '@/components/Posts/PostContent/PostContent'
-import { articleSchema } from '@/components/Schema/Schema'
-import Script from 'next/script'
-import { SchemaComponent } from '@/components/Schema/SchemaComponent'
+import { SchemaArticleComponent } from '@/components/Schema/Article/SchemaArticleComponent'
+import { articleSchema } from '@/components/Schema/Article/SchemaArticle'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -74,11 +73,11 @@ export default async function Post({ params: paramsPromise }: Args) {
     },
   })
   if (!post) return <PayloadRedirects url={url} />
-  const author = post.authors?.find((a) => typeof a === 'object') as User | undefined;
-  const schema = articleSchema(post)
+  const author = post.authors?.find((a) => typeof a === 'object') as User | undefined
+  const schema = await articleSchema(post)
   return (
     <article className="bg-black pt-[18px] pb-[96px] px-4 xl:pt-16 xl:pb-[120px] 2xl:px-[360px] flex flex-col xl:gap-12 gap-6">
-     <SchemaComponent post={post} schema={schema}/>
+      <SchemaArticleComponent post={post} schema={schema} />
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
 

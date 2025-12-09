@@ -28,7 +28,7 @@ export const PanelOverwiew: React.FC<PanelOverwiewBlockPropsType> = (props) => {
   const { description, button, testimonialsList } = props
 
   return (
-    <div className="pt-10 px-4 gap-12 flex flex-col 2xl:pt-[48px] 2xl:px-[274px] justify-center items-center">
+    <div className="pt-10 px-4 gap-12 bg-[url(/background-header.svg)] bg-top flex flex-col 2xl:pt-[48px] 2xl:px-[274px] justify-center items-center">
       <div className="flex flex-col gap-3 2xl:gap-6 justify-start items-center">
         <div className="flex flex-row gap-3 items-center w-fit">
           {TAGS_LIST.map((tag, i) => (
@@ -50,7 +50,9 @@ export const PanelOverwiew: React.FC<PanelOverwiewBlockPropsType> = (props) => {
           </b>
         </h1>
         <div className="flex flex-col gap-8 items-center justify-center pb-0 2xl:pb-10">
-          <p className="text-white text-center">{description}</p>
+          <h2 className="!text-lightGrey !text-[18px] !leading-[24px] text-center">
+            {description}
+          </h2>
           <LinkButton url={button.url} label={button.title} />
         </div>
       </div>
@@ -71,7 +73,7 @@ export const PanelOverwiew: React.FC<PanelOverwiewBlockPropsType> = (props) => {
           </div>
         ))}
       </div>
-     <Laptop/>
+      <Laptop />
     </div>
   )
 }

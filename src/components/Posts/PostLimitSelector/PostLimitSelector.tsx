@@ -7,7 +7,7 @@ export function LimitSelector() {
   const router = useRouter()
   const params = useSearchParams()
 
-  const currentLimit = params.get('limit') ?? '6'
+  const currentLimit = params.get('limit') ?? '4'
 
   const handleChange = (value: string) => {
     const newParams = new URLSearchParams(params.toString())
@@ -29,10 +29,9 @@ export function LimitSelector() {
           value={currentLimit}
           onChange={(e) => handleChange(e.target.value)}
         >
-          <option value="1">1 wynik</option>
           <option value="2">2 wyniki</option>
-          <option value="3">3 wyniki</option>
           <option value="4">4 wyniki</option>
+          <option value="6">6 wyników</option>
         </select>
         <Icon
           icon="majesticons:chevron-down-line"

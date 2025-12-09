@@ -26,8 +26,6 @@ import {
   PreviewField,
 } from '@payloadcms/plugin-seo/fields'
 import { slugField } from 'payload'
-import { TextArticleBlock } from '@/blocks/Posts/TextArticleBlock/config'
-import { TableArticleBlock } from '@/blocks/Posts/TableArticleBlock/config'
 import { FaqArticleBlock } from '@/blocks/Posts/FaqArticleBlock/config'
 
 export const Posts: CollectionConfig<'posts'> = {

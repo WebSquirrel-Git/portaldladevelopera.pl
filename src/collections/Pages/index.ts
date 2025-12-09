@@ -93,7 +93,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 PanelFaqBlock,
                 PrivacyPolicyBlock,
                 RegulationsBlock,
-                ContactFormBlock
+                ContactFormBlock,
               ],
               required: true,
               admin: {

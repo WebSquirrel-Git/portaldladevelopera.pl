@@ -21,7 +21,7 @@ export const DescriptionCard: React.FC<DescrptionCardProps> = (props) => {
         <Icon icon={icon} className="w-4 h-4 text-black" />
       </div>
       <div className="flex flex-col gap-2">
-        <h2 className="!text-[32px] !leading-[40px] text-white text-left">{header}</h2>
+        <h3 className="!text-[32px] !leading-[40px] text-white text-left">{header}</h3>
         <p className="!text-white text-left font-semibold !text-[16px] leading-[24px]">
           {subheader}
         </p>

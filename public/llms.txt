@@ -1,0 +1,15 @@
+# PanelDlaDewelopera
+
+> Nowoczesna aplikacja do integracji deweloperów z systemem Ministerstwa Cyfryzacji. Automatyczne publikowanie cen, historii i więcej.
+
+## Blog
+
+- [Blog](https://paneldladewelopera.pl/blog): Artykuły o marketingu nieruchomości, stronach dla deweloperów, SEO i nowym prawie deweloperskim. Praktyczne porady dla deweloperów.
+
+## Regulamin
+
+- [Regulamin](https://paneldladewelopera.pl/regulamin): Zapoznaj się z zasadami korzystania z PanelDlaDewelopera.pl: warunki umowy, płatności, prawa użytkownika, reklamacje i bezpieczeństwo.
+
+## Polityka prywatności
+
+- [Polityka prywatności](https://paneldladewelopera.pl/polityka-prywatnosci): Sprawdź zasady ochrony danych i cookies w PanelDlaDewelopera.pl. Dowiedz się, jak przetwarzamy i chronimy Twoje informacje zgodnie z RODO.

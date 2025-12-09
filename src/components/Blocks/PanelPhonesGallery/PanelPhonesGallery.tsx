@@ -2,10 +2,11 @@
 import { PanelPhonesGalleryBlockPropsType } from '@/blocks/PanelPhonesGalleryBlock/Component'
 import RichText from '@/components/RichText'
 import EmblaCarousel from './EmblaCarousel/EmblaCarousel'
+import { EmblaOptionsType } from 'embla-carousel'
 
 export const PanelPhonesGallery: React.FC<PanelPhonesGalleryBlockPropsType> = (props) => {
   const { header, galleryArray } = props
-
+  const OPTIONS: EmblaOptionsType = { dragFree: true, loop: true }
   return (
     <div className="relative bg-[url(/background-gradient.webp)] xl:min-h-0 min-h-[1100px] sm:min-h-[1000px] py-[57px] xl:py-[127px] px-4 gap-[19px] xl:gap-[41px] flex flex-col justify-start items-center">
       <RichText
@@ -13,7 +14,7 @@ export const PanelPhonesGallery: React.FC<PanelPhonesGalleryBlockPropsType> = (p
         className="richtext-h2-with-gradient !text-white mx-0 text-center max-w-full"
       />
       <div className="xl:w-[1208px] w-full h-full">
-        <EmblaCarousel slides={galleryArray} />
+        <EmblaCarousel slides={galleryArray} options={OPTIONS} />
       </div>
     </div>
   )

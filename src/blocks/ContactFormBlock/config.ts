@@ -8,11 +8,11 @@ export const ContactFormBlock: Block = {
     plural: 'Formularz kontaktowy',
   },
   fields: [
-   {
-    name:'submitOnEmail',
-    label:'Email na który wysyłane będą formularze',
-    type:'text',
-required:true
-   }
+    {
+      name: 'submitOnEmail',
+      label: 'Email na który wysyłane będą formularze',
+      type: 'text',
+      required: true,
+    },
   ],
 }

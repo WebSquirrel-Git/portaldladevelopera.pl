@@ -1,9 +1,15 @@
 'use client'
-import { PanelFaqBlockPropsType } from '@/blocks/PanelFaqBlock/Component'
 import { useState } from 'react'
 import { FaqCard } from './FaqCard'
+import { Faq } from '@/payload-types'
 
-export const PanelFaq: React.FC<PanelFaqBlockPropsType> = (props) => {
+interface PanelFaqProps {
+  header: string
+  subheader: string
+  questionsList: Faq[]
+}
+
+export const PanelFaq: React.FC<PanelFaqProps> = (props) => {
   const { header, subheader, questionsList } = props
   const evenFaqList = questionsList.filter((_, i) => i % 2 === 0)
   const oddFaqList = questionsList.filter((_, i) => i % 2 !== 0)

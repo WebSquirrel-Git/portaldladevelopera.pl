@@ -9,6 +9,8 @@ import { RenderBlocks } from '@/blocks/RenderBlocks'
 import { RenderHero } from '@/heros/RenderHero'
 import { generateMeta } from '@/utilities/generateMeta'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
+import { homePageSchema } from '@/components/Schema/HomePage/SchemaHomePage'
+import { SchemaHomePageComponent } from '@/components/Schema/HomePage/SchemaHomePageComponent'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -47,7 +49,7 @@ export default async function Page({ params: paramsPromise }: Args) {
   const decodedSlug = decodeURIComponent(slug)
   const url = '/' + decodedSlug
 
-  const page: RequiredDataFromCollectionSlug<'pages'> | null = await queryPageBySlug({
+  const page = await queryPageBySlug({
     slug: decodedSlug,
   })
 
@@ -56,12 +58,17 @@ export default async function Page({ params: paramsPromise }: Args) {
   }
 
   const { hero, layout } = page
+  let schema
+  if (page.slug === 'home') {
+    schema = await homePageSchema(page)
+  }
 
   return (
     <main
       className="bg-black"
       //  className='bg-[url(/background-gradient.webp)] bg-cover min-h-[11000px]'
     >
+      {page.slug === 'home' && <SchemaHomePageComponent page={page} schema={schema!} />}
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
 
@@ -95,6 +102,7 @@ const queryPageBySlug = cache(async ({ slug }: { slug: string }) => {
     limit: 1,
     pagination: false,
     overrideAccess: draft,
+    depth: 4,
     where: {
       slug: {
         equals: slug,
