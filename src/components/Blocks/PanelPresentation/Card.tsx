@@ -22,12 +22,16 @@ export const Card: React.FC<CardProps> = (props) => {
   const scope: RefObject<any> = useRef(null)
 
   useEffect(() => {
+    let hasPlayed = false;
     scope.current = createScope({ root }).add((self) => {
       animate(`.animate${index}`, {
+        
         autoplay: onScroll({
           container: '.container',
           debug: false,
           onEnter: () => {
+             if (hasPlayed) return
+          hasPlayed = true
             animate(`.animate${index}`, {
               scale: [0, 1],
               opacity: [0, 1],
@@ -38,7 +42,6 @@ export const Card: React.FC<CardProps> = (props) => {
       })
     })
 
-    // Properly cleanup all anime.js instances declared inside the scope
     return () => scope.current.revert()
   }, [])
 

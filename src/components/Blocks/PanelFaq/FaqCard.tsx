@@ -41,11 +41,29 @@ export const FaqCard: React.FC<FaqCardProps> = (props) => {
       >
         <p className="text-left">{title}</p>
 
-        {isOpen ? (
-          <Image src={MinusIcon} alt="Minus" className="w-6 h-6 m-0" />
-        ) : (
-          <Image src={PlusIcon} alt="Plus" className="w-6 h-6 m-0" />
-        )}
+      <AnimatePresence mode="wait" initial={false}>
+  {isOpen ? (
+    <motion.div
+      key="minus"
+      initial={{ opacity: 0, rotate: -90 }}
+      animate={{ opacity: 1, rotate: 0 }}
+      exit={{ opacity: 0, rotate: 90 }}
+      transition={{ duration: 0.2 }}
+    >
+      <Image src={MinusIcon} alt="Minus" className="w-6 h-6 m-0" />
+    </motion.div>
+  ) : (
+    <motion.div
+      key="plus"
+      initial={{ opacity: 0, rotate: 90 }}
+      animate={{ opacity: 1, rotate: 0 }}
+      exit={{ opacity: 0, rotate: -90 }}
+      transition={{ duration: 0.2 }}
+    >
+      <Image src={PlusIcon} alt="Plus" className="w-6 h-6 m-0" />
+    </motion.div>
+  )}
+</AnimatePresence>
       </button>
       <AnimatePresence initial={false}>
         {isOpen && (
