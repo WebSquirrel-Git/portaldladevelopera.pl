@@ -22,16 +22,15 @@ export const Card: React.FC<CardProps> = (props) => {
   const scope: RefObject<any> = useRef(null)
 
   useEffect(() => {
-    let hasPlayed = false;
+    let hasPlayed = false
     scope.current = createScope({ root }).add((self) => {
       animate(`.animate${index}`, {
-        
         autoplay: onScroll({
           container: '.container',
           debug: false,
           onEnter: () => {
-             if (hasPlayed) return
-          hasPlayed = true
+            if (hasPlayed) return
+            hasPlayed = true
             animate(`.animate${index}`, {
               scale: [0, 1],
               opacity: [0, 1],
@@ -63,9 +62,9 @@ export const Card: React.FC<CardProps> = (props) => {
       )}
       {index === 2 && (
         <Image
-          alt="Przydziel swojemuu zespołowi osobne konta"
+          alt="Przydziel swojemu zespołowi osobne konta"
           src={Image02}
-          className={`animate${index} absolute object-contain opacity-0 scale-0 xl:left-[-11%] xl:top-[67%] sm:left-[50%] left-[5%] top-[75%] w-[265px]`}
+          className={`animate${index} absolute object-contain opacity-0 scale-0 xl:left-[-11%] xl:top-[4%] sm:left-[50%] left-[5%] top-[4%] w-[265px]`}
         />
       )}
       {index === 3 && (

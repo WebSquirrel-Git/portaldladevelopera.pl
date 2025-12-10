@@ -1,8 +1,10 @@
 import { Regulations } from '@/components/Blocks/Regulations/Regulations'
 
 export interface RegulationsBlockPropsType {
+  pageTitle: string
   headerSection: {
-    headerSection: any
+    headerH1: string
+    headerRichText: any
   }
   content: {
     header: string
@@ -11,6 +13,6 @@ export interface RegulationsBlockPropsType {
   }[]
 }
 
-export const RegulationsBlock: React.FC<RegulationsBlockPropsType> = (props) => {
+export const RegulationsBlock: React.FC<RegulationsBlockPropsType> = async (props) => {
   return <Regulations {...props} />
 }

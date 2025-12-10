@@ -30,38 +30,38 @@ interface FaqBlock {
   }
 }
 
-export const articleSchema = async(props: Post) => {
-    const faqBlocks = props.richTextContent.root.children
-  .filter((item: any): item is FaqBlock =>
-    item?.type === 'block' && item?.fields?.blockType === 'faqArticleBlock'
+export const articleSchema = async (props: Post) => {
+  const faqBlocks = props.richTextContent.root.children.filter(
+    (item: any): item is FaqBlock =>
+      item?.type === 'block' && item?.fields?.blockType === 'faqArticleBlock',
   )
-  
-    const faqItems: Faq[] = []
-   for (const block of faqBlocks) {
-    const fields = block.fields as FaqBlock['fields']
-      const folder = fields.questionsFolder
-      if (!folder) continue
-      let folderObj: FolderInterface
-      if (typeof folder === 'string') {
-        const payload = await getPayload({ config: configPromise })
-        const { docs } = await payload.find({
-          collection: 'payload-folders',
-          where: { id: { equals: folder } },
-          limit: 1,
-          depth: 0,
-          pagination: false,
-        })
-        folderObj = docs[0] as FolderInterface
-      } else {
-        folderObj = folder
-      }
-  
-      const faqsFromFolder = await getFaqsFromFolder(folderObj)
-      faqItems.push(...faqsFromFolder)
-    }
-    const hasFaq = faqItems.length > 0
 
-    const image = props.meta?.image as Media | undefined
+  const faqItems: Faq[] = []
+  for (const block of faqBlocks) {
+    const fields = block.fields as FaqBlock['fields']
+    const folder = fields.questionsFolder
+    if (!folder) continue
+    let folderObj: FolderInterface
+    if (typeof folder === 'string') {
+      const payload = await getPayload({ config: configPromise })
+      const { docs } = await payload.find({
+        collection: 'payload-folders',
+        where: { id: { equals: folder } },
+        limit: 1,
+        depth: 0,
+        pagination: false,
+      })
+      folderObj = docs[0] as FolderInterface
+    } else {
+      folderObj = folder
+    }
+
+    const faqsFromFolder = await getFaqsFromFolder(folderObj)
+    faqItems.push(...faqsFromFolder)
+  }
+  const hasFaq = faqItems.length > 0
+
+  const image = props.meta?.image as Media | undefined
   const author = props.authors as User[]
 
   return {
@@ -76,19 +76,44 @@ export const articleSchema = async(props: Post) => {
       {
         '@type': 'WebPage',
         url: `${process.env.NEXT_PUBLIC_SERVER_URL}/blog/${props.slug}`,
-        name: props.meta?.title||'',
-        description: props.meta?.description||'',
+        name: props.meta?.title || '',
+        description: props.meta?.description || '',
       },
       {
         '@type': 'BlogPosting',
-        headline: props.meta?.title ||'',
-        description: props.meta?.description||'',
+        headline: props.meta?.title || '',
+        description: props.meta?.description || '',
         image: image?.url || `${process.env.NEXT_PUBLIC_SERVER_URL}/Group.png`,
         author: {
           '@type': 'Organization',
-          name: 'Panel Dla Dewelopera',
-          url: `${process.env.NEXT_PUBLIC_SERVER_URL}`,
-          logo: `${process.env.NEXT_PUBLIC_SERVER_URL}/Group.png`,
+          name: 'RENDPRO LIMITED',
+          url: `https://rend.pro/`,
+          logo: `https://rend.pro/logo.png`,
+          description:
+            'RENDPRO Limited dostarcza wizualizacje 3D, wirtualne spacery i marketing nieruchomości.',
+          contactPoint: {
+            '@type': 'ContactPoint',
+            contactType: 'customer support',
+            email: 'contact@rend.pro',
+            availableLanguage: ['pl'],
+          },
+          sameAs: [
+            'https://www.facebook.com/Rendprocom',
+            'https://www.instagram.com/rendprocom/',
+            'https://www.linkedin.com/company/rendpro/',
+            'https://www.youtube.com/channel/UCn9fS3ObuUVEXbPW3urE8Ug',
+          ],
+          brand: {
+            '@type': 'Brand',
+            name: 'PanelDlaDewelopera.pl',
+            url: `${process.env.NEXT_PUBLIC_SERVER_URL}`,
+            logo: `${process.env.NEXT_PUBLIC_SERVER_URL}/Group.png`,
+            sameAs: [
+              'https://www.facebook.com/paneldladewelopera/',
+              'https://www.instagram.com/paneldladewelopera',
+              'https://www.youtube.com/@paneldladewelopera',
+            ],
+          },
         },
         publisher: {
           '@type': 'Person',
@@ -100,28 +125,28 @@ export const articleSchema = async(props: Post) => {
             author?.[0]?.website || `${process.env.NEXT_PUBLIC_SERVER_URL}`,
           ].filter(Boolean),
         },
-        datePublished: props.publishedAt||'',
-        dateModified: props.updatedAt||'',
+        datePublished: props.publishedAt || '',
+        dateModified: props.updatedAt || '',
         mainEntityOfPage: {
           '@type': 'WebPage',
           '@id': `${process.env.NEXT_PUBLIC_SERVER_URL}/blog/${props.slug}`,
         },
       },
       ...(hasFaq
-              ? [
-                  {
-                    '@type': 'FAQPage',
-                    mainEntity: faqItems.map((item) => ({
-                      '@type': 'Question',
-                      name: item.title,
-                      acceptedAnswer: {
-                        '@type': 'Answer',
-                        text: lexicalToPlainText(item.description),
-                      },
-                    })),
-                  },
-                ]
-              : []),
+        ? [
+            {
+              '@type': 'FAQPage',
+              mainEntity: faqItems.map((item) => ({
+                '@type': 'Question',
+                name: item.title,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: lexicalToPlainText(item.description),
+                },
+              })),
+            },
+          ]
+        : []),
     ],
   }
 

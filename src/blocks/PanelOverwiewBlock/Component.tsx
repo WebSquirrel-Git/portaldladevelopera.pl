@@ -2,7 +2,6 @@ import { PanelOverwiew } from '@/components/Blocks/PanelOverwiew/PanelOverwiew'
 
 export interface PanelOverwiewBlockPropsType {
   tagsList: {
-    icon: string
     title: string
   }[]
   description: string

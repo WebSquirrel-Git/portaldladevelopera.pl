@@ -28,6 +28,7 @@ export const PanelFaqBlock: React.FC<PanelFaqBlockPropsType> = async (props) => 
         equals: questionsFolder.id,
       },
     },
+    limit: 9999,
   })
   const orderedFaqs: Faq[] = faq.filter(isFaq)
   return <PanelFaq header={props.header} subheader={props.subheader} questionsList={orderedFaqs} />

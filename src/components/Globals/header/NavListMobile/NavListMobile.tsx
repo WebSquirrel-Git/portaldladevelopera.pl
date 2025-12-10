@@ -26,8 +26,8 @@ export const NavListMobile: React.FC<NavListMobilePropsType> = ({ data, showMenu
       animate={{ height: '100vh', opacity: 1 }}
       exit={{ height: '0px', opacity: 0 }}
       transition={{
-        duration: 0.8,
         ease: [0.22, 1, 0.36, 1],
+        duration: 1.3,
       }}
       className="fixed flex flex-col w-full top-0 left-0 p-4 pt-[14px] bg-black h-screen"
     >
@@ -61,12 +61,6 @@ export const NavListMobile: React.FC<NavListMobilePropsType> = ({ data, showMenu
             />
           ))}
           <Link
-            className=" pr-9 py-8 text-left w-fit text-white min-w-[206px] font-medium text-[16px]"
-            href={process.env.NEXT_PUBLIC_APP_URL as string}
-          >
-            Kontakt
-          </Link>
-          <Link
             href={`${process.env.NEXT_PUBLIC_APP_URL}`}
             className="w-full text-center text-black rounded-lg box-border bg-primaryOrange border-[1px] border-primaryOrange font-medium text-[16px] py-3 px-6 cursor-pointer"
           >
@@ -89,7 +83,7 @@ export const NavListMobile: React.FC<NavListMobilePropsType> = ({ data, showMenu
           <span className="flex pr-9 py-8 text-white text-[12px] leading-[20px]">
             Copyright © 2025,
             <br />
-            Panel dla Dewelopera, Inc.
+            Panel dla Dewelopera
           </span>
         </div>
       </div>

@@ -3,7 +3,7 @@ import { PanelDevelopmentBlockPropsType } from '@/blocks/PanelDevelopmentBlock/C
 import RichText from '@/components/RichText'
 import { useState } from 'react'
 import { Icon } from '@iconify/react'
-import {AnimatePresence, motion} from 'motion/react'
+import { AnimatePresence, motion } from 'motion/react'
 export const PanelDevelopment: React.FC<PanelDevelopmentBlockPropsType> = (props) => {
   const { header, categoriesList } = props
   const [activeCategory, setActiveCategory] = useState(0)
@@ -26,9 +26,9 @@ export const PanelDevelopment: React.FC<PanelDevelopmentBlockPropsType> = (props
       </div>
       <div className="flex flex-col 2xl:flex-row gap-[20px] xl:gap-6 w-fit justify-start">
         <AnimatePresence mode="wait">
-        {categoriesList[activeCategory].category.subcategoriesList.map((subCat, z) => (
-          <motion.div
-          key={`${activeCategory}-${z}`}
+          {categoriesList[activeCategory].category.subcategoriesList.map((subCat, z) => (
+            <motion.div
+              key={`${activeCategory}-${z}`}
               initial={{ opacity: 0, scale: 0.8, y: 20 }}
               animate={{
                 opacity: 1,
@@ -42,20 +42,21 @@ export const PanelDevelopment: React.FC<PanelDevelopmentBlockPropsType> = (props
               exit={{ opacity: 0, scale: 0.8, y: -20 }}
               className={`max-w-[560px] 2xl:max-w-[384px] flex flex-col ${
                 z === 0 ? 'gradient-black-brown' : 'bg-dark/90'
-              } rounded-[20px] border-solid border border-white/10 border-b-0`}>
-            <div className="flex items-center justify-center py-6 xl:py-8 rounded-[20px]">
-              <div className="flex items-center justify-center w-[60px] xl:w-[80px] h-[60px] xl:h-[80px] rounded-full border border-solid border-white/10 gradient-brown">
-                <div className="flex items-center justify-center gradient-orange w-10 h-10 rounded-full">
-                  <Icon icon={subCat.icon} className="text-black w-4 h-4" />
+              } rounded-[20px] border-solid border border-white/10 border-b-0`}
+            >
+              <div className="flex items-center justify-center py-6 xl:py-8 rounded-[20px]">
+                <div className="flex items-center justify-center w-[60px] xl:w-[80px] h-[60px] xl:h-[80px] rounded-full border border-solid border-white/10 gradient-brown">
+                  <div className="flex items-center justify-center gradient-orange w-10 h-10 rounded-full">
+                    <Icon icon={subCat.icon} className="text-black w-4 h-4" />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="flex flex-col gap-[18px] px-[20px] pb-8 xl:px-8">
-              <h3 className="text-white text-center">{subCat.title}</h3>
-              <RichText data={subCat.description} className="text-lightGrey text-center" />
-            </div>
-          </motion.div>
-        ))}
+              <div className="flex flex-col gap-[18px] px-[20px] pb-8 xl:px-8">
+                <h3 className="text-white text-center">{subCat.title}</h3>
+                <RichText data={subCat.description} className="text-lightGrey text-center" />
+              </div>
+            </motion.div>
+          ))}
         </AnimatePresence>
       </div>
     </div>

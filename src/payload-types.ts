@@ -464,7 +464,6 @@ export interface User {
  */
 export interface PanelOverwiewBlock {
   tagsList: {
-    icon: string;
     title: string;
     id?: string | null;
   }[];
@@ -684,7 +683,8 @@ export interface PanelFaqBlock {
  */
 export interface PrivacyPolicyBlock {
   headerSection: {
-    headerSection: {
+    headerH1: string;
+    headerRichText: {
       root: {
         type: string;
         children: {
@@ -735,7 +735,8 @@ export interface PrivacyPolicyBlock {
  */
 export interface RegulationsBlock {
   headerSection: {
-    headerSection: {
+    headerH1: string;
+    headerRichText: {
       root: {
         type: string;
         children: {
@@ -1099,7 +1100,6 @@ export interface PanelOverwiewBlockSelect<T extends boolean = true> {
   tagsList?:
     | T
     | {
-        icon?: T;
         title?: T;
         id?: T;
       };
@@ -1274,7 +1274,8 @@ export interface PrivacyPolicyBlockSelect<T extends boolean = true> {
   headerSection?:
     | T
     | {
-        headerSection?: T;
+        headerH1?: T;
+        headerRichText?: T;
         navMenu?:
           | T
           | {
@@ -1302,7 +1303,8 @@ export interface RegulationsBlockSelect<T extends boolean = true> {
   headerSection?:
     | T
     | {
-        headerSection?: T;
+        headerH1?: T;
+        headerRichText?: T;
       };
   content?:
     | T

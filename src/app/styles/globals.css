@@ -78,6 +78,10 @@ body {
   }
 }
 .richtext-text-article {
+  margin: 0;
+  h5 {
+    color: white;
+  }
   h1 {
     color: white;
   }
@@ -90,9 +94,7 @@ body {
   h4 {
     color: white;
   }
-  h5 {
-    color: white;
-  }
+
   p {
     color: #d0d0d0;
     font-size: 16px;

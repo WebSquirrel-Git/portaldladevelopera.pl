@@ -65,7 +65,7 @@ export default async function Page({ params: paramsPromise }: Args) {
 
   return (
     <main
-      className="bg-black"
+      className="bg-black pt-[100px]"
       //  className='bg-[url(/background-gradient.webp)] bg-cover min-h-[11000px]'
     >
       {page.slug === 'home' && <SchemaHomePageComponent page={page} schema={schema!} />}
@@ -75,7 +75,7 @@ export default async function Page({ params: paramsPromise }: Args) {
       {draft && <LivePreviewListener />}
 
       <RenderHero {...hero} />
-      <RenderBlocks blocks={layout} />
+      <RenderBlocks blocks={layout} slug={page.slug} pageTitle={page.title} />
     </main>
   )
 }

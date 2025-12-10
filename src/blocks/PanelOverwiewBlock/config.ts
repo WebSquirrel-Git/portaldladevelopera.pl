@@ -17,13 +17,15 @@ export const PanelOverwiewBlock: Block = {
       },
       type: 'array',
       required: true,
+      maxRows: 3,
+      minRows: 3,
       fields: [
-        {
-          name: 'icon',
-          label: 'Ikona - wejdź na stronę https://icon-sets.iconify.design/ i wklej kod ikony.',
-          type: 'text',
-          required: true,
-        },
+        // {
+        //   name: 'icon',
+        //   label: 'Ikona - wejdź na stronę https://icon-sets.iconify.design/ i wklej kod ikony.',
+        //   type: 'text',
+        //   required: true,
+        // },
         {
           name: 'title',
           label: 'Tytuł',

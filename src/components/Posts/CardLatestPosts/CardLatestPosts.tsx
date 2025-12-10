@@ -23,7 +23,10 @@ export const CardLatestPosts: React.FC<CardLatestPostsProps> = (props) => {
   const { slug, coverImage, publishedAt, title, cardDescription } = props
 
   return (
-    <article className="relative gap-2 flex flex-col w-full sm:h-fit rounded-xl bg-[#1B1B1CE5]/90 border-darkGrey border-solid border p-2">
+    <Link
+      href={`${process.env.NEXT_PUBLIC_SERVER_URL}/blog/${slug}`}
+      className="relative gap-2 flex flex-col w-full sm:h-fit rounded-xl bg-[#1B1B1CE5]/90 border-darkGrey border-solid border p-2"
+    >
       {publishedAt && (
         <time className="z-20 top-0 right-0 absolute text-[14px] leading-[22px] text-lightGrey pt-[10px] pr-[14px] pb-[6px] pl-[10px] bg-darkGrey rounded-bl-[10px] rounded-tr-[12px]">
           {formatDateTime(publishedAt)}
@@ -37,14 +40,11 @@ export const CardLatestPosts: React.FC<CardLatestPostsProps> = (props) => {
           <p className="font-semibold text-[16px] leading-[24px] text-left !text-white">{title}</p>
           <p className="text-[14px] leading-[22px] text-lightGrey">{cardDescription}</p>
         </div>
-        <Link
-          className="px-[6px] flex flex-row w-full justify-start items-center gap-[14px] pt-3 border-solid border-darkGrey border-0 border-t"
-          href={`${process.env.NEXT_PUBLIC_SERVER_URL}/blog/${slug}`}
-        >
+        <div className="px-[6px] flex flex-row w-full justify-start items-center gap-[14px] pt-3 border-solid border-darkGrey border-0 border-t">
           <Image src={LinkIcon} alt="Link" className="w-[20px] h-[20px]" />
           <span className="text-[14px] leading-[22px] text-white">Zobacz więcej</span>
-        </Link>
+        </div>
       </div>
-    </article>
+    </Link>
   )
 }
