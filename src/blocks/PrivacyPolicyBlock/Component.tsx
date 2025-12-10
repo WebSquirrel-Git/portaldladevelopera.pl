@@ -1,8 +1,10 @@
 import { PrivacyPolicy } from '@/components/Blocks/PrivacyPolicy/PrivacyPolicy'
 
 export interface PrivacyPolicyBlockPropsType {
+  pageTitle: string
   headerSection: {
-    headerSection: any
+    headerH1: string
+    headerRichText: any
     navMenu: {
       navItem: string
     }[]

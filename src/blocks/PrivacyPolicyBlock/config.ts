@@ -22,7 +22,13 @@ export const PrivacyPolicyBlock: Block = {
       required: true,
       fields: [
         {
-          name: 'headerSection',
+          name: 'headerH1',
+          label: 'Nagłówek H1',
+          type: 'text',
+          required: true,
+        },
+        {
+          name: 'headerRichText',
           type: 'richText',
           editor: lexicalEditor({
             features: ({ rootFeatures, defaultFeatures }) => {
@@ -36,7 +42,7 @@ export const PrivacyPolicyBlock: Block = {
               ]
             },
           }),
-          label: 'Treść nagłówka z opisem',
+          label: 'Opis pod nagłówkiem',
           required: true,
         },
         {

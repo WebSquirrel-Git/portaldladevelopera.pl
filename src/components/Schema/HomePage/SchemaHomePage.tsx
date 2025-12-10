@@ -31,6 +31,9 @@ export interface SchemaHomePageProps {
         logo: string
         description: string
         contactPoint?: undefined
+        sameAs?: undefined
+        brand?: undefined
+        itemListElement?: undefined
         mainEntity?: undefined
       }
     | {
@@ -40,6 +43,9 @@ export interface SchemaHomePageProps {
         description: string
         logo?: undefined
         contactPoint?: undefined
+        sameAs?: undefined
+        brand?: undefined
+        itemListElement?: undefined
         mainEntity?: undefined
       }
     | {
@@ -54,19 +60,13 @@ export interface SchemaHomePageProps {
           email: string
           availableLanguage: string[]
         }
+        sameAs: string[]
+        brand: any
+        itemListElement?: undefined
         mainEntity?: undefined
       }
-    | {
-        '@type': string
-        mainEntity: {
-          '@type': string
-          name: string
-          acceptedAnswer: {
-            '@type': string
-            text: string
-          }
-        }[]
-      }
+    | any
+    | any
   )[]
 }
 
@@ -127,6 +127,47 @@ export const homePageSchema = async (props: Page) => {
           email: 'contact@rend.pro',
           availableLanguage: ['pl'],
         },
+        sameAs: [
+          'https://www.facebook.com/Rendprocom',
+          'https://www.instagram.com/rendprocom/',
+          'https://www.linkedin.com/company/rendpro/',
+          'https://www.youtube.com/channel/UCn9fS3ObuUVEXbPW3urE8Ug',
+        ],
+        brand: {
+          '@type': 'Brand',
+          name: 'PanelDlaDewelopera.pl',
+          url: `${process.env.NEXT_PUBLIC_SERVER_URL}`,
+          logo: `${process.env.NEXT_PUBLIC_SERVER_URL}/Group.png`,
+          sameAs: [
+            'https://www.facebook.com/paneldladewelopera/',
+            'https://www.instagram.com/paneldladewelopera',
+            'https://www.youtube.com/@paneldladewelopera',
+          ],
+        },
+      },
+      {
+        '@type': 'ItemList',
+        name: 'Główne menu nawigacyjne',
+        itemListElement: [
+          {
+            '@type': 'SiteNavigationElement',
+            position: 1,
+            name: 'Home',
+            url: 'https://paneldladewelopera.pl/home',
+          },
+          {
+            '@type': 'SiteNavigationElement',
+            position: 2,
+            name: 'Cennik',
+            url: 'https://paneldladewelopera.pl/cennik',
+          },
+          {
+            '@type': 'SiteNavigationElement',
+            position: 3,
+            name: 'Blog',
+            url: 'https://paneldladewelopera.pl/blog',
+          },
+        ],
       },
       ...(hasFaq
         ? [

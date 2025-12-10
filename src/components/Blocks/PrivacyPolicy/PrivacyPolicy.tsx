@@ -6,17 +6,18 @@ import { Icon } from '@iconify/react'
 import Link from 'next/link'
 
 export const PrivacyPolicy: React.FC<PrivacyPolicyBlockPropsType> = (props) => {
-  const { headerSection, content } = props
+  const { headerSection, content, pageTitle } = props
   return (
     <div className="bg-black pt-[18px] pb-[96px] px-4 xl:pt-16 xl:pb-[120px] 2xl:px-[360px] flex flex-col xl:gap-12 gap-6">
       <div className="flex flex-col gap-[18px] xl:gap-[20px]">
         <div className="flex flex-row gap-0.5 items-center">
-          <p className="!text-white text-[14px] font-medium">Blog</p>
+          <p className="!text-white text-[14px] font-medium">Home</p>
           <Icon icon="material-symbols:chevron-right-rounded" className="text-grey" />
-          <p className="text-[14px] font-medium gradient-orange-text">Polityka prywatnosci</p>
+          <p className="text-[14px] font-medium gradient-orange-text">{pageTitle}</p>
         </div>
+        <h1 className="!text-white richtext-text">{headerSection.headerH1}</h1>
         <RichText
-          data={headerSection.headerSection}
+          data={headerSection.headerRichText}
           className="richtext-text-article mx-0 max-w-full"
         />
         <div className="flex flex-col gap-3">

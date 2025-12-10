@@ -48,6 +48,7 @@ export const SharePost: React.FC<SharePostProps> = (props) => {
         <p className="text-[16px] font-bold !text-white text-left leading-none">Udostępnij post</p>
         <div className="flex flex-row lg:flex-col lg:gap-0 gap-2">
           <Link
+            target="_blank"
             href={`https://www.linkedin.com/shareArticle?mini=true&url=${process.env.NEXT_PUBLIC_APP_URL}/blog/${slug}`}
             className="flex flex-row gap-2 items-center justify-center lg:justify-start h-10 px-4 w-10 lg:w-full border-solid border-dark/90 lg:border-none border lg:rounded-none rounded-lg"
           >
@@ -55,6 +56,7 @@ export const SharePost: React.FC<SharePostProps> = (props) => {
             <p className="lg:block hidden text-[14px] !text-lightGrey font-medium">Linkedin</p>
           </Link>
           <Link
+            target="_blank"
             href={`https://www.facebook.com/sharer/sharer.php?u=${process.env.NEXT_PUBLIC_APP_URL}/blog/${slug}`}
             className="flex flex-row gap-2 items-center justify-center lg:justify-start h-10 px-4 w-10 lg:w-full border-solid border-dark/90 lg:border-none border lg:rounded-none rounded-lg"
           >

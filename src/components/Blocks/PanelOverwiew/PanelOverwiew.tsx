@@ -9,26 +9,24 @@ import Image from 'next/image'
 import { LinkButton } from '@/components/ui/LinkButton/LinkButton'
 import { Laptop } from './Laptop'
 
-const TAGS_LIST = [
-  {
-    icon: AiIcon,
-    text: 'Integracja panelu z AI',
-  },
-  {
-    icon: BlogIcon,
-    text: 'Blog dla dewelopera',
-  },
-  {
-    icon: BuildingHomeIcon,
-    text: 'API GOV Integrator',
-  },
-]
-
 export const PanelOverwiew: React.FC<PanelOverwiewBlockPropsType> = (props) => {
-  const { description, button, testimonialsList } = props
-
+  const { description, button, testimonialsList, tagsList } = props
+  const TAGS_LIST = [
+    {
+      icon: AiIcon,
+      text: tagsList[0].title,
+    },
+    {
+      icon: BlogIcon,
+      text: tagsList[1].title,
+    },
+    {
+      icon: BuildingHomeIcon,
+      text: tagsList[2].title,
+    },
+  ]
   return (
-    <div className="pt-10 px-4 gap-12 bg-[url(/background-header.svg)] bg-top flex flex-col 2xl:pt-[48px] 2xl:px-[274px] justify-center items-center">
+    <div className="pt-10 px-4 gap-12 bg-[url(/background-header.svg)] bg-no-repeat bg-top flex flex-col 2xl:pt-[48px] 2xl:px-[274px] justify-center items-center">
       <div className="flex flex-col gap-3 2xl:gap-6 justify-start items-center">
         <div className="flex flex-row gap-3 items-center w-fit">
           {TAGS_LIST.map((tag, i) => (

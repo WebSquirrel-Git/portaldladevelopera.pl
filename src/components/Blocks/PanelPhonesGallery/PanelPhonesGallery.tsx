@@ -6,7 +6,7 @@ import { EmblaOptionsType } from 'embla-carousel'
 
 export const PanelPhonesGallery: React.FC<PanelPhonesGalleryBlockPropsType> = (props) => {
   const { header, galleryArray } = props
-  const OPTIONS: EmblaOptionsType = { dragFree: true, loop: true }
+  const OPTIONS: EmblaOptionsType = { dragFree: false, loop: true }
   return (
     <div className="relative bg-[url(/background-gradient.webp)] xl:min-h-0 min-h-[1100px] sm:min-h-[1000px] py-[57px] xl:py-[127px] px-4 gap-[19px] xl:gap-[41px] flex flex-col justify-start items-center">
       <RichText

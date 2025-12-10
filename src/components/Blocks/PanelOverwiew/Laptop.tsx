@@ -150,13 +150,13 @@ export const Laptop = () => {
       <Image
         src={DeweloperzyCard}
         alt="Zarządzaj Deweloperami"
-        className="deweloperzycard scale-0 opacity-0 absolute w-[107px] sm:w-[178px] xl:w-[255px] top-[5%] sm:top-[16%] left-[9%]"
+        className="deweloperzycard sm:flex hidden scale-0 opacity-0 absolute w-[107px] sm:w-[178px] xl:w-[255px] top-[5%] sm:top-[16%] left-[9%]"
       />
 
       <Image
         src={AktualizacjaCard}
         alt="Darmowa aktualizacja panelu"
-        className="aktualizacjecard scale-0 opacity-0 absolute w-[120px] sm:w-[198px] xl:w-[284px] top-[63%] sm:top-[57%] left-[14%]"
+        className="aktualizacjecard sm:flex hidden scale-0 opacity-0 absolute w-[120px] sm:w-[198px] xl:w-[284px] top-[63%] sm:top-[57%] left-[14%]"
       />
 
       <Image
@@ -167,24 +167,24 @@ export const Laptop = () => {
       <Image
         src={InwestycjeCard}
         alt="Tworzenie inwestycji w 5 minut"
-        className="inwestycjecard scale-0 opacity-0  absolute w-[128px] sm:w-[209px] xl:w-[299px] top-[45%] sm:top-[49%] right-[11%]"
+        className="inwestycjecard sm:flex hidden scale-0 opacity-0  absolute w-[128px] sm:w-[209px] xl:w-[299px] top-[45%] sm:top-[49%] right-[11%]"
       />
 
       <Image
         src={ZgodnoscCard}
         alt="100% zgodności z wymogami Ministerstwa Cyfryzacji"
-        className="zgodnoscard scale-0 opacity-0 absolute w-[120px]  sm:w-[150px] xl:w-[213px] top-[30%] sm:top-[36%] xl:top-[42%] left-[12%]"
+        className="zgodnoscard sm:flex hidden scale-0 opacity-0 absolute w-[120px]  sm:w-[150px] xl:w-[213px] top-[30%] sm:top-[36%] xl:top-[42%] left-[12%]"
       />
 
       <Image
         src={DoswiadczenieCard}
         alt="Doświadczenie"
-        className="doswiadczeniecard scale-0 opacity-0  absolute w-[128px] sm:w-[208px] xl:w-[297px] top-[-10%] sm:top-[11%] right-[8%]"
+        className="doswiadczeniecard sm:flex hidden scale-0 opacity-0  absolute w-[128px] sm:w-[208px] xl:w-[297px] top-[-10%] sm:top-[11%] right-[8%]"
       />
       <Image
         src={AutomatyczneRaportyCard}
         alt="Automatyczne raporty"
-        className="raportycard scale-0 opacity-0  absolute w-[76px] sm:w-[140px] xl:w-[200px] top-[24%] right-[10%]"
+        className="raportycard sm:flex hidden scale-0 opacity-0  absolute w-[76px] sm:w-[140px] xl:w-[200px] top-[24%] right-[10%]"
       />
 
       <Image src={LaptopImage} alt="Panel dla Dewelopera" className="w-full h-auto" />

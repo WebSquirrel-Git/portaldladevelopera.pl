@@ -27,6 +27,7 @@ export const FaqArticleBlock: React.FC<FaqArticleBlockPropsType> = async (props)
         equals: questionsFolder.id,
       },
     },
+    limit: 9999,
   })
   const orderedFaqs: Faq[] = faq.filter(isFaq)
   return <PostFaq questionsList={orderedFaqs} />
