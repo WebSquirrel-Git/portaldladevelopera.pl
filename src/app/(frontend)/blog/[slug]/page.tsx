@@ -83,7 +83,7 @@ export default async function Post({ params: paramsPromise }: Args) {
 
       {draft && <LivePreviewListener />}
 
-      <div className="flex flex-col-reverse lg:flex-row gap-6">
+      <div className="flex flex-col-reverse lg:flex-row gap-6 pt-[100px]">
         <div className="flex flex-col bg-[#1B1B1C]/90 rounded-lg xl:rounded-xl pb-16">
           <PostContent
             title={post.title}

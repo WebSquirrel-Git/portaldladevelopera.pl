@@ -71,7 +71,7 @@ export const articleSchema = async (props: Post) => {
         '@type': 'WebSite',
         url: `${process.env.NEXT_PUBLIC_SERVER_URL}`,
         name: 'PanelDlaDewelopera.pl',
-        logo: `${process.env.NEXT_PUBLIC_SERVER_URL}/Group.png`,
+        logo: `${process.env.NEXT_PUBLIC_SERVER_URL}/logo.png`,
       },
       {
         '@type': 'WebPage',
@@ -83,14 +83,14 @@ export const articleSchema = async (props: Post) => {
         '@type': 'BlogPosting',
         headline: props.meta?.title || '',
         description: props.meta?.description || '',
-        image: image?.url || `${process.env.NEXT_PUBLIC_SERVER_URL}/Group.png`,
+        image: image?.url || `${process.env.NEXT_PUBLIC_SERVER_URL}/logo.png`,
         author: {
           '@type': 'Organization',
           name: 'RENDPRO LIMITED',
           url: `https://rend.pro/`,
           logo: `https://rend.pro/logo.png`,
           description:
-            'RENDPRO Limited dostarcza wizualizacje 3D, wirtualne spacery i marketing nieruchomości.',
+            'REND.PRO - Marketing dewelopera i nieruchomości',
           contactPoint: {
             '@type': 'ContactPoint',
             contactType: 'customer support',
@@ -107,7 +107,7 @@ export const articleSchema = async (props: Post) => {
             '@type': 'Brand',
             name: 'PanelDlaDewelopera.pl',
             url: `${process.env.NEXT_PUBLIC_SERVER_URL}`,
-            logo: `${process.env.NEXT_PUBLIC_SERVER_URL}/Group.png`,
+            logo: `${process.env.NEXT_PUBLIC_SERVER_URL}/logo.png`,
             sameAs: [
               'https://www.facebook.com/paneldladewelopera/',
               'https://www.instagram.com/paneldladewelopera',

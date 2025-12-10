@@ -104,7 +104,7 @@ export const homePageSchema = async (props: Page) => {
         '@type': 'WebSite',
         url: `${process.env.NEXT_PUBLIC_SERVER_URL}`,
         name: 'PanelDlaDewelopera.pl',
-        logo: `${process.env.NEXT_PUBLIC_SERVER_URL}/Group.png`,
+        logo: `${process.env.NEXT_PUBLIC_SERVER_URL}/logo.png`,
         description:
           'Nowoczesna aplikacja do integracji deweloperów z systemem Ministerstwa Cyfryzacji. Automatyczne publikowanie cen, historii i więcej.',
       },
@@ -113,6 +113,38 @@ export const homePageSchema = async (props: Page) => {
         url: `${process.env.NEXT_PUBLIC_SERVER_URL}`,
         name: `${props.meta?.title}`,
         description: `${props.meta?.description}`,
+        "review": [
+          {
+          "@type": "Review",
+          "reviewBody": "Wreszcie mogę zapomnieć o przerzucaniu danych między plikami.",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
+        },
+         {
+          "@type": "Review",
+          "reviewBody": "Panel zaoszczędza mi co najmniej 10 godzin tygodniowo.",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
+        },
+         {
+          "@type": "Review",
+          "reviewBody": "Eksport danych do Ministerstwa to teraz formalność.",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
+        }
+        ]
       },
       {
         '@type': 'Organization',
@@ -120,7 +152,7 @@ export const homePageSchema = async (props: Page) => {
         url: `https://rend.pro/`,
         logo: `https://rend.pro/logo.png`,
         description:
-          'RENDPRO Limited dostarcza wizualizacje 3D, wirtualne spacery i marketing nieruchomości.',
+          'REND.PRO - Marketing dewelopera i nieruchomości.',
         contactPoint: {
           '@type': 'ContactPoint',
           contactType: 'customer support',
@@ -137,7 +169,7 @@ export const homePageSchema = async (props: Page) => {
           '@type': 'Brand',
           name: 'PanelDlaDewelopera.pl',
           url: `${process.env.NEXT_PUBLIC_SERVER_URL}`,
-          logo: `${process.env.NEXT_PUBLIC_SERVER_URL}/Group.png`,
+          logo: `${process.env.NEXT_PUBLIC_SERVER_URL}/logo.png`,
           sameAs: [
             'https://www.facebook.com/paneldladewelopera/',
             'https://www.instagram.com/paneldladewelopera',
