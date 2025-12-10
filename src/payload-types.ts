@@ -325,6 +325,7 @@ export interface FolderInterface {
  */
 export interface Faq {
   id: string;
+  faqId: number;
   title: string;
   description: {
     root: {
@@ -1483,6 +1484,7 @@ export interface UsersSelect<T extends boolean = true> {
  * via the `definition` "faq_select".
  */
 export interface FaqSelect<T extends boolean = true> {
+  faqId?: T;
   title?: T;
   description?: T;
   folder?: T;

@@ -120,7 +120,7 @@ export const FooterContent: React.FC<FooterContentProps> = ({
             </Link>
           </div>
           <div className="flex flex-col gap-2 pl-[20px] xl:pl-0 justify-start items-start">
-            <span className="text-[14px] text-grey">Firma</span>
+            <span className="text-[14px] text-grey">Informacje prawne</span>
             {regulationsNavItems?.map((nav) => (
               <CMSLink key={nav.id} {...nav.link} className="text-[16px] text-white" />
             ))}
@@ -134,7 +134,7 @@ export const FooterContent: React.FC<FooterContentProps> = ({
           </div>
           <p className="text-[18px] leading-[28px] !text-white">
             Aplikacja realizowana <br />
-            przez <b className="gradient-orange-text">REND.PRO</b>
+            przez <Link href='https://rend.pro/' className="gradient-orange-text font-semibold">REND.PRO</Link>
           </p>
         </div>
         <div className="flex flex-col sm:w-fit w-full xl:flex-row xl:gap-10 gap-3 items-center sm:items-start xl:items-end">

@@ -59,7 +59,7 @@ export default async function Page({ searchParams }: Args) {
     },
   })
   return (
-    <div className="flex flex-col bg-black">
+    <div className="flex flex-col bg-black pt-[100px]">
       <div className="bg-[url(/background-gradient.webp)] justify-center items-center flex flex-col gap-6 px-4 pt-12 pb-[123px] 2xl:px-[320px] xl:pt-[75px] xl:pb-[175px]">
         <div className="flex w-fit bg-gradientOrangeButton p-[1px] rounded-[32px]">
           <div className="flex flex-row gap-1 bg-[#512714] xl:py-1 xl:pl-[7px] xl:pr-[14px] p-1 rounded-[32px]">

@@ -18,6 +18,7 @@ export const PanelFaqBlock: React.FC<PanelFaqBlockPropsType> = async (props) => 
   const payload = await getPayload({ config: configPromise })
   const { docs: faq } = await payload.find({
     collection: 'faq',
+    sort:'faqId',
     depth: 2,
     select: {
       title: true,

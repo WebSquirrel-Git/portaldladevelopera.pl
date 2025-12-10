@@ -27,6 +27,12 @@ export const Faq: CollectionConfig = {
   },
   fields: [
     {
+      name:'faqId',
+      label:'ID',
+      type:'number',
+      required:true
+    },
+    {
       name: 'title',
       label: 'Tytuł',
       type: 'text',
