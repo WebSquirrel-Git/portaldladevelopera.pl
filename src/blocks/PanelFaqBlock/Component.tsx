@@ -27,7 +27,6 @@ export const PanelFaqBlock: React.FC<PanelFaqBlockPropsType> = async (props) => 
     },
     where: {
       folder: {
-        
         equals: questionsFolder,
       },
     },

@@ -72,6 +72,7 @@ export interface Config {
     media: Media;
     users: User;
     faq: Faq;
+    priceList: PriceList;
     redirects: Redirect;
     search: Search;
     'payload-kv': PayloadKv;
@@ -92,6 +93,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     faq: FaqSelect<false> | FaqSelect<true>;
+    priceList: PriceListSelect<false> | PriceListSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     search: SearchSelect<false> | SearchSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
@@ -789,6 +791,89 @@ export interface ContactFormBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "priceList".
+ */
+export interface PriceList {
+  id: string;
+  orientation: 'vertical' | 'horizontal';
+  featured?: boolean | null;
+  title: string;
+  subheader: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  featuredTag?: string | null;
+  monthPricing: {
+    monthMonthPrice: number;
+    monthYearPrice: number;
+  };
+  yearPricing: {
+    yearMonthPrice: number;
+    yearYearPriceBlock: {
+      yearPrice: number;
+      yearPricePromo?: string | null;
+    };
+  };
+  limitsHeader: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  limitsList: {
+    limit: string;
+    id?: string | null;
+  }[];
+  includesHeader: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  includesList: {
+    includes: string;
+    id?: string | null;
+  }[];
+  notContainList?:
+    | {
+        notContain?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -971,6 +1056,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'faq';
         value: string | Faq;
+      } | null)
+    | ({
+        relationTo: 'priceList';
+        value: string | PriceList;
       } | null)
     | ({
         relationTo: 'redirects';
@@ -1488,6 +1577,56 @@ export interface FaqSelect<T extends boolean = true> {
   title?: T;
   description?: T;
   folder?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "priceList_select".
+ */
+export interface PriceListSelect<T extends boolean = true> {
+  orientation?: T;
+  featured?: T;
+  title?: T;
+  subheader?: T;
+  featuredTag?: T;
+  monthPricing?:
+    | T
+    | {
+        monthMonthPrice?: T;
+        monthYearPrice?: T;
+      };
+  yearPricing?:
+    | T
+    | {
+        yearMonthPrice?: T;
+        yearYearPriceBlock?:
+          | T
+          | {
+              yearPrice?: T;
+              yearPricePromo?: T;
+            };
+      };
+  limitsHeader?: T;
+  limitsList?:
+    | T
+    | {
+        limit?: T;
+        id?: T;
+      };
+  includesHeader?: T;
+  includesList?:
+    | T
+    | {
+        includes?: T;
+        id?: T;
+      };
+  notContainList?:
+    | T
+    | {
+        notContain?: T;
+        id?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

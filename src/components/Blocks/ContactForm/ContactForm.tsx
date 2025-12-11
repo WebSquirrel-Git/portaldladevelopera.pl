@@ -13,7 +13,7 @@ interface ContactFormProps {
 const schema = z.object({
   name: z.string().min(3, 'Minimalna długość wynosi 3 znaki'),
   email: z.email('Nieprawidłowy adres e-mail. Spróbuj ponownie.'),
-  privacyPolicy: z.literal(true),
+  privacyPolicy: z.literal(true,'Zgoda jest wymagana'),
 })
 type FormFields = z.infer<typeof schema>
 
@@ -150,30 +150,33 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
                 )}
               </div>
             </div>
-            <div className="flex flex-col gap-1 w-full justify-start items-start">
-              <div className="flex flex-row gap-2 items-center">
-                <input
-                  type="checkbox"
-                  {...register('privacyPolicy')}
-                  className="w-[18px] h-[18px] border-solid border rounded-sm"
-                />
-                <p className="text-lightGrey text-[14px] leading-[20px]">
-                  Akceptuję{' '}
-                  <Link
-                    href={`${process.env.NEXT_PUBLIC_SERVER_URL}/polityka-prywatnosci`}
-                    className="text-primaryOrange text-[14px] leading-[20px]"
-                  >
-                    politykę prywatności
-                  </Link>{' '}
-                  *
-                </p>
-              </div>
-              {errors.privacyPolicy && (
-                <p className="!text-[#ED2B2B] text-[12px] leading-[12px]">
-                  {errors.privacyPolicy.message}
-                </p>
-              )}
-            </div>
+           <div className="flex flex-col gap-1 w-full justify-start items-start">
+  <label htmlFor="checkbox" className="flex flex-row gap-2 items-center cursor-pointer">
+    <input
+      type="checkbox"
+      id="checkbox"
+      {...register('privacyPolicy')}
+       className="w-[18px] h-[18px] border-solid border rounded-sm"
+    />
+    <span className="text-lightGrey text-[14px] leading-[20px] gap-1 flex flex-wrap">
+      Akceptuję{' '}
+      <Link
+        href={`${process.env.NEXT_PUBLIC_SERVER_URL}/polityka-prywatnosci`}
+        className="text-primaryOrange"
+        onClick={(e) => e.stopPropagation()}
+      >
+       {' '} politykę prywatności
+      </Link>{' '}
+      *
+    </span>
+  </label>
+  {errors.privacyPolicy && (
+    <p className="!text-[#ED2B2B] text-[12px] leading-[12px]">
+      {errors.privacyPolicy.message}
+    </p>
+  )}
+</div>
+
             <button
               type="submit"
               className="transition-all duration:500 hover:bg-gradientOrange text-black rounded-lg box-border bg-primaryOrange border border-yellowStroke border-solid border-l-0 border-b-0 font-medium text-[18px] py-[18px] px-6 cursor-pointer"
