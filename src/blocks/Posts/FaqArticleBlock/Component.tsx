@@ -25,7 +25,7 @@ export const FaqArticleBlock: React.FC<FaqArticleBlockPropsType> = async (props)
     },
     where: {
       folder: {
-        equals: questionsFolder.id,
+        equals: questionsFolder,
       },
     },
     limit: 9999,

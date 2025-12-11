@@ -113,38 +113,6 @@ export const homePageSchema = async (props: Page) => {
         url: `${process.env.NEXT_PUBLIC_SERVER_URL}`,
         name: `${props.meta?.title}`,
         description: `${props.meta?.description}`,
-        "review": [
-          {
-          "@type": "Review",
-          "reviewBody": "Wreszcie mogę zapomnieć o przerzucaniu danych między plikami.",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
-        },
-         {
-          "@type": "Review",
-          "reviewBody": "Panel zaoszczędza mi co najmniej 10 godzin tygodniowo.",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
-        },
-         {
-          "@type": "Review",
-          "reviewBody": "Eksport danych do Ministerstwa to teraz formalność.",
-          "reviewRating": {
-            "@type": "Rating",
-            "ratingValue": "5",
-            "bestRating": "5",
-            "worstRating": "1"
-          },
-        }
-        ]
       },
       {
         '@type': 'Organization',
