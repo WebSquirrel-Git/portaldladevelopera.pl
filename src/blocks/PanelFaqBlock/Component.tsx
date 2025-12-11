@@ -6,7 +6,7 @@ import configPromise from '@payload-config'
 export interface PanelFaqBlockPropsType {
   header: string
   subheader: string
-  questionsFolder: FolderInterface
+  questionsFolder: string
 }
 
 function isFaq(p: any): p is Faq {
@@ -19,14 +19,16 @@ export const PanelFaqBlock: React.FC<PanelFaqBlockPropsType> = async (props) => 
   const { docs: faq } = await payload.find({
     collection: 'faq',
     sort:'faqId',
-    depth: 2,
+    depth: 4,
     select: {
       title: true,
       description: true,
+      folder:true
     },
     where: {
       folder: {
-        equals: questionsFolder.id,
+        
+        equals: questionsFolder,
       },
     },
     limit: 9999,

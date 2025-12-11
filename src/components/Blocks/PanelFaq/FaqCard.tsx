@@ -29,9 +29,9 @@ interface FaqCardProps {
 }
 
 export const FaqCard: React.FC<FaqCardProps> = (props) => {
+  
   const { id, title, description, onActiveCard, activeCardId } = props
   const isOpen = activeCardId === id
-
   return (
     <div className="flex flex-col gap-6 py-4 px-[20px] xl:py-[20px] xl:px-8 bg-darkGrey rounded-2xl w-full">
       <button
@@ -41,7 +41,7 @@ export const FaqCard: React.FC<FaqCardProps> = (props) => {
       >
         <p className="text-left">{title}</p>
 
-        <AnimatePresence mode="wait" initial={false}>
+        <AnimatePresence initial={false}>
           {isOpen ? (
             <motion.div
               key="minus"

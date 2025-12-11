@@ -7,6 +7,7 @@ import Image from 'next/image'
 import LinkedinIcon from '@/assets/icons/streamline-logos_linkedin-logo-block.svg'
 import FacebookIcon from '@/assets/icons/raphael_facebook.svg'
 import LinkIcon from '@/assets/icons/link-gradient.svg'
+import { useState } from 'react'
 
 interface SharePostProps {
   latestPosts: {
@@ -29,7 +30,7 @@ interface SharePostProps {
 
 export const SharePost: React.FC<SharePostProps> = (props) => {
   const { latestPosts, slug } = props
-
+const [copyButtonText,setCopyButtonText] = useState('Kopiuj Link')
   const copyLink = () => {
     const url = `${process.env.NEXT_PUBLIC_APP_URL}/blog/${slug}`
 
@@ -37,7 +38,12 @@ export const SharePost: React.FC<SharePostProps> = (props) => {
       .writeText(url)
       .then(() => {
         console.log('Skopiowano link!')
+        setCopyButtonText('Skopiowano ✅')
+        setTimeout(()=>{
+setCopyButtonText('Kopiuj Link')
+        },5000)
       })
+
       .catch(() => {
         console.error('Nie udało się skopiować linku.')
       })
@@ -68,7 +74,7 @@ export const SharePost: React.FC<SharePostProps> = (props) => {
             className="bg-transparent cursor-pointer flex flex-row gap-2 items-center justify-center lg:justify-start h-10 px-4 w-10 lg:w-full border-solid border-dark/90 lg:border-none border lg:rounded-none rounded-lg"
           >
             <Image src={LinkIcon} alt="Kopiuj link" className="w-4 h-4" />
-            <p className="lg:block hidden text-[14px] !text-lightGrey font-medium">Kopiuj link</p>
+            <p className="lg:block hidden text-[14px] !text-lightGrey font-medium">{copyButtonText}</p>
           </button>
         </div>
       </div>
