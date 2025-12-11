@@ -55,25 +55,26 @@ export const NavListMobile: React.FC<NavListMobilePropsType> = ({ data, showMenu
         <div className="flex flex-col w-fit justify-start items-start pr-6">
           {navItems.map((navItem) => (
             <CMSLink
+            onClick={onHideMenu}
               key={navItem.id}
               {...navItem.link}
               className=" pr-9 py-8 text-left w-fit text-white min-w-[206px] font-medium text-[16px]"
             />
           ))}
-          <Link
+          <Link onClick={onHideMenu}
             href={`${process.env.NEXT_PUBLIC_APP_URL}`}
             className="w-full text-center text-black rounded-lg box-border bg-primaryOrange border-[1px] border-primaryOrange font-medium text-[16px] py-3 px-6 cursor-pointer"
           >
             Zaloguj się
           </Link>
           <div className="flex flex-row justify-start items-center gap-4 pr-9 py-8">
-            <Link
+            <Link target='_blank'
               href={data.facebook?.url || ''}
               className="w-10 h-10 flex items-center justify-center"
             >
               <Icon icon={data.facebook?.ikona || ''} className="w-6 h-6 text-white" />
             </Link>
-            <Link
+            <Link target='_blank'
               href={data.instagram?.url || ''}
               className="w-10 h-10 flex items-center justify-center"
             >

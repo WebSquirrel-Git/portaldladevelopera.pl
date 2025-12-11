@@ -134,7 +134,7 @@ export const FooterContent: React.FC<FooterContentProps> = ({
           </div>
           <p className="text-[18px] leading-[28px] !text-white">
             Aplikacja realizowana <br />
-            przez <Link href='https://rend.pro/' className="gradient-orange-text font-semibold">REND.PRO</Link>
+            przez <Link target='_blank' href='https://rend.pro/' className="gradient-orange-text font-semibold">REND.PRO</Link>
           </p>
         </div>
         <div className="flex flex-col sm:w-fit w-full xl:flex-row xl:gap-10 gap-3 items-center sm:items-start xl:items-end">
@@ -143,7 +143,7 @@ export const FooterContent: React.FC<FooterContentProps> = ({
           </p>
           <div className="flex flex-row gap-4">
             {companyInformations.facebook && (
-              <Link
+              <Link target='_blank'
                 className="w-10 h-10 rounded-[8px] bg-black flex justify-center items-center"
                 href={companyInformations.facebook.url || ''}
               >
@@ -154,7 +154,7 @@ export const FooterContent: React.FC<FooterContentProps> = ({
               </Link>
             )}
             {companyInformations.instagram && (
-              <Link
+              <Link target='_blank'
                 className="w-10 h-10 rounded-[8px] bg-black flex justify-center items-center"
                 href={companyInformations.instagram.url || ''}
               >
@@ -165,7 +165,7 @@ export const FooterContent: React.FC<FooterContentProps> = ({
               </Link>
             )}
             {companyInformations.youtube && (
-              <Link
+              <Link target='_blank'
                 className="w-10 h-10 rounded-[8px] bg-black flex justify-center items-center"
                 href={companyInformations.youtube.url || ''}
               >
