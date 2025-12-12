@@ -72,6 +72,7 @@ export interface Config {
     media: Media;
     users: User;
     faq: Faq;
+    priceList: PriceList;
     redirects: Redirect;
     search: Search;
     'payload-kv': PayloadKv;
@@ -92,6 +93,7 @@ export interface Config {
     media: MediaSelect<false> | MediaSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     faq: FaqSelect<false> | FaqSelect<true>;
+    priceList: PriceListSelect<false> | PriceListSelect<true>;
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     search: SearchSelect<false> | SearchSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
@@ -192,6 +194,7 @@ export interface Page {
     | PrivacyPolicyBlock
     | RegulationsBlock
     | ContactFormBlock
+    | PricingOverwiewBlock
   )[];
   meta?: {
     title?: string | null;
@@ -789,6 +792,142 @@ export interface ContactFormBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingOverwiewBlock".
+ */
+export interface PricingOverwiewBlock {
+  Header: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  subheader: string;
+  cards: (string | PriceList)[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'pricingOverwiewBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "priceList".
+ */
+export interface PriceList {
+  id: string;
+  orientation: 'vertical' | 'horizontal';
+  featured?: boolean | null;
+  title: string;
+  subheader: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  featuredTag?: string | null;
+  monthPricing: {
+    monthMonthPrice: number;
+    monthYearPrice: number;
+  };
+  yearPricing: {
+    yearMonthPrice: number;
+    yearYearPriceBlock: {
+      yearPrice: number;
+      yearPricePromo?: string | null;
+    };
+  };
+  button: {
+    label: string;
+    url: string;
+  };
+  limits: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  includes: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  notContains?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  table: {
+    position1: string;
+    position2: string;
+    position3: string;
+    position4: string;
+    position5?: boolean | null;
+    position6?: boolean | null;
+    position7?: boolean | null;
+    position8?: boolean | null;
+    position9?: boolean | null;
+    position10?: boolean | null;
+    position11: string;
+    position12: string;
+    position13?: boolean | null;
+    position14?: {
+      contains?: boolean | null;
+      info?: string | null;
+    };
+    position15?: ('higherPlans' | 'contains') | null;
+    position16: string;
+    position17?: boolean | null;
+  };
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -973,6 +1112,10 @@ export interface PayloadLockedDocument {
         value: string | Faq;
       } | null)
     | ({
+        relationTo: 'priceList';
+        value: string | PriceList;
+      } | null)
+    | ({
         relationTo: 'redirects';
         value: string | Redirect;
       } | null)
@@ -1065,6 +1208,7 @@ export interface PagesSelect<T extends boolean = true> {
         privacyPolicyBlock?: T | PrivacyPolicyBlockSelect<T>;
         regulationsBlock?: T | RegulationsBlockSelect<T>;
         contactFormBlock?: T | ContactFormBlockSelect<T>;
+        pricingOverwiewBlock?: T | PricingOverwiewBlockSelect<T>;
       };
   meta?:
     | T
@@ -1329,6 +1473,17 @@ export interface ContactFormBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingOverwiewBlock_select".
+ */
+export interface PricingOverwiewBlockSelect<T extends boolean = true> {
+  Header?: T;
+  subheader?: T;
+  cards?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "posts_select".
  */
 export interface PostsSelect<T extends boolean = true> {
@@ -1488,6 +1643,71 @@ export interface FaqSelect<T extends boolean = true> {
   title?: T;
   description?: T;
   folder?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "priceList_select".
+ */
+export interface PriceListSelect<T extends boolean = true> {
+  orientation?: T;
+  featured?: T;
+  title?: T;
+  subheader?: T;
+  featuredTag?: T;
+  monthPricing?:
+    | T
+    | {
+        monthMonthPrice?: T;
+        monthYearPrice?: T;
+      };
+  yearPricing?:
+    | T
+    | {
+        yearMonthPrice?: T;
+        yearYearPriceBlock?:
+          | T
+          | {
+              yearPrice?: T;
+              yearPricePromo?: T;
+            };
+      };
+  button?:
+    | T
+    | {
+        label?: T;
+        url?: T;
+      };
+  limits?: T;
+  includes?: T;
+  notContains?: T;
+  table?:
+    | T
+    | {
+        position1?: T;
+        position2?: T;
+        position3?: T;
+        position4?: T;
+        position5?: T;
+        position6?: T;
+        position7?: T;
+        position8?: T;
+        position9?: T;
+        position10?: T;
+        position11?: T;
+        position12?: T;
+        position13?: T;
+        position14?:
+          | T
+          | {
+              contains?: T;
+              info?: T;
+            };
+        position15?: T;
+        position16?: T;
+        position17?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
 }

@@ -15,6 +15,7 @@ import { TextArticleBlock } from './Posts/TextArticleBlock/Component'
 import { PrivacyPolicyBlock } from './PrivacyPolicyBlock/Component'
 import { RegulationsBlock } from './RegulationsBlock/Component'
 import { ContactFormBlock } from './ContactFormBlock/Component'
+import { PricingOverwiewBlock } from './PricingOverwiewBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -30,6 +31,7 @@ const blockComponents = {
   privacyPolicyBlock: PrivacyPolicyBlock,
   regulationsBlock: RegulationsBlock,
   contactFormBlock: ContactFormBlock,
+  pricingOverwiewBlock:PricingOverwiewBlock
 }
 
 export const RenderBlocks: React.FC<{

@@ -25,6 +25,7 @@
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
     "@iconify/react": "^6.0.2",
+    "@next/third-parties": "^16.0.8",
     "@payloadcms/admin-bar": "3.65.0",
     "@payloadcms/db-mongodb": "3.65.0",
     "@payloadcms/live-preview-react": "3.65.0",

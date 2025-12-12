@@ -26,6 +26,7 @@ import { PanelFaqBlock } from '@/blocks/PanelFaqBlock/config'
 import { PrivacyPolicyBlock } from '@/blocks/PrivacyPolicyBlock/config'
 import { RegulationsBlock } from '@/blocks/RegulationsBlock/config'
 import { ContactFormBlock } from '@/blocks/ContactFormBlock/config'
+import { PricingOverwiewBlock } from '@/blocks/PricingOverwiewBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -94,6 +95,7 @@ export const Pages: CollectionConfig<'pages'> = {
                 PrivacyPolicyBlock,
                 RegulationsBlock,
                 ContactFormBlock,
+                PricingOverwiewBlock
               ],
               required: true,
               admin: {

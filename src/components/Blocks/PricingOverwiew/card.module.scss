@@ -1,0 +1,99 @@
+.richtextLimits{
+    p{
+        font-weight: 600;
+        color: white!important;
+         strong{
+                color: #F0642E!important;
+            }
+    }
+    ul{
+        margin: 4px 0 20px 0;
+        @media only screen and (min-width: 1280px) {
+         margin: 4px 0 16px 0;   
+        }
+        li{
+            color: white;
+            list-style-image: url('/list-dot.svg');
+            margin: 0;
+            font-size: 14px;
+            line-height: 20px;
+            &::marker{
+                width: 14px;
+                height: 14px;
+                font-size: 0px;
+                line-height: 0;
+            }
+        }
+    }
+}
+
+.richtextIncludes{
+    p{
+        font-weight: 600;
+        color: white!important;
+         strong{
+                color: #F0642E!important;
+            }
+    }
+    ul{
+        margin: 4px 0 0 0;
+        li{
+            color: white;
+            list-style-image: url('/list-checkmark.svg');
+            margin: 4px 0 4px 0;
+            font-size: 14px;
+            line-height: 20px;
+            strong{
+                color: #F0642E;
+            }
+            &::marker{
+                width: 14px;
+                height: 14px;
+                font-size: 0px;
+                line-height: 0;
+            }
+        }
+    }
+}
+
+.richtextNotContains{
+    p{
+        font-weight: 600;
+        color: white!important;
+         strong{
+                color: #F0642E!important;
+            }
+    }
+    ul{
+        margin: 4px 0 0 0;
+        li{
+            color: #93979E;
+            list-style-image: url('/list-lock.svg');
+            margin: 0;
+            font-size: 14px;
+            line-height: 20px;
+            strong{
+                color: #F0642E;
+            }
+            &::marker{
+                width: 14px;
+                height: 14px;
+                font-size: 0px;
+                line-height: 0;
+            }
+        }
+    }
+}
+
+.richTextSubheader{
+    p{
+      font-size: 18px;
+      line-height: 28px;
+      color: white;  
+      font-weight: 600;
+      a{
+color: #F0642E;
+text-decoration: none;
+      }
+    }
+}
