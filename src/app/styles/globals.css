@@ -33,6 +33,12 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+.gradient-dark-orange-text{
+ background: linear-gradient(90deg, #F0642E 0.01%, #EE201C 50.01%, #F29120 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+ 
+}
 .gradient-brown {
   background: linear-gradient(325.41deg, #1b1b1c 49.82%, rgba(250, 172, 121, 0.1) 128.97%);
 }

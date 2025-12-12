@@ -194,6 +194,7 @@ export interface Page {
     | PrivacyPolicyBlock
     | RegulationsBlock
     | ContactFormBlock
+    | PricingOverwiewBlock
   )[];
   meta?: {
     title?: string | null;
@@ -791,6 +792,32 @@ export interface ContactFormBlock {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingOverwiewBlock".
+ */
+export interface PricingOverwiewBlock {
+  Header: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  subheader: string;
+  cards: (string | PriceList)[];
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'pricingOverwiewBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "priceList".
  */
 export interface PriceList {
@@ -825,7 +852,11 @@ export interface PriceList {
       yearPricePromo?: string | null;
     };
   };
-  limitsHeader: {
+  button: {
+    label: string;
+    url: string;
+  };
+  limits: {
     root: {
       type: string;
       children: {
@@ -840,11 +871,7 @@ export interface PriceList {
     };
     [k: string]: unknown;
   };
-  limitsList: {
-    limit: string;
-    id?: string | null;
-  }[];
-  includesHeader: {
+  includes: {
     root: {
       type: string;
       children: {
@@ -859,16 +886,43 @@ export interface PriceList {
     };
     [k: string]: unknown;
   };
-  includesList: {
-    includes: string;
-    id?: string | null;
-  }[];
-  notContainList?:
-    | {
-        notContain?: string | null;
-        id?: string | null;
-      }[]
-    | null;
+  notContains?: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  table: {
+    position1: string;
+    position2: string;
+    position3: string;
+    position4: string;
+    position5?: boolean | null;
+    position6?: boolean | null;
+    position7?: boolean | null;
+    position8?: boolean | null;
+    position9?: boolean | null;
+    position10?: boolean | null;
+    position11: string;
+    position12: string;
+    position13?: boolean | null;
+    position14?: {
+      contains?: boolean | null;
+      info?: string | null;
+    };
+    position15?: ('higherPlans' | 'contains') | null;
+    position16: string;
+    position17?: boolean | null;
+  };
   updatedAt: string;
   createdAt: string;
 }
@@ -1154,6 +1208,7 @@ export interface PagesSelect<T extends boolean = true> {
         privacyPolicyBlock?: T | PrivacyPolicyBlockSelect<T>;
         regulationsBlock?: T | RegulationsBlockSelect<T>;
         contactFormBlock?: T | ContactFormBlockSelect<T>;
+        pricingOverwiewBlock?: T | PricingOverwiewBlockSelect<T>;
       };
   meta?:
     | T
@@ -1418,6 +1473,17 @@ export interface ContactFormBlockSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingOverwiewBlock_select".
+ */
+export interface PricingOverwiewBlockSelect<T extends boolean = true> {
+  Header?: T;
+  subheader?: T;
+  cards?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "posts_select".
  */
 export interface PostsSelect<T extends boolean = true> {
@@ -1607,25 +1673,40 @@ export interface PriceListSelect<T extends boolean = true> {
               yearPricePromo?: T;
             };
       };
-  limitsHeader?: T;
-  limitsList?:
+  button?:
     | T
     | {
-        limit?: T;
-        id?: T;
+        label?: T;
+        url?: T;
       };
-  includesHeader?: T;
-  includesList?:
+  limits?: T;
+  includes?: T;
+  notContains?: T;
+  table?:
     | T
     | {
-        includes?: T;
-        id?: T;
-      };
-  notContainList?:
-    | T
-    | {
-        notContain?: T;
-        id?: T;
+        position1?: T;
+        position2?: T;
+        position3?: T;
+        position4?: T;
+        position5?: T;
+        position6?: T;
+        position7?: T;
+        position8?: T;
+        position9?: T;
+        position10?: T;
+        position11?: T;
+        position12?: T;
+        position13?: T;
+        position14?:
+          | T
+          | {
+              contains?: T;
+              info?: T;
+            };
+        position15?: T;
+        position16?: T;
+        position17?: T;
       };
   updatedAt?: T;
   createdAt?: T;

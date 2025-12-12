@@ -38,11 +38,12 @@ export const PricingOverwiewBlock: Block = {
       required: true,
     },
     {
-      name: 'questionsFolder',
-      label: 'Folder z pytaniami',
+      name: 'cards',
+      label: 'Karty z pakietami',
       type: 'relationship',
-      relationTo: 'payload-folders',
-      hasMany: false,
+      relationTo: 'priceList',
+      hasMany: true,
+      
       required: true,
     },
   ],
