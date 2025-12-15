@@ -95,7 +95,7 @@ return <Image src={CheckIcon} width={20} height={20} alt='zawiera'/>
         <td className='bg-white z-30 left-0 w-[240px] h-[70px] py-[18px] px-3 text-[14px] leading-[20px] font-medium'>{row.label}</td>
 
         {tables.map((plan) => (
-          <td className='w-[240px] h-[70px] text-center py-[18px] text-[14px] leading-[20px] font-medium' key={plan.id}>
+          <td className='border border-solid border-lightGrey border-x-0 border-t-0 border-b w-[240px] h-[70px] text-center py-[18px] text-[14px] leading-[20px] font-medium' key={plan.id}>
             {renderCell(plan.table?.[row.key])}
           </td>
         ))}

@@ -74,7 +74,9 @@ export const CardVertical:React.FC<CardVerticalType> = (props)=>{
         <RichText data={limits} className={`mx-0 ${styles.richtextLimits}`}/>
         <RichText data={includes} className={`mx-0 ${styles.richtextIncludes}`}/>
         <RichText data={notContains} className={`mx-0 ${styles.richtextNotContains}`}/>
+        <p className='text-left w-full !text-primaryOrange pt-2'>* Wkrótce dostępne</p>
     </div>
+    
 </div>
  </div>
     )
