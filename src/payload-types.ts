@@ -195,6 +195,7 @@ export interface Page {
     | RegulationsBlock
     | ContactFormBlock
     | PricingOverwiewBlock
+    | PricingTableBlock
   )[];
   meta?: {
     title?: string | null;
@@ -928,6 +929,63 @@ export interface PriceList {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingTableBlock".
+ */
+export interface PricingTableBlock {
+  infoCard1: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  table: (string | PriceList)[];
+  infoCard2: {
+    list: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+    card: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    };
+  };
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'pricingTableBlock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "redirects".
  */
 export interface Redirect {
@@ -1209,6 +1267,7 @@ export interface PagesSelect<T extends boolean = true> {
         regulationsBlock?: T | RegulationsBlockSelect<T>;
         contactFormBlock?: T | ContactFormBlockSelect<T>;
         pricingOverwiewBlock?: T | PricingOverwiewBlockSelect<T>;
+        pricingTableBlock?: T | PricingTableBlockSelect<T>;
       };
   meta?:
     | T
@@ -1479,6 +1538,22 @@ export interface PricingOverwiewBlockSelect<T extends boolean = true> {
   Header?: T;
   subheader?: T;
   cards?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "PricingTableBlock_select".
+ */
+export interface PricingTableBlockSelect<T extends boolean = true> {
+  infoCard1?: T;
+  table?: T;
+  infoCard2?:
+    | T
+    | {
+        list?: T;
+        card?: T;
+      };
   id?: T;
   blockName?: T;
 }

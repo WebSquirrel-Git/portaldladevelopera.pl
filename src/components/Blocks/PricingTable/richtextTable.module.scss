@@ -1,0 +1,99 @@
+.infoCard1{
+    width: 100%;
+    h2,h3,h4{
+        color: black!important;
+    }
+    h2{
+        font-size: 34px!important;
+        line-height: 40px!important;
+        @media only screen and (min-width: 1280px) {
+         font-size: 40px!important;
+         line-height: 48px!important;   
+        }
+    }
+    h4{
+         font-size: 20px!important;
+         line-height: 26px!important;
+         font-weight: 500!important; 
+    }
+    ul li::marker{
+       
+            color: black!important;
+        
+    }
+}
+.infoCard2{
+    width: 100%;
+    max-width: 100%;
+    h2,h3,h4{
+        color: white!important;
+    }
+    h2{
+        font-size: 34px!important;
+        line-height: 40px!important;
+        margin-bottom: 16px;
+        @media only screen and (min-width: 1280px) {
+         font-size: 40px!important;
+         line-height: 48px!important;   
+        }
+    }
+    h4{
+         font-size: 20px!important;
+         line-height: 26px!important;
+         font-weight: 500!important; 
+    }
+    ul li::marker{
+       
+         width: 16px;
+                height: 16px;
+                font-size: 0px;
+                line-height: 0;
+        
+    }
+    li{
+         list-style-image: url('/list-star.svg');
+        color: #D0D0D0!important;
+        margin: 8px 0 8px 0;
+            font-size: 16px;
+            line-height: 24px;
+        strong{
+            color: #D0D0D0!important;
+        }
+    }
+}
+.infoCard3{
+    width: 100%;
+    max-width: 100%;
+    h2,h3,h4{
+        color: white!important;
+    }
+    h3{
+        font-size: 24px!important;
+        line-height: 32px!important;
+        @media only screen and (min-width: 1280px) {
+         font-size: 24px!important;
+         line-height: 32px!important;   
+        }
+    }
+    h4{
+         font-size: 20px!important;
+         line-height: 26px!important;
+         font-weight: 500!important; 
+    }
+    ul{
+       margin-top: 12px; 
+    }
+    ul li::marker{
+      color:white;
+    }
+    li{
+        font-weight: 600;
+        color: #D0D0D0!important;
+        margin: 0;
+            font-size: 16px;
+            line-height: 24px;
+        strong{
+            color: #D0D0D0!important;
+        }
+    }
+}
