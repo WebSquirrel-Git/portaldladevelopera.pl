@@ -161,11 +161,10 @@ const pricingPlans = pricingOverviewBlock[0].cards.map((item:any)=>{
         },
       },
       {
-      "offers": {
     "@type": "OfferCatalog",
     "name": "Cennik – plany subskrypcyjne",
     "itemListElement":pricingPlans
-  }
+  
 },
        {
         '@type': 'ItemList',
