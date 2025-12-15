@@ -59,6 +59,7 @@ const jsxConverters: JSXConvertersFunction<NodeTypes> = ({ defaultConverters }) 
 
       return <Tag id={text ? text.toLowerCase().replace(/\s+/g, '-') : undefined}>{children}</Tag>
     }
+     return <Tag>{children}</Tag>
   },
 })
 

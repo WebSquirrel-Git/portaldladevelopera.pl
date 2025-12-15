@@ -275,31 +275,37 @@ export const PriceList: CollectionConfig = {
       name:'position5',
       label:'Generowanie XML + MD5 zgodne z UOKiK',
       type:'checkbox',
+      defaultValue: false
     },
      {
       name:'position6',
       label:'Eksport do dane.gov.pl',
       type:'checkbox',
+      defaultValue: false
     },
      {
       name:'position7',
       label:'Historia zmian cen i statusów',
       type:'checkbox',
+      defaultValue: false
     },
      {
       name:'position8',
       label:'Chatbot-AI (pomoc w obsłudze panelu)',
       type:'checkbox',
+      defaultValue: false
     },
      {
       name:'position9',
       label:'AI-asystent danych (opisy, automatyzacja)',
       type:'checkbox',
+      defaultValue: false
     },
      {
       name:'position10',
       label:'Analiza AI rynku (ceny m², trendy)',
       type:'checkbox',
+      defaultValue: false
     },
      {
       name:'position11',
@@ -317,6 +323,7 @@ export const PriceList: CollectionConfig = {
       name:'position13',
       label:'Integracja ze stroną (API / iframe)',
       type:'checkbox',
+      defaultValue: false
     },
      {
       name:'position14',
@@ -327,6 +334,7 @@ export const PriceList: CollectionConfig = {
       name:'contains',
       label:'Zawiera?',
       type:'checkbox',
+      defaultValue: false
     },
      {
       name:'info',
@@ -360,6 +368,7 @@ export const PriceList: CollectionConfig = {
       name:'position17',
       label:'Dostęp do roadmapy + wpływ na rozwój',
       type:'checkbox',
+      defaultValue: false
     },
   ]
 }

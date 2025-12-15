@@ -17,7 +17,7 @@ export const PricingOverwiew: React.FC<PricingOverviewType> = (props) => {
   const horizontalCards = cards.filter((card)=>card.orientation==='horizontal')
  const [activePeriod,setActivePeriod] = useState<"month"|"year">('month')
   return (
-    <div className="pt-10 px-4 gap-12 bg-[url(/background-header.svg)] bg-no-repeat bg-top flex flex-col 2xl:pt-[40px] 2xl:px-[274px] justify-center items-center">
+    <div className="pt-10 xl:pb-[160px] pb-[80px] px-4 gap-12 bg-[url(/background-header.svg)] bg-no-repeat bg-top flex flex-col 2xl:pt-[40px] 2xl:px-[274px] justify-center items-center">
       
       <div className="flex flex-col gap-3 2xl:gap-6 justify-start items-center">
        <div className='flex flex-col items-center justify-center'>
