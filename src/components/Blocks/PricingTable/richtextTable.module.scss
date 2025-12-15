@@ -1,5 +1,6 @@
 .infoCard1{
     width: 100%;
+    max-width: 100%;
     h2,h3,h4{
         color: black!important;
     }
@@ -15,6 +16,7 @@
          font-size: 20px!important;
          line-height: 26px!important;
          font-weight: 500!important; 
+         margin: 24px 0!important;
     }
     ul li::marker{
        

@@ -1,4 +1,4 @@
-import type { Faq, FolderInterface, Media, Page, Post, User } from '@/payload-types'
+import type { Faq, FolderInterface, Media, Page, Post, PriceList, User } from '@/payload-types'
 import { lexicalToPlainText } from '@/utilities/lexicalToPlainText'
 import { getPayload } from 'payload'
 import configPromise from '@payload-config'
@@ -21,7 +21,7 @@ export async function getFaqsFromFolder(folder: FolderInterface): Promise<Faq[]>
   return faqs.filter((f): f is Faq => !!f?.id)
 }
 
-export interface SchemaSlugPageProps {
+export interface SchemaPriceListPageProps {
   '@context': string
   '@graph': (
     | {
@@ -70,10 +70,9 @@ export interface SchemaSlugPageProps {
   )[]
 }
 
-export const slugPageSchema = async (props: Page) => {
+export const priceListPageSchema = async (props: Page) => {
   const faqBlocks = props.layout.filter((item) => item.blockType === 'panelFaqBlock')
   const faqItems: Faq[] = []
-
   for (const block of faqBlocks) {
     const folder = block.questionsFolder
     if (!folder) continue
@@ -95,7 +94,23 @@ export const slugPageSchema = async (props: Page) => {
     const faqsFromFolder = await getFaqsFromFolder(folderObj)
     faqItems.push(...faqsFromFolder)
   }
-
+const pricingOverviewBlock = props.layout.filter((item)=>item.blockType==='pricingOverwiewBlock'
+)
+const pricingPlans = pricingOverviewBlock[0].cards.map((item:any)=>{
+  return ({
+        "@type": "Offer",
+        "name": item.title,
+        "price": item.monthPricing.monthMonthPrice,
+        "priceCurrency": "PLN",
+        "url": `${process.env.NEXT_PUBLIC_SERVER_URL}/cennik`,
+        "category": "subscription",
+        "eligibleDuration": {
+          "@type": "QuantitativeValue",
+          "value": 1,
+          "unitText": "MONTH"
+        }
+      })
+})
   const hasFaq = faqItems.length > 0
   return {
     '@context': 'https://schema.org',
@@ -144,6 +159,37 @@ export const slugPageSchema = async (props: Page) => {
             'https://www.youtube.com/@paneldladewelopera',
           ],
         },
+      },
+      {
+      "offers": {
+    "@type": "OfferCatalog",
+    "name": "Cennik – plany subskrypcyjne",
+    "itemListElement":pricingPlans
+  }
+},
+       {
+        '@type': 'ItemList',
+        name: 'Główne menu nawigacyjne',
+        itemListElement: [
+          {
+            '@type': 'SiteNavigationElement',
+            position: 1,
+            name: 'Home',
+            url: 'https://paneldladewelopera.pl/home',
+          },
+          {
+            '@type': 'SiteNavigationElement',
+            position: 2,
+            name: 'Cennik',
+            url: 'https://paneldladewelopera.pl/cennik',
+          },
+          {
+            '@type': 'SiteNavigationElement',
+            position: 3,
+            name: 'Blog',
+            url: 'https://paneldladewelopera.pl/blog',
+          },
+        ],
       },
       ...(hasFaq
         ? [

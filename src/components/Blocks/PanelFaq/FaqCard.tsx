@@ -37,13 +37,13 @@ export const FaqCard: React.FC<FaqCardProps> = (props) => {
       <button
         onClick={() => onActiveCard(id)}
         key={id}
-        className="px-0 cursor-pointer flex flex-row gap-2 border-0 w-full justify-between items-center bg-darkGrey"
+        className="relative pr-6 px-0 cursor-pointer flex flex-row gap-2 border-0 w-full justify-between items-center bg-darkGrey"
       >
         <p className="text-left">{title}</p>
 
         <AnimatePresence initial={false}>
           {isOpen ? (
-            <motion.div
+            <motion.div className='absolute top-0 right-0'
               key="minus"
               initial={{ opacity: 0, rotate: -90 }}
               animate={{ opacity: 1, rotate: 0 }}
@@ -53,7 +53,7 @@ export const FaqCard: React.FC<FaqCardProps> = (props) => {
               <Image src={MinusIcon} alt="Minus" className="w-6 h-6 m-0" />
             </motion.div>
           ) : (
-            <motion.div
+            <motion.div className='absolute top-0 right-0'
               key="plus"
               initial={{ opacity: 0, rotate: 90 }}
               animate={{ opacity: 1, rotate: 0 }}

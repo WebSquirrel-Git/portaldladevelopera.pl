@@ -2,14 +2,14 @@
 
 import { Page } from '@/payload-types'
 import Script from 'next/script'
-import { SchemaSlugPageProps } from './SchemaSlugPage'
+import { SchemaPriceListPageProps } from './SchemaPriceListPage'
 
-interface SchemaSlugPageComponentProps {
+interface SchemaPriceListPageComponentProps {
   page: Page
-  schema: SchemaSlugPageProps
+  schema: SchemaPriceListPageProps
 }
 
-export const SchemaSlugPageComponent: React.FC<SchemaSlugPageComponentProps> = (props) => {
+export const SchemaPriceListPageComponent: React.FC<SchemaPriceListPageComponentProps> = (props) => {
   const { page, schema } = props
   return (
     <Script

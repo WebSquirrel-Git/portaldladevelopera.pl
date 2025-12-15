@@ -11,8 +11,8 @@ import { generateMeta } from '@/utilities/generateMeta'
 import { LivePreviewListener } from '@/components/LivePreviewListener'
 import { homePageSchema } from '@/components/Schema/HomePage/SchemaHomePage'
 import { SchemaHomePageComponent } from '@/components/Schema/HomePage/SchemaHomePageComponent'
-import { slugPageSchema } from '@/components/Schema/SlugPage/SchemaSlugPage'
-import { SchemaSlugPageComponent } from '@/components/Schema/SlugPage/SchemaSlugPageComponent'
+import { priceListPageSchema } from '@/components/Schema/PriceListPage/SchemaPriceListPage'
+import { SchemaPriceListPageComponent } from '@/components/Schema/PriceListPage/SchemaPriceListPageComponent'
 
 export async function generateStaticParams() {
   const payload = await getPayload({ config: configPromise })
@@ -65,8 +65,8 @@ export default async function Page({ params: paramsPromise }: Args) {
   if (page.slug === 'home') {
     schema = await homePageSchema(page)
   }
-  if(page.slug!=='home'){
-     slugSchema = await slugPageSchema(page)
+  if(page.slug==='cennik'){
+     slugSchema = await priceListPageSchema(page)
   }
 
   return (
@@ -75,7 +75,7 @@ export default async function Page({ params: paramsPromise }: Args) {
       //  className='bg-[url(/background-gradient.webp)] bg-cover min-h-[11000px]'
     >
       {page.slug === 'home' && <SchemaHomePageComponent page={page} schema={schema!} />}
-      {page.slug!=='home'&&<SchemaSlugPageComponent page={page} schema={slugSchema!}/>}
+      {page.slug==='cennik'&&<SchemaPriceListPageComponent page={page} schema={slugSchema!}/>}
       {/* Allows redirects for valid pages too */}
       <PayloadRedirects disableNotFound url={url} />
 
