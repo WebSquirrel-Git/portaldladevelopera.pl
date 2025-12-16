@@ -31,6 +31,17 @@
   --font-mono: var(--font-geist-mono);
 }
 
+@layer components {
+  .card {
+    @apply rounded-2xl p-5 shadow-sm;
+    background: linear-gradient(180deg, #ffffff 0%, var(--surface) 100%);
+    border: 1px solid var(--border);
+  }
+  .card-lg { @apply p-7; }
+
+  .muted { color: var(--muted); }
+}
+
 html {
   margin: 0;
   padding: 0;
