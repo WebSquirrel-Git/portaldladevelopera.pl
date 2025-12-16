@@ -43,7 +43,7 @@ text-decoration: none!important;
 color: black;
 }
 /* Components */
-
+@layer components {
   .card {
     @apply rounded-2xl p-5 shadow-sm;
     background: linear-gradient(180deg, #ffffff 0%, var(--surface) 100%);
@@ -88,7 +88,7 @@ color: black;
     background: #ffffff;
   }
   .input:focus { box-shadow: 0 0 0 4px var(--ring); border-color: transparent; }
-
+}
 
 /* Ukrycie strzałek w input[type=number] tylko w wybranych sekcjach */
 .no-number-spinners input[type="number"]::-webkit-outer-spin-button,
