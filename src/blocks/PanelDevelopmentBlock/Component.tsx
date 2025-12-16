@@ -12,6 +12,10 @@ export interface PanelDevelopmentBlockPropsType {
       }[]
     }
   }[]
+   button?:{
+    title:string;
+    url:string;
+  }
 }
 
 export const PanelDevelopmentBlock: React.FC<PanelDevelopmentBlockPropsType> = (props) => {
