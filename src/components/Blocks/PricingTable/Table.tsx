@@ -67,7 +67,7 @@ return <Image src={CheckIcon} width={20} height={20} alt='zawiera'/>
       <th className='bg-white z-30 left-0 w-[240px] py-[20px] px-3'>
         <p className='!text-black text-left font-medium'>Porównaj plany</p>
         
-        <span className='block mt-2 mb-3 text-black w-fit text-left font-medium border border-darkGrey border-solid px-4 py-2.5 rounded-[20px]'>Pakiet roczny -15%</span>
+        <span className='block mt-2 mb-3 text-black w-fit text-left font-medium border border-darkGrey border-solid px-4 py-2.5 rounded-[20px]'>Pakiet roczny -16%</span>
       
       <p className='text-left text-[14px] !text-darkGrey'>Dopasuj abonament do skali Twojego biznesu. Porównaj funkcje we wszystkich pakietach.</p>
       </th>

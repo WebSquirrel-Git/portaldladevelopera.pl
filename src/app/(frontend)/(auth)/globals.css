@@ -1,8 +1,5 @@
 @tailwind components;
 @tailwind utilities;
-@import './colors.css';
-@import './typography.css';
-
 :root {
   /* Base palette (updated to requested UI/UX theme) */
   --gold-500: #f29120; /* UI/UX-1 */
@@ -31,147 +28,20 @@
   --font-mono: var(--font-geist-mono);
 }
 
-html {
-  margin: 0;
-  padding: 0;
-  /* -webkit-text-fill-color: inherit !important; */
-}
-
+/* Light-only modern background in warm palette */
 body {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-}
+  background:
+    radial-gradient(1200px 600px at 80% -10%, color-mix(in oklab, var(--gold-300) 35%, transparent) 0%, transparent 40%),
+    radial-gradient(1000px 500px at 10% -20%, color-mix(in oklab, var(--gold-500) 18%, transparent) 0%, transparent 35%),
+    var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  scroll-behavior: smooth;
 }
-.gradient-text {
-  -webkit-text-fill-color: transparent !important;
+a, a:visited{
+text-decoration: none!important;
+color: black;
 }
-.gradient-orange {
-  background: linear-gradient(90deg, #fe9a79 0.01%, #f8c07d 50.01%, #fee298 100%);
-}
-.gradient-orange-text {
-  background: linear-gradient(90deg, #fe9a79 0.01%, #f8c07d 50.01%, #fee298 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.gradient-dark-orange-text{
- background: linear-gradient(90deg, #F0642E 0.01%, #EE201C 50.01%, #F29120 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
- 
-}
-.gradient-brown {
-  background: linear-gradient(325.41deg, #1b1b1c 49.82%, rgba(250, 172, 121, 0.1) 128.97%);
-}
-.gradient-radial-orange {
-  background: radial-gradient(
-    130% 107.13% at 50% 10%,
-    rgba(0, 0, 0, 0) 37.41%,
-    #ff541f 69.27%,
-    #ffdc5f 100%
-  );
-}
-.gradient-black-brown {
-  background: linear-gradient(
-    305.88deg,
-    rgba(27, 27, 28, 0.9) 43.54%,
-    rgba(79, 61, 49, 0.9) 100.01%
-  );
-}
-.gradient-orange-black-radial {
-  background: radial-gradient(
-    125.47% 103.4% at 50% 10%,
-    rgba(0, 0, 0, 0) 47.41%,
-    #f0642e 69.27%,
-    #ffdc5f 100%
-  );
-  backdrop-filter: blur(90px);
-}
-.richtext-h2-with-gradient {
-  color: white !important;
-  strong {
-    background: linear-gradient(90deg, #fe9a79 0.01%, #f8c07d 50.01%, #fee298 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 400 !important;
-  }
-}
-.richtext-p-with-link {
-  strong {
-    font-weight: 600 !important;
-  }
-  a {
-    color: #f0642e !important;
-  }
-}
-.richtext-text-article {
-  margin: 0;
-  h5 {
-    color: white;
-  }
-  h1 {
-    color: white;
-  }
-  h2 {
-    color: white;
-  }
-  h3 {
-    color: white;
-  }
-  h4 {
-    color: white;
-  }
-
-  p {
-    color: #d0d0d0;
-    font-size: 16px;
-    line-height: 24px;
-  }
-  li {
-    color: #d0d0d0;
-    font-size: 16px;
-    line-height: 24px;
-  }
-  li strong {
-    color: #d0d0d0;
-  }
-  a {
-    font-size: 16px;
-    line-height: 24px;
-    color: #f0642e;
-    text-decoration: underline !important;
-  }
-  ol li {
-    color: #d0d0d0;
-    font-size: 20px;
-    line-height: 26px;
-    font-weight: 500;
-  }
-  ol li strong {
-    color: #d0d0d0;
-  }
-  ol li::marker {
-    color: #d0d0d0;
-    font-size: 20px;
-    line-height: 26px;
-    font-weight: 500;
-  }
-}
-.lexical-table-container {
-  overflow-x: auto !important;
-}
-
-
-/* paneldladeweloper.pl */
-
 /* Components */
 @layer components {
   .card {

@@ -5,6 +5,7 @@ import { SubmitHandler, useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Link from 'next/link'
 import { Icon } from '@iconify/react'
+import MailerLite from "@mailerlite/mailerlite-nodejs";
 
 interface ContactFormProps {
   submitOnEmail: string
@@ -40,36 +41,32 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
     if (privacyPolicy === true) {
       try {
         setStatus('Wysyłanie...')
-        const res = await fetch(`https://formsubmit.co/ajax/${submitOnEmail}`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            'Imię i nazwisko': name,
-            Email: email,
-          }),
-        })
+      const res = await fetch('/api/newsletter', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: email,
+        name: name,
+      }),
+    })
 
-        if (!res.ok) {
-          setStatus('Błąd wysyłania')
-          if (res.status === 401) {
-            throw new Error('Wrong login or password')
-          }
-          throw new Error('Server error, try again later')
-        }
-        setStatus('Wiadomość wysłana')
+    if (!res.ok) {
+      throw new Error('Błąd zapisu')
+    }
 
-        setTimeout(() => {
-          setStatus('Wyślij wiadomość')
-          reset()
-        }, 3000)
-        return res.json()
+    setStatus('Wiadomość wysłana')
+
+    setTimeout(() => {
+      setStatus('Wyślij wiadomość')
+      reset()
+    }, 3000)
       } catch (error) {
-        console.log(error)
-        setError('root', {
-          message: `${String(error).replace('Error:', '')}`,
-        })
+       setStatus('Błąd wysyłania')
+    setError('root', {
+      message: 'Nie udało się zapisać',
+    })
       }
     } else {
       setError('privacyPolicy', {
