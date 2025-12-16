@@ -20,7 +20,7 @@ type FormFields = z.infer<typeof schema>
 
 const ContactForm: React.FC<ContactFormProps> = (props) => {
   const { submitOnEmail } = props
-  const [status, setStatus] = useState('Wyślij wiadomość')
+  const [status, setStatus] = useState('Zapisz się')
   const {
     register,
     handleSubmit,
@@ -56,10 +56,10 @@ const ContactForm: React.FC<ContactFormProps> = (props) => {
       throw new Error('Błąd zapisu')
     }
 
-    setStatus('Wiadomość wysłana')
+    setStatus('Zapisano!')
 
     setTimeout(() => {
-      setStatus('Wyślij wiadomość')
+      setStatus('Zapisz się')
       reset()
     }, 3000)
       } catch (error) {

@@ -130,7 +130,7 @@ export const FooterContent: React.FC<FooterContentProps> = ({
       <div className="flex 2xl:flex-row 2xl:gap-0 gap-8 flex-col items-start 2xl:items-end xl:items-start xl:justify-between w-full">
         <div className="flex items-center justify-start flex-row rounded-[20px] gradient-black-brown border border-b-0 border-solid border-white/10 p-3 w-full sm:w-fit gap-[20px]">
           <div className="flex items-center justify-center w-[74px] h-[74px] bg-white rounded-[10px]">
-            <Image src={Logo} alt="RendPro" className="w-[66px] h-auto" />
+            <Image src={Logo} alt="REND.PRO" className="w-[66px] h-auto" />
           </div>
           <p className="text-[18px] leading-[28px] !text-white">
             Aplikacja realizowana <br />

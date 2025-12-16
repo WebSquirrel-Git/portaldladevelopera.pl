@@ -98,5 +98,22 @@ export const PanelDevelopmentBlock: Block = {
         },
       ],
     },
+     {
+      name: 'button',
+      label: 'Przycisk',
+      type: 'group',
+      fields: [
+        {
+          name: 'title',
+          label: 'Tytuł',
+          type: 'text',
+        },
+        {
+          name: 'url',
+          label: 'Adres Url',
+          type: 'text',
+        },
+      ],
+    },
   ],
 }

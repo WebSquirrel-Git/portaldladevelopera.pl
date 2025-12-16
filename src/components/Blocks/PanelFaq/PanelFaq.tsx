@@ -2,15 +2,20 @@
 import { useState } from 'react'
 import { FaqCard } from './FaqCard'
 import { Faq } from '@/payload-types'
+import { LinkButton } from '@/components/ui/LinkButton/LinkButton'
 
 interface PanelFaqProps {
   header: string
   subheader: string
   questionsList: Faq[]
+  button?:{
+    title?:string;
+    url?:string;
+  }
 }
 
 export const PanelFaq: React.FC<PanelFaqProps> = (props) => {
-  const { header, subheader, questionsList } = props
+  const { header, subheader, questionsList,button } = props
   const evenFaqList = questionsList.filter((_, i) => i % 2 === 0)
   const oddFaqList = questionsList.filter((_, i) => i % 2 !== 0)
   const [activeCard, setActiveCard] = useState('999999999')
@@ -50,6 +55,7 @@ export const PanelFaq: React.FC<PanelFaqProps> = (props) => {
           ))}
         </div>
       </div>
+      {button?.url&&<LinkButton url={button.url} label={button.title!}/>}
     </div>
   )
 }

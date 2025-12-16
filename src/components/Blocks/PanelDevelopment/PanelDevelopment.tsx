@@ -4,11 +4,13 @@ import RichText from '@/components/RichText'
 import { useState } from 'react'
 import { Icon } from '@iconify/react'
 import { AnimatePresence, motion } from 'motion/react'
+import { LinkButton } from '@/components/ui/LinkButton/LinkButton'
 export const PanelDevelopment: React.FC<PanelDevelopmentBlockPropsType> = (props) => {
-  const { header, categoriesList } = props
+  const { header, categoriesList,button } = props
   const [activeCategory, setActiveCategory] = useState(0)
   return (
     <div className="bg-black px-4 py-4 gap-6 xl:gap-[48px] xl:pt-[50px] xl:pb-[180px] flex flex-col xl:px-[274px] justify-center items-center">
+      
       <RichText
         data={header}
         className="richtext-h2-with-gradient !text-white mx-0 text-center max-w-[850px]"
@@ -59,6 +61,7 @@ export const PanelDevelopment: React.FC<PanelDevelopmentBlockPropsType> = (props
           ))}
         </AnimatePresence>
       </div>
+      {button?.url&&<LinkButton url={button.url} label={button.title!}/>}
     </div>
   )
 }

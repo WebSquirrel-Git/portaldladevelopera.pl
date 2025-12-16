@@ -666,6 +666,10 @@ export interface PanelDevelopmentBlock {
     };
     id?: string | null;
   }[];
+  button?: {
+    title?: string | null;
+    url?: string | null;
+  };
   id?: string | null;
   blockName?: string | null;
   blockType: 'panelDevelopmentBlock';
@@ -678,6 +682,10 @@ export interface PanelFaqBlock {
   header: string;
   subheader: string;
   questionsFolder: string | FolderInterface;
+  button?: {
+    title?: string | null;
+    url?: string | null;
+  };
   id?: string | null;
   blockName?: string | null;
   blockType: 'panelFaqBlock';
@@ -1456,6 +1464,12 @@ export interface PanelDevelopmentBlockSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  button?:
+    | T
+    | {
+        title?: T;
+        url?: T;
+      };
   id?: T;
   blockName?: T;
 }
@@ -1467,6 +1481,12 @@ export interface PanelFaqBlockSelect<T extends boolean = true> {
   header?: T;
   subheader?: T;
   questionsFolder?: T;
+  button?:
+    | T
+    | {
+        title?: T;
+        url?: T;
+      };
   id?: T;
   blockName?: T;
 }
