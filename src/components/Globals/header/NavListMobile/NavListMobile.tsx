@@ -62,7 +62,7 @@ export const NavListMobile: React.FC<NavListMobilePropsType> = ({ data, showMenu
             />
           ))}
           <Link onClick={onHideMenu}
-            href={`${process.env.NEXT_PUBLIC_APP_URL}`}
+            href={`${process.env.NEXT_PUBLIC_APP_URL}/logowanie`}
             className="w-full text-center text-black rounded-lg box-border bg-primaryOrange border-[1px] border-primaryOrange font-medium text-[16px] py-3 px-6 cursor-pointer"
           >
             Zaloguj się

@@ -33,7 +33,7 @@ export const NavListDesktop: React.FC<{ data: HeaderType }> = ({ data }) => {
           />
         </div>
       ))}
-      <LinkButtonSM url={`${process.env.NEXT_PUBLIC_APP_URL}`} label="Zaloguj się" />
+      <LinkButtonSM url={`${process.env.NEXT_PUBLIC_APP_URL}/logowanie`} label="Zaloguj się" />
     </nav>
   )
 
